@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<body>
+  <ClassName>Waldläufer</ClassName>
+  <Typ>Kämpfer</Typ>
+  <AmountStartingWeapons>3</AmountStartingWeapons>
+  <Specialization>Weapon</Specialization>
+  <Amount>1</Amount>
+  <InitialItem></InitialItem>
+</body>

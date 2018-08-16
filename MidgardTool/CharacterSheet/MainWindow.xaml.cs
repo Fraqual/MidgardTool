@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Logger;
+using Logger.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,12 @@ namespace CharacterSheet
         public MainWindow()
         {
             InitializeComponent();
+
+            SimpleLogger logger = new SimpleLogger("log.txt");
+
+            logger.Log("Test Debug", LogLevel.Debug);
+            logger.Log("Test Release", LogLevel.Release);
+
         }
     }
 }

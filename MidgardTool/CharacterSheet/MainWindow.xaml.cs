@@ -1,5 +1,4 @@
 ﻿using Logger;
-using Logger.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

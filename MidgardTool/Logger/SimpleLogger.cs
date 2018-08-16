@@ -1,5 +1,4 @@
-﻿using Logger.Enums;
-using System;
+﻿using System;
 using System.IO;
 
 namespace Logger
@@ -10,33 +9,34 @@ namespace Logger
     public class SimpleLogger
     {
 
-        private readonly string m_Path;
+        private static string m_Path;
 
         private static SimpleLogger m_Logger;
 
         public LogLevel LogLevel { get; set; } = LogLevel.Debug;
 
+        public static string LogPath
+        {
+            get => m_Path;
+            set => m_Path = value;
+        }
+
         public static SimpleLogger Instance
         {
-            get => m_Logger;
+            get
+            {
+                if(m_Logger == null)
+                {
+                    m_Logger = new SimpleLogger();
+                }
+
+                return m_Logger;
+            }
         }
 
         #region Construction
 
-        public static SimpleLogger Construct(string path)
-        {
-            if(m_Logger == null)
-            {
-                m_Logger = new SimpleLogger(path);
-            }
-
-            return m_Logger;
-        }
-
-        private SimpleLogger(string path)
-        {
-            m_Path = path;
-        }
+        private SimpleLogger() { }
 
         #endregion
 

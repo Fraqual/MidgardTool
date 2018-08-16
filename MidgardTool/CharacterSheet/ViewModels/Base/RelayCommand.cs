@@ -7,8 +7,16 @@ namespace CharacterSheet.ViewModels.Base
     public class RelayCommand : ICommand
     {
 
-        private Action m_Action;
+        private readonly Action m_Action;
 
+        #region Construction
+
+        public RelayCommand(Action action)
+        {
+            m_Action = action;
+        }
+
+        #endregion
 
         #region ICommand
 
@@ -24,7 +32,7 @@ namespace CharacterSheet.ViewModels.Base
             }
             catch(Exception ex)
             {
-                SimpleLogger.Instance.Log(ex.Message, Logger.Enums.LogLevel.Debug);
+                SimpleLogger.Instance.Log(ex.Message, LogLevel.Debug);
             }
         }
 

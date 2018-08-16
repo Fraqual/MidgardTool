@@ -25,12 +25,6 @@ namespace CharacterSheet
         public MainWindow()
         {
             InitializeComponent();
-
-            SimpleLogger logger = new SimpleLogger("log.txt");
-
-            logger.Log("Test Debug", LogLevel.Debug);
-            logger.Log("Test Release", LogLevel.Release);
-
         }
     }
 }

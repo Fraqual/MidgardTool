@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logger;
+using System;
 using System.Windows.Input;
 
 namespace CharacterSheet.ViewModels.Base
@@ -23,7 +24,7 @@ namespace CharacterSheet.ViewModels.Base
             }
             catch(Exception ex)
             {
-                
+                SimpleLogger.Instance.Log(ex.Message, Logger.Enums.LogLevel.Debug);
             }
         }
 

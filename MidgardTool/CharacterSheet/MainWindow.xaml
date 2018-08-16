@@ -5,24 +5,180 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CharacterSheet"
         mc:Ignorable="d"
-        Title="Character Sheet" Height="800" Width="600">
-    
+        Title="Character Sheet"
+        Height="800"
+        Width="600">
+
     <Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0"
-                   Padding="5 10 5 10">Figur</TextBlock>
-        <TextBox Grid.Row="0" Grid.Column="1" 
-                 Margin="5 10 5 10"/>
+        <Grid Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Padding="5 10 5 10">
+                Figur
+            </TextBlock>
+            <TextBox Grid.Row="0"
+                     Grid.Column="1"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Padding="5 10 5 10">
+                Name
+            </TextBlock>
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="2"
+                       Grid.Column="0"
+                       Padding="5 10 5 10">
+                Klasse
+            </TextBlock>
+            <ComboBox Grid.Row="2"
+                      Grid.Column="1"
+                      Margin="5 10 5 10" />
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Padding="5 10 5 10">
+                Strength
+            </TextBlock>
+            <TextBox Grid.Row="0"
+                     Grid.Column="1"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="2"
+                       Padding="5 10 5 10">
+                Aussehen
+            </TextBlock>
+            <TextBox Grid.Row="0"
+                     Grid.Column="3"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Padding="5 10 5 10">
+                Gewandheit
+            </TextBlock>
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="2"
+                       Padding="5 10 5 10">
+                Pers. Ausstrahlung
+            </TextBlock>
+            <TextBox Grid.Row="1"
+                     Grid.Column="3"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="2"
+                       Grid.Column="0"
+                       Padding="5 10 5 10">
+                Geschicklichkeit
+            </TextBlock>
+            <TextBox Grid.Row="2"
+                     Grid.Column="1"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="2"
+                       Grid.Column="2"
+                       Padding="5 10 5 10">
+                Willenskraft
+            </TextBlock>
+            <TextBox Grid.Row="2"
+                     Grid.Column="3"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="3"
+                       Grid.Column="0"
+                       Padding="5 10 5 10">
+                Konstitution
+            </TextBlock>
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="3"
+                       Grid.Column="2"
+                       Padding="5 10 5 10">
+                KAW
+            </TextBlock>
+            <TextBox Grid.Row="3"
+                     Grid.Column="3"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="4"
+                       Grid.Column="0"
+                       Padding="5 10 5 10">
+                Intelligenz
+            </TextBlock>
+            <TextBox Grid.Row="4"
+                     Grid.Column="1"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="4"
+                       Grid.Column="2"
+                       Padding="5 10 5 10">
+                Bewegung
+            </TextBlock>
+            <TextBox Grid.Row="4"
+                     Grid.Column="3"
+                     Margin="5 10 5 10" />
+
+            <TextBlock Grid.Row="5"
+                       Grid.Column="0"
+                       Padding="5 10 5 10">
+                Zaubertalent
+            </TextBlock>
+            <TextBox Grid.Row="5"
+                     Grid.Column="1"
+                     Margin="5 10 5 10" />
+            
+        </Grid>
 
     </Grid>
-    
+
 </Window>

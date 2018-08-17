@@ -8,7 +8,9 @@ namespace Logger
 {
     public enum LogLevel
     {
-        Debug,
-        Release
+        Tests=0,
+        Debug=1,
+        Error=2,
+        Release=3
     }
 }

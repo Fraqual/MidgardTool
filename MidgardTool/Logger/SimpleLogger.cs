@@ -13,7 +13,7 @@ namespace Logger
 
         private static SimpleLogger m_Logger;
 
-        public LogLevel LogLevel { get; set; } = LogLevel.Debug;
+        public static LogLevel LoggingLevel { get; set; }// = LogLevel.Debug;
 
         public static string LogPath
         {
@@ -28,6 +28,35 @@ namespace Logger
                 if(m_Logger == null)
                 {
                     m_Logger = new SimpleLogger();
+
+                    //Get Path from the Config file
+                    string configPath = Path.Combine(Environment.CurrentDirectory, "Config.xml");
+
+                    if (!File.Exists(configPath))
+                    {
+                        Console.WriteLine("Config File not found");                       
+                    }
+
+                    string logPath = XmlHelper.Read.ReadContentOfTag(configPath, "logPath");
+                    LogPath = logPath;
+
+                    if (!Directory.Exists(Path.GetDirectoryName(LogPath)))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(LogPath));
+                    }
+                    if (!File.Exists(LogPath))
+                    {
+                        File.Create(LogPath);
+                    }
+
+                    string logLvl = XmlHelper.Read.ReadContentOfTag(configPath, "logLvl");
+                    LoggingLevel = (LogLevel)Enum.Parse(typeof(LogLevel), logLvl);
+
+                    using (StreamWriter sw = File.AppendText(m_Path))
+                    {
+                        sw.WriteLine("\n"+DateTime.UtcNow+"\t\tS T A R T E D\n");
+                    }
+
                 }
 
                 return m_Logger;
@@ -47,7 +76,7 @@ namespace Logger
         /// <param name="logLevel">Log level of the message</param>
         public void Log(string message, LogLevel logLevel)
         {
-            if(logLevel >= this.LogLevel)
+            if(logLevel >= LoggingLevel)
             {
                 writeLine("[" + logLevel + "] " + DateTime.UtcNow + ": " + message);
             }

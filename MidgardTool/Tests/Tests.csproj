@@ -59,6 +59,10 @@
       <Project>{829f8900-28b7-4b61-8267-f897713b73df}</Project>
       <Name>CharacterLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{b55b0fbb-1a1c-40bd-9686-0408bce23c78}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

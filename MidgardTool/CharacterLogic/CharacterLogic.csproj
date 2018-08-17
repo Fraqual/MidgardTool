@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{b55b0fbb-1a1c-40bd-9686-0408bce23c78}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XmlHelper\XmlHelper.csproj">
       <Project>{b498bded-304e-4e92-968b-6504e87734d4}</Project>
       <Name>XmlHelper</Name>

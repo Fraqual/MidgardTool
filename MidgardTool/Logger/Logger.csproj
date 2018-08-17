@@ -45,5 +45,11 @@
     <Compile Include="SimpleLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XmlHelper\XmlHelper.csproj">
+      <Project>{b498bded-304e-4e92-968b-6504e87734d4}</Project>
+      <Name>XmlHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

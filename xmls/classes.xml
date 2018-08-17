@@ -6,4 +6,13 @@
   <Specialization>Weapon</Specialization>
   <Amount>1</Amount>
   <InitialItem></InitialItem>
+  <InitalLearning>
+    <Typical Amount="1">
+       <Skill Name="Scharfschießen" Bonus="5" Mandatory="true"/>
+    </Typical>
+    <Alltag>1</Alltag>
+    <Freiland>11</Freiland>
+    <Körper>4</Körper>
+    <Waffen>20</Waffen>
+  </InitalLearning>
 </body>

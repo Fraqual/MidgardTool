@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CharacterLogic
 {
@@ -16,9 +18,20 @@ namespace CharacterLogic
         {
             List<string> classList = new List<string>();
 
-            //Read class names from classes xml names
+            string configPath = Path.Combine(Environment.CurrentDirectory, "Config.xml");
 
-            return classList;
+            if(!File.Exists(configPath))
+            {
+                Console.WriteLine("Config File not found");
+            }
+
+            string xmlFolderPath = XmlHelper.Read.ReadContentOfTag(configPath, "xmlPath");
+
+
+
+                //Read class names from classes xml
+
+                return classList;
         }
 
         /// <summary>

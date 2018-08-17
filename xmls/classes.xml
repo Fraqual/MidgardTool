@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <body>
-  <ClassName>Waldläufer</ClassName>
-  <Typ>Kämpfer</Typ>
-  <AmountStartingWeapons>3</AmountStartingWeapons>
-  <Specialization>Weapon</Specialization>
-  <Amount>1</Amount>
-  <InitialItem></InitialItem>
-  <InitalLearning>
-    <Typical Amount="1">
-       <Skill Name="Scharfschießen" Bonus="5" Mandatory="true"/>
-    </Typical>
-    <Alltag>1</Alltag>
-    <Freiland>11</Freiland>
-    <Körper>4</Körper>
-    <Waffen>20</Waffen>
-  </InitalLearning>
+  <Class>
+    <ClassName>Waldläufer</ClassName>
+    <Typ>Kämpfer</Typ>
+    <AmountStartingWeapons>3</AmountStartingWeapons>
+    <Specialization>Weapon</Specialization>
+    <Amount>1</Amount>
+    <InitialItem></InitialItem>
+    <InitalLearning>
+      <Typical Amount="1">
+        <Skill Name="Scharfschießen" Bonus="5" Mandatory="true"/>
+      </Typical>
+      <Alltag>1</Alltag>
+      <Freiland>11</Freiland>
+      <Körper>4</Körper>
+      <Waffen>20</Waffen>
+    </InitalLearning>
+  </Class>
 </body>

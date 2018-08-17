@@ -27,9 +27,9 @@ namespace Tests
             List<string> comparisonList = new List<string>() { "Waldläufer" };
 
             CharacterLogic.CreationLogic logic = new CharacterLogic.CreationLogic();
-            List<string> classesStrings = logic.getCharacterClasses();
+            List<string> classList = logic.getCharacterClasses();
 
-            Assert.AreEqual(comparisonList, classesStrings);
+            CollectionAssert.AreEquivalent(comparisonList, classList);
         }
     }
 }

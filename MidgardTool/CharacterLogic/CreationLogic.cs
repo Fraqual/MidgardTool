@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Logger;
+using XmlHelper;
 
 namespace CharacterLogic
 {
@@ -36,11 +37,11 @@ namespace CharacterLogic
                 Console.WriteLine("Config File not found");
             }
 
-            string xmlFolderPath = XmlHelper.Read.ReadContentOfTag(configPath, "xmlPath");
+            string xmlFolderPath = Read.ReadFirstContentOfTag(configPath, "xmlPath");
 
             _logger.Log("XmlFolderPath: " + xmlFolderPath, LogLevel.Debug);
 
-            //Read class names from classes xml
+            classList = Read.ReadAllContentsOfTag(Path.Combine(xmlFolderPath, "classes.xml"), "ClassName");
 
             return classList;
         }

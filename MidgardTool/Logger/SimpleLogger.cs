@@ -37,7 +37,7 @@ namespace Logger
                         Console.WriteLine("Config File not found");                       
                     }
 
-                    string logPath = XmlHelper.Read.ReadContentOfTag(configPath, "logPath");
+                    string logPath = XmlHelper.Read.ReadFirstContentOfTag(configPath, "logPath");
                     LogPath = logPath;
 
                     if (!Directory.Exists(Path.GetDirectoryName(LogPath)))
@@ -49,7 +49,7 @@ namespace Logger
                         File.Create(LogPath);
                     }
 
-                    string logLvl = XmlHelper.Read.ReadContentOfTag(configPath, "logLvl");
+                    string logLvl = XmlHelper.Read.ReadFirstContentOfTag(configPath, "logLvl");
                     LoggingLevel = (LogLevel)Enum.Parse(typeof(LogLevel), logLvl);
 
                     using (StreamWriter sw = File.AppendText(m_Path))

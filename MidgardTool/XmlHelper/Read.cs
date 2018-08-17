@@ -10,7 +10,7 @@ namespace XmlHelper
     public static class Read
     {
 
-        public static string ReadContentOfTag(string xmlPath, string tagName)
+        public static string ReadFirstContentOfTag(string xmlPath, string tagName)
         {
             string content = "";
             using (XmlReader reader = XmlReader.Create(xmlPath))
@@ -30,6 +30,26 @@ namespace XmlHelper
             }
 
             return content;
+        }
+
+        public static List<string> ReadAllContentsOfTag(string xmlPath, string tagName)
+        {
+            List<string> contents = new List<string>();
+
+            using (XmlReader reader = XmlReader.Create(xmlPath))
+            {
+                reader.MoveToContent();
+                while (reader.Read())
+                {
+                    reader.ReadToFollowing(tagName);
+                    if (reader.ReadState != ReadState.EndOfFile)
+                    {
+                        contents.Add(reader.ReadElementContentAsString());
+                    }
+                }
+            }
+
+            return contents;
         }
     }
 }

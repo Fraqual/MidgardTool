@@ -8,6 +8,13 @@ namespace CharacterSheet.ViewModels
 
         private ICharacterLogic m_CharacterLogic;
 
+        #region Window Properties
+
+        public string tbName { get; set; }
+
+        #endregion
+
+
         #region Construction
 
         public MainWindowViewModel()

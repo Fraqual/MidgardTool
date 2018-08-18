@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<body>
+  <Race>
+    <RaceName>Mensch</RaceName>
+    <AttributBorders>
+      <Stärke min="0" max="100" />
+      <Geschicklichkeit min="0" max="100"/>
+      <Gewandheit min="0" max="100"/>
+      <Konstitution min="0" max="100"/>
+      <Intelligenz min="0" max="100"/>
+      <Zaubertalent min="0" max="100"/>
+      <Aussehen min="0" max="100"/>
+    </AttributBorders>
+    <AvailableClasses>
+      <Class>Waldläufer</Class>
+      <Class>Assasine</Class>
+      <Class>Barbar</Class>
+      <Class>Barde</Class>      
+      <Class>Glücksritter</Class>
+      <Class>Händler</Class>
+      <Class>Krieger</Class>
+      <Class>Ordenskrieger</Class>
+      <Class>Spitzbube</Class>
+      <Class>Waldläufer</Class>
+      <Class>Druide</Class>
+      <Class>Hexer</Class>
+      <Class>Magier</Class>
+      <Class>Priester</Class>
+      <Class>Schamane</Class>
+      <Class>Heiler</Class>
+      <Class>Runenmeister</Class>
+      <Class>Thaumaturge</Class>
+      <Class>Weise</Class>
+      <Class>Ermittler</Class>
+      <Class>Magister</Class>
+      <Class>Schattengänger</Class>
+      <Class>Tiermeister</Class>
+      <Class>Bestienjäger</Class>
+      <Class>Feldscher</Class>
+      <Class>Klingenmagier</Class>
+      <Class>Schattenweber</Class>
+      <Class>Waldhüter</Class>
+      <Class>Zauberkrämer</Class>
+    </AvailableClasses>
+  </Race>
+  <Race>
+    <RaceName>Zwerg</RaceName>
+    <AttributBorders>
+      <Stärke min="61" max="100" />
+      <Geschicklichkeit min="0" max="100"/>
+      <Gewandheit min="0" max="80"/>
+      <Konstitution min="61" max="100"/>
+      <Intelligenz min="0" max="100"/>
+      <Zaubertalent min="0" max="100"/>
+      <Aussehen min="0" max="80"/>
+    </AttributBorders>
+    <AvailableClasses>
+      <Class>Händler</Class>
+      <Class>Krieger</Class>
+      <Class>Magier</Class>      
+      <Class>Priester</Class>
+      <Class>Heiler</Class>
+      <Class>Runenmeister</Class>
+      <Class>Thaumaturge</Class>     
+      <Class>Feldscher</Class>
+      <Class>Zauberkrämer</Class>
+ </AvailableClasses>
+  </Race>
+</body>

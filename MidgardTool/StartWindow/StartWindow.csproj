@@ -100,6 +100,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(ProjectDir)\Config.xml $(ProjectDir)$(OutDir)</PostBuildEvent>
+    <PostBuildEvent>copy "$(ProjectDir)Config.xml" "$(ProjectDir)$(OutDir)"
+
+mkdir "$(ProjectDir)$(OutDir)\xmls"
+
+copy /Y "$(ProjectDir)..\xmls" "$(ProjectDir)$(OutDir)xmls"</PostBuildEvent>
   </PropertyGroup>
 </Project>

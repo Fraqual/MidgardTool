@@ -1,4 +1,4 @@
-﻿using CharacterLogic.Interfaces;
+﻿using CharacterLogic;
 using CharacterSheet.ViewModels.Base;
 
 namespace CharacterSheet.ViewModels

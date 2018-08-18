@@ -42,7 +42,8 @@
   <ItemGroup>
     <Compile Include="CreationLogic.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Interfaces\ICharacterLogic.cs" />
+    <Compile Include="ICharacterLogic.cs" />
+    <Compile Include="ICreationLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

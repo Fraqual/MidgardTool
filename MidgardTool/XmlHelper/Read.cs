@@ -32,6 +32,40 @@ namespace XmlHelper
             return content;
         }
 
+        public static List<string> GetContentOfTagInTagWithValue(string xmlPath, string PrimaryTag, string PrimaryValue, string SubTag)
+        {
+            List<string> contents = new List<string>();
+
+            using (XmlReader reader = XmlReader.Create(xmlPath))
+            {
+                reader.MoveToContent();
+                while (reader.ReadToFollowing(PrimaryTag))
+                {                    
+                    if (reader.ReadState != ReadState.EndOfFile)
+                    {
+                        string elementContent = reader.ReadElementContentAsString();
+                        if (elementContent == PrimaryValue)
+                        {
+                            reader.ReadToFollowing(SubTag);
+                            if (reader.ReadState != ReadState.EndOfFile)
+                            {
+                                while (reader.Read() && !(reader.NodeType == XmlNodeType.EndElement && reader.Name == SubTag))
+                                {
+                                    if (reader.ReadState != ReadState.EndOfFile && reader.NodeType == XmlNodeType.Element)
+                                    {
+                                        contents.Add(reader.ReadElementContentAsString());
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return contents;
+        }
+
         public static List<string> ReadAllContentsOfTag(string xmlPath, string tagName)
         {
             List<string> contents = new List<string>();
@@ -51,5 +85,7 @@ namespace XmlHelper
 
             return contents;
         }
+
+
     }
 }

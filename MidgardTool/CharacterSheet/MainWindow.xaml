@@ -10,8 +10,22 @@
         Width="600">
 
     <Window.Resources>
-        <Style x:Key="inputFieldStyle" TargetType="TextBox">
+        <Style x:Key="tbStyle" 
+               TargetType="TextBox">
             <Setter Property="Margin" Value="5 8 5 8" />
+        </Style>
+        <Style x:Key="btnRandom"
+               TargetType="Button">
+            <Setter Property="Width"
+                    Value="30" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="Margin"
+                    Value="5 5 5 5" />
+        </Style>
+        <Style x:Key="comboBox" TargetType="ComboBox">
+            <Setter Property="Margin"
+                    Value="5 10 5 10" />
         </Style>
     </Window.Resources>
     
@@ -50,35 +64,57 @@
                     Figur
                 </TextBlock>
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource inputFieldStyle}" />
+                         Style="{StaticResource tbStyle}" />
                 <Button Grid.Column="2"
-                        Width="30"
-                        Height="30"
-                        Margin="5 5 5 5">
+                        Style="{StaticResource btnRandom}">
                     
                 </Button>
 
             </Grid>
-            
-            
 
-            <TextBlock Grid.Row="1"
-                       Grid.Column="0"
-                       Padding="5 10 5 10">
-                Name
-            </TextBlock>
-            <TextBox Grid.Row="1"
-                     Grid.Column="1"
-                     Style="{StaticResource inputFieldStyle}" />
+            <Grid Grid.Row="1"
+                  Grid.Column="0">
 
-            <TextBlock Grid.Row="2"
-                       Grid.Column="0"
-                       Padding="5 10 5 10">
-                Klasse
-            </TextBlock>
-            <ComboBox Grid.Row="2"
-                      Grid.Column="1"
-                      Margin="5 10 5 10" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Name
+                </TextBlock>
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource tbStyle}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="2"
+                  Grid.Column="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Klasse
+                </TextBlock>
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource tbStyle}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
 
         </Grid>
 
@@ -86,9 +122,7 @@
         <Grid Grid.Row="1">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="auto" />                
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -97,99 +131,283 @@
                 <RowDefinition Height="40" />
                 <RowDefinition Height="40" />
                 <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
-            <TextBlock Grid.Row="0"
-                       Grid.Column="0"
-                       Padding="5 10 5 10">
-                Spezial
-            </TextBlock>
-            <TextBox Grid.Row="0"
-                     Grid.Column="1"
-                     Style="{StaticResource inputFieldStyle}" />
 
-            <TextBlock Grid.Row="0"
-                       Grid.Column="2"
-                       Padding="5 10 5 10">
-                Alter
-            </TextBlock>
-            <TextBox Grid.Row="0"
-                     Grid.Column="3"
-                     Style="{StaticResource inputFieldStyle}" />
+            <Grid Grid.Row="0"
+                  Grid.Column="0">
 
-            <TextBlock Grid.Row="1"
-                       Grid.Column="0"
-                       Padding="5 10 5 10">
-                Spezies
-            </TextBlock>
-            <ComboBox Grid.Row="1"
-                      Grid.Column="1"
-                      Margin="5 10 5 10" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="1"
-                       Grid.Column="2"
-                       Padding="5 10 5 10">
-                Geburtstag
-            </TextBlock>
-            <!-- TODO Create date input -->
-            <TextBox Grid.Row="1"
-                     Grid.Column="3"
-                     Style="{StaticResource inputFieldStyle}" />
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Spezial
+                </TextBlock>
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource tbStyle}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
 
-            <TextBlock Grid.Row="2"
-                       Grid.Column="0"
-                       Padding="5 10 5 10">
-                Herkunft
-            </TextBlock>
-            <ComboBox Grid.Row="2"
-                      Grid.Column="1"
-                      Margin="5 10 5 10" />
+                </Button>
+            </Grid>
 
-            <TextBlock Grid.Row="2"
-                       Grid.Column="2"
-                       Padding="5 10 5 10">
-                Geschlecht
-            </TextBlock>
-            <ComboBox Grid.Row="2"
-                      Grid.Column="3"
-                      Margin="5 10 5 10" />
+            <Grid Grid.Row="0"
+                  Grid.Column="1">
 
-            <TextBlock Grid.Row="3"
-                       Grid.Column="0"
-                       Padding="5 10 5 10">
-                Glaube
-            </TextBlock>
-            <ComboBox Grid.Row="3"
-                      Grid.Column="1"
-                      Margin="5 10 5 10" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="3"
-                       Grid.Column="2"
-                       Padding="5 10 5 10">
-                Händigkeit
-            </TextBlock>
-            <ComboBox Grid.Row="3"
-                      Grid.Column="3"
-                      Margin="5 10 5 10" />
-            
-            <TextBlock Grid.Row="4"
-                       Grid.Column="0"
-                       Padding="5 10 5 10">
-                Größe
-            </TextBlock>
-            <TextBox Grid.Row="4"
-                     Grid.Column="1"
-                     Style="{StaticResource inputFieldStyle}" />
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Alter
+                </TextBlock>
+                <TextBox Grid.Column="1"
+                         Style="{StaticResource tbStyle}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
 
-            <TextBlock Grid.Row="4"
-                       Grid.Column="2"
-                       Padding="5 10 5 10">
-                Gewicht
-            </TextBlock>
-            <TextBox Grid.Row="4"
-                       Grid.Column="3"
-                     Style="{StaticResource inputFieldStyle}" />
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  Grid.Column="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Spezies
+                </TextBlock>
+                <ComboBox Grid.Row="1"
+                          Grid.Column="1"
+                          Style="{StaticResource comboBox}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  Grid.Column="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Geburtstag
+                </TextBlock>
+                <!-- TODO Create Date input field -->
+                <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Style="{StaticResource tbStyle}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="2"
+                  Grid.Column="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Herkunft
+                </TextBlock>
+                <ComboBox Grid.Row="1"
+                          Grid.Column="1"
+                          Style="{StaticResource comboBox}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="2"
+                  Grid.Column="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Geschlecht
+                </TextBlock>
+                <ComboBox Grid.Row="1"
+                          Grid.Column="1"
+                          Style="{StaticResource comboBox}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="3"
+                  Grid.Column="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Glaube
+                </TextBlock>
+                <ComboBox Grid.Row="1"
+                          Grid.Column="1"
+                          Style="{StaticResource comboBox}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="3"
+                  Grid.Column="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Händigkeit
+                </TextBlock>
+                <ComboBox Grid.Row="1"
+                          Grid.Column="1"
+                          Style="{StaticResource comboBox}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="4"
+                  Grid.Column="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Stand
+                </TextBlock>
+                <ComboBox Grid.Row="1"
+                          Grid.Column="1"
+                          Style="{StaticResource comboBox}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="4"
+                  Grid.Column="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Gestalt
+                </TextBlock>
+                <TextBox Grid.Row="1"
+                          Grid.Column="1"
+                          Style="{StaticResource tbStyle}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="5"
+                  Grid.Column="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Größe
+                </TextBlock>
+                <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Style="{StaticResource tbStyle}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Row="5"
+                  Grid.Column="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Padding="5 10 5 10">
+                    Gewicht
+                </TextBlock>
+                <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Style="{StaticResource tbStyle}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource btnRandom}">
+
+                </Button>
+
+            </Grid>
 
         </Grid>
 
@@ -219,7 +437,7 @@
             </TextBlock>
             <TextBox Grid.Row="0"
                      Grid.Column="1"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
 
             <TextBlock Grid.Row="0"
                        Grid.Column="2"
@@ -228,7 +446,7 @@
             </TextBlock>
             <TextBox Grid.Row="0"
                      Grid.Column="3"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
 
             <TextBlock Grid.Row="1"
                        Grid.Column="0"
@@ -237,7 +455,7 @@
             </TextBlock>
             <TextBox Grid.Row="1"
                      Grid.Column="1"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
 
             <TextBlock Grid.Row="1"
                        Grid.Column="2"
@@ -246,7 +464,7 @@
             </TextBlock>
             <TextBox Grid.Row="1"
                      Grid.Column="3"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
 
             <TextBlock Grid.Row="2"
                        Grid.Column="0"
@@ -255,7 +473,7 @@
             </TextBlock>
             <TextBox Grid.Row="2"
                      Grid.Column="1"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
 
             <TextBlock Grid.Row="2"
                        Grid.Column="2"
@@ -264,7 +482,7 @@
             </TextBlock>
             <TextBox Grid.Row="2"
                      Grid.Column="3"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
 
             <TextBlock Grid.Row="3"
                        Grid.Column="0"
@@ -273,7 +491,7 @@
             </TextBlock>
             <TextBox Grid.Row="3"
                      Grid.Column="1"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
 
             <TextBlock Grid.Row="3"
                        Grid.Column="2"
@@ -282,7 +500,7 @@
             </TextBlock>
             <TextBox Grid.Row="3"
                      Grid.Column="3"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
 
             <TextBlock Grid.Row="4"
                        Grid.Column="0"
@@ -291,7 +509,7 @@
             </TextBlock>
             <TextBox Grid.Row="4"
                      Grid.Column="1"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
 
             <TextBlock Grid.Row="4"
                        Grid.Column="2"
@@ -300,7 +518,7 @@
             </TextBlock>
             <TextBox Grid.Row="4"
                      Grid.Column="3"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
 
             <TextBlock Grid.Row="5"
                        Grid.Column="0"
@@ -309,7 +527,7 @@
             </TextBlock>
             <TextBox Grid.Row="5"
                      Grid.Column="1"
-                     Style="{StaticResource inputFieldStyle}" />
+                     Style="{StaticResource tbStyle}" />
             
         </Grid>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <body>
-  <xmlPath>..\xmls</xmlPath>
-  <logPath>..\Log\mainlog.log</logPath>
+  <xmlPath>\xmls</xmlPath>
+  <logPath>\Log\mainlog.log</logPath>
   <logLvl>Tests</logLvl> //Tests, Debug, Error, Release
 </body>

@@ -5,6 +5,9 @@ using Logger;
 
 namespace Tests
 {
+    /// <summary>
+    /// Test CharacterLogic Dll on it's own
+    /// </summary>
     [TestClass]
     public class TestLogicDll
     {
@@ -15,7 +18,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Test CharacterLogic Dll on it's own
+        /// Test GetCharacterClasses
         /// </summary>
         [TestMethod]
         public void TestGetCharacterClasses()
@@ -27,7 +30,22 @@ namespace Tests
             List<string> comparisonList = new List<string>() { "Waldläufer" };
 
             CharacterLogic.CreationLogic logic = new CharacterLogic.CreationLogic();
-            List<string> classList = logic.getCharacterClasses();
+            List<string> classList = logic.GetCharacterClasses();
+
+            CollectionAssert.AreEquivalent(comparisonList, classList);
+        }
+
+        [TestMethod]
+        public void TestRaceClassExclution()
+        {
+            _logger.Log("TestRaceClassExclution", LogLevel.Tests);
+            //List<string> comparisonList = new List<string>(){Händler, Krieger , Magier , Priester , Heiler , Runenmeister , Thaumaturge , Feldscher , Zauberkrämer};
+            //Current available classes
+            List<string> comparisonList = new List<string>();
+
+            CharacterLogic.CreationLogic logic = new CharacterLogic.CreationLogic();
+            logic.SetRace("Zwerg");
+            List<string> classList = logic.GetCharacterClasses();
 
             CollectionAssert.AreEquivalent(comparisonList, classList);
         }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CharacterLogic.Interfaces
+namespace CharacterLogic
 {
-    public interface ICharacterLogic
+    public interface ICharacterLogic : ICreationLogic
     {
 
     }

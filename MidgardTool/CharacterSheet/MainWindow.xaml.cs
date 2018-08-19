@@ -1,4 +1,5 @@
-﻿using CharacterSheet.ViewModels;
+﻿using CharacterLogic;
+using CharacterSheet.ViewModels;
 using Logger;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace CharacterSheet
         {
             InitializeComponent();
 
-            this.DataContext = new MainWindowViewModel();
+            this.DataContext = new MainWindowViewModel(new CreationLogic());
         }
     }
 }

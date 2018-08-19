@@ -19,6 +19,10 @@ namespace CharacterSheet.ViewModels
 
         public string cbSelectedKlasse { get; set; }
 
+        public List<string> cbRasse { get; set; }
+
+        public string cbSelectedRasse { get; set; }
+
         #endregion
 
 

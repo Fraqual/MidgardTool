@@ -10,7 +10,7 @@ using XmlHelper;
 
 namespace CharacterLogic
 {
-    public class CreationLogic : ICreationLogic
+    public class CreationLogic : ICharacterLogic
     {
         private SimpleLogger _logger;
         

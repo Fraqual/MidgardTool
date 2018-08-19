@@ -1,5 +1,6 @@
 ﻿using CharacterLogic;
 using CharacterSheet.ViewModels.Base;
+using System.Collections.Generic;
 
 namespace CharacterSheet.ViewModels
 {
@@ -10,7 +11,13 @@ namespace CharacterSheet.ViewModels
 
         #region Window Properties
 
+        public string tbFigur { get; set; }
+
         public string tbName { get; set; }
+
+        public List<string> cbKlasse { get; set; }
+
+        public string cbSelectedKlasse { get; set; }
 
         #endregion
 

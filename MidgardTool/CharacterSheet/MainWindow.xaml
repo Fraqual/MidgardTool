@@ -65,7 +65,7 @@
                 </TextBlock>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource tbStyle}"
-                         Text="{Binding tbName}"/>
+                         Text="{Binding tbFigur}"/>
                 <Button Grid.Column="2"
                         Style="{StaticResource btnRandom}">
                     
@@ -87,7 +87,8 @@
                     Name
                 </TextBlock>
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
+                         Style="{StaticResource tbStyle}" 
+                         Text="{Binding tbName}"/>
                 <Button Grid.Column="2"
                         Style="{StaticResource btnRandom}">
 
@@ -108,8 +109,10 @@
                            Padding="5 10 5 10">
                     Klasse
                 </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
+                <ComboBox Grid.Column="1"
+                          Style="{StaticResource comboBox}"
+                          ItemsSource="{Binding cbKlasse}"
+                          SelectedItem="{Binding cbSelectedKlasse}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource btnRandom}">
 

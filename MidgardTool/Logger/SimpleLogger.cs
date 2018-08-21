@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Configuration;
 
 namespace Logger
 {
@@ -9,17 +10,11 @@ namespace Logger
     public class SimpleLogger
     {
 
-        private static string m_Path;
+        private static string m_Path = "log.txt";
 
         private static SimpleLogger m_Logger;
 
         public static LogLevel LoggingLevel { get; set; }// = LogLevel.Debug;
-
-        public static string LogPath
-        {
-            get => m_Path;
-            set => m_Path = value;
-        }
 
         public static SimpleLogger Instance
         {
@@ -27,29 +22,18 @@ namespace Logger
             {
                 if(m_Logger == null)
                 {
-                    m_Logger = new SimpleLogger();
+                    m_Logger = new SimpleLogger();                   
 
-                    //Get Path from the Config file
-                    string configPath = Path.Combine(Environment.CurrentDirectory, "Config.xml");
-
-                    if (!File.Exists(configPath))
+                    if (Path.GetDirectoryName(m_Path) != string.Empty && !Directory.Exists(Path.GetDirectoryName(m_Path)))
                     {
-                        Console.WriteLine("Config File not found");                       
+                        Directory.CreateDirectory(Path.GetDirectoryName(m_Path));
+                    }
+                    if (!File.Exists(m_Path))
+                    {
+                        File.Create(m_Path);
                     }
 
-                    string logPath = XmlHelper.Read.ReadFirstContentOfTag(configPath, "logPath");
-                    LogPath = logPath;
-
-                    if (!Directory.Exists(Path.GetDirectoryName(LogPath)))
-                    {
-                        Directory.CreateDirectory(Path.GetDirectoryName(LogPath));
-                    }
-                    if (!File.Exists(LogPath))
-                    {
-                        File.Create(LogPath);
-                    }
-
-                    string logLvl = XmlHelper.Read.ReadFirstContentOfTag(configPath, "logLvl");
+                    string logLvl = ConfigurationManager.AppSettings["logLevel"];
                     LoggingLevel = (LogLevel)Enum.Parse(typeof(LogLevel), logLvl);
 
                     using (StreamWriter sw = File.AppendText(m_Path))
@@ -84,11 +68,6 @@ namespace Logger
 
         private void writeLine(string message)
         {
-            if(Path.GetDirectoryName(m_Path) != string.Empty && !Directory.Exists(Path.GetDirectoryName(m_Path)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(m_Path));
-            }
-
             using(StreamWriter sw = File.AppendText(m_Path))
             {
                 sw.WriteLine(message);

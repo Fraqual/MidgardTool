@@ -15,11 +15,11 @@ namespace CharacterSheet.ViewModels
 
         public string tbName { get; set; }
 
-        public List<string> cbKlasse { get; set; }
+        public List<string> cbKlasse { get => m_CharacterLogic.GetCharacterClasses(); }
 
         public string cbSelectedKlasse { get; set; }
 
-        public List<string> cbRasse { get; set; }
+        public List<string> cbRasse { get => m_CharacterLogic.GetRaces(); }
 
         public string cbSelectedRasse { get; set; }
 

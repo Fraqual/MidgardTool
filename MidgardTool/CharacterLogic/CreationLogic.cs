@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using Logger;
 using XmlHelper;
+using System.Configuration;
 
 namespace CharacterLogic
 {
@@ -34,17 +35,9 @@ namespace CharacterLogic
             _logger.Log("->GetCharacterClasses()", LogLevel.Debug);
             List<string> classList = new List<string>();
 
-            string configPath = Path.Combine(Environment.CurrentDirectory, "Config.xml");
+            var appSettings = ConfigurationManager.AppSettings;
 
-            _logger.Log("ConfigPath: "+configPath, LogLevel.Debug);
-
-            if(!File.Exists(configPath))
-            {
-                _logger.Log("getCharacterClasses(): ConfigFile not found", LogLevel.Error);
-                Console.WriteLine("Config File not found");
-            }
-
-            string xmlFolderPath = Environment.CurrentDirectory + Read.ReadFirstContentOfTag(configPath, "xmlPath");
+            string xmlFolderPath = Environment.CurrentDirectory + appSettings["xmlPath"];
 
             _logger.Log("XmlFolderPath: " + xmlFolderPath, LogLevel.Debug);
 
@@ -89,17 +82,7 @@ namespace CharacterLogic
             _logger.Log("->GetRaces()", LogLevel.Debug);
             List<string> raceList = new List<string>();
 
-            string configPath = Path.Combine(Environment.CurrentDirectory, "Config.xml");
-
-            _logger.Log("ConfigPath: " + configPath, LogLevel.Debug);
-
-            if (!File.Exists(configPath))
-            {
-                _logger.Log("GetRaces(): ConfigFile not found", LogLevel.Error);
-                Console.WriteLine("Config File not found");
-            }
-
-            string xmlFolderPath = Read.ReadFirstContentOfTag(configPath, "xmlPath");
+            string xmlFolderPath = Environment.CurrentDirectory + ConfigurationManager.AppSettings["xmlPath"];
 
             _logger.Log("XmlFolderPath: " + xmlFolderPath, LogLevel.Debug);
 

@@ -86,7 +86,7 @@ namespace CharacterLogic
 
             _logger.Log("XmlFolderPath: " + xmlFolderPath, LogLevel.Debug);
 
-            raceList = Read.ReadAllContentsOfTag(Path.Combine(xmlFolderPath, "races.xml"), "raceName");
+            raceList = Read.ReadAllContentsOfTag(Path.Combine(xmlFolderPath, "races.xml"), "RaceName");
 
             return raceList;
         }

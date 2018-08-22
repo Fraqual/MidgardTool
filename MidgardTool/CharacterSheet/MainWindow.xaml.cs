@@ -1,5 +1,7 @@
 ﻿using CharacterSheet.ViewModels;
+using System;
 using System.Windows;
+using System.Windows.Input;
 
 namespace CharacterSheet
 {
@@ -14,5 +16,11 @@ namespace CharacterSheet
 
             this.DataContext = new MainWindowViewModel();
         }
+
+        private void validateAttrInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !Int32.TryParse(e.Text, out int input);
+        }
+
     }
 }

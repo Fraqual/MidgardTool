@@ -11,7 +11,7 @@ using System.Configuration;
 
 namespace CharacterLogic
 {
-    public class CreationLogic : ICharacterLogic
+    public class CreationLogic : ICreationLogic
     {
         private SimpleLogger _logger;
         
@@ -23,7 +23,7 @@ namespace CharacterLogic
 
         public CreationLogic()
         {
-            _logger = SimpleLogger.Instance;                       
+            _logger = SimpleLogger.Instance;
         }
 
         /// <summary>
@@ -68,8 +68,8 @@ namespace CharacterLogic
             }
             catch (ArgumentException e)
             {
-                _logger.Log("setCharacterClass(): Class name nor recognized", LogLevel.Error);
-                Console.WriteLine("Class name nor recognized!");
+                _logger.Log("setCharacterClass(): Class name not recognized", LogLevel.Error);
+                Console.WriteLine("Class name not recognized!");
             }
         }
 

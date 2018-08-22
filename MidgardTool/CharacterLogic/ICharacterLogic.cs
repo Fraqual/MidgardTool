@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace CharacterLogic
 {
-    public interface ICharacterLogic : ICreationLogic
+    public interface ICharacterLogic
     {
 
+        string Name { get; set; }
+
+
+        List<string> GetCharacterClasses();
+
+        List<string> GetRaces();
+
+        void SetRandomName();
     }
 }

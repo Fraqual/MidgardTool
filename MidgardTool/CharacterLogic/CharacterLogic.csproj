@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character.cs" />
     <Compile Include="CreationLogic.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ICharacterLogic.cs" />

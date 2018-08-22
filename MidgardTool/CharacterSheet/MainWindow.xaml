@@ -90,7 +90,8 @@
                          Style="{StaticResource tbStyle}" 
                          Text="{Binding tbName}"/>
                 <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
+                        Style="{StaticResource btnRandom}"
+                        Command="{Binding BtnRandomName}">
 
                 </Button>
 

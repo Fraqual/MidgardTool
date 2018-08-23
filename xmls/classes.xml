@@ -23,4 +23,13 @@
       <Race>Halbling</Race>
     </AvailableRaces>
   </Class>
+  <Class>
+	<ClassName>Magier</ClassName>
+  </Class>
+  <Class>
+	<ClassName>Rentner</ClassName>
+  </Class>
+  <Class>
+	<ClassName>Politiker</ClassName>
+  </Class>
 </body>

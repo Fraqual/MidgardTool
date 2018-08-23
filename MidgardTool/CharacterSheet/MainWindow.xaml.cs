@@ -13,14 +13,6 @@ namespace CharacterSheet
         public MainWindow()
         {
             InitializeComponent();
-
-            this.DataContext = new MainWindowViewModel();
         }
-
-        private void validateAttrInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !Int32.TryParse(e.Text, out int input);
-        }
-
     }
 }

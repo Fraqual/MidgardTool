@@ -13,27 +13,44 @@ namespace CharacterSheet.ViewModels
 
         #region Window Properties
 
-        public string txtFigur { get; set; }
+        #region Basic Information
 
-        public string strName { get => m_CharacterLogic.Name; set => m_CharacterLogic.Name = value; }
+        public string strName { get; set; }
 
-        public List<string> cbKlasse { get => m_CharacterLogic.GetCharacterClasses(); }
+        public List<string> strlClass { get; set; }
+        public int strlClassSelection { get; set; }
 
-        public string cbSelectedKlasse { get; set; }
+        #endregion
 
-        public List<string> cbRasse { get => m_CharacterLogic.GetRaces(); }
+        #region Appereance
 
-        public string cbSelectedRasse { get; set; }
+        public string strDateOfBirth { get; set; }
+
+        public int intAge { get; set; }
+
+        public float fltSize { get; set; }
+
+        public float fltWeight { get; set; }
+
+        public List<string> strlRace { get; set; }
+        public int strlRaceSelection { get; set; }
+
+        public List<string> strlSex { get; set; }
+        public int strlSexSelection { get; set; }
+
+        public List<string> strlFaith { get; set; }
+        public int strlFaithSelection { get; set; }
+
+        public List<string> strlDegree { get; set; }
+        public int strlDegreeSelection { get; set; }
+
+        #endregion
 
         #region Attributes
 
-        private int m_IntStrength;
+        public int intStrength { get; set; }
 
-        public int intStrength
-        {
-            get => m_IntStrength;           
-            set => m_IntStrength = validateAttrInput(value);            
-        }
+        public int intAppereance { get; set; }
 
         #endregion
 
@@ -41,17 +58,17 @@ namespace CharacterSheet.ViewModels
 
         #region Commands
 
-        private RelayCommand m_CmdRandomName;
+        private RelayCommand<string> m_CmdRandomSelection;
 
-        public ICommand cmdRandomName
+        public ICommand cmdRandomSelection
         {
             get
             {
-                if(m_CmdRandomName == null)
+                if(m_CmdRandomSelection == null)
                 {
-                    m_CmdRandomName = new RelayCommand(setRandomName);
+                    m_CmdRandomSelection = new RelayCommand<string>(setRandomSelection); 
                 }
-                return m_CmdRandomName;
+                return m_CmdRandomSelection;
             }
         }
 
@@ -93,27 +110,17 @@ namespace CharacterSheet.ViewModels
             return value;
         }
 
-        private int randomAttributeValue() => (new Random()).Next(1, 101);
-
         #region Command Methods
 
-        private void setRandomName()
+        private void setRandomSelection(string attribute)
         {
-            m_CharacterLogic.SetRandomName();
-            NotifyPropertyChanged(this, "strName");
+            int maxIndex = ((List<string>)this.GetType().GetProperty(attribute).GetValue(this)).Count;
+            this.GetType().GetProperty(attribute + "Selection").SetValue(this, (new Random()).Next(0, maxIndex));
         }
 
         private void setRandomAttribValue(string attribute)
         {
-
-            switch(attribute)
-            {
-                case "intStrength":
-                    intStrength = randomAttributeValue();
-                    break;
-                default:
-                    break;
-            }
+            this.GetType().GetProperty(attribute).SetValue(this, (new Random()).Next(1, 101));
         }
 
         #endregion

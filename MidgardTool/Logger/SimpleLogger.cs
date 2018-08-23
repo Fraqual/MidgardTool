@@ -22,19 +22,20 @@ namespace Logger
             {
                 if(m_Logger == null)
                 {
-                    m_Logger = new SimpleLogger();                   
+                    m_Logger = new SimpleLogger();
 
-                    if (Path.GetDirectoryName(m_Path) != string.Empty && !Directory.Exists(Path.GetDirectoryName(m_Path)))
+                    m_Path = ConfigurationManager.AppSettings["logPath"];
+                    string logLvl = ConfigurationManager.AppSettings["logLevel"];
+                    LoggingLevel = (LogLevel)Enum.Parse(typeof(LogLevel), logLvl);
+
+                    if(Path.GetDirectoryName(m_Path) != string.Empty && !Directory.Exists(Path.GetDirectoryName(m_Path)))
                     {
                         Directory.CreateDirectory(Path.GetDirectoryName(m_Path));
                     }
-                    if (!File.Exists(m_Path))
+                    if(!File.Exists(m_Path))
                     {
                         File.Create(m_Path);
                     }
-
-                    string logLvl = ConfigurationManager.AppSettings["logLevel"];
-                    LoggingLevel = (LogLevel)Enum.Parse(typeof(LogLevel), logLvl);
 
                     using (StreamWriter sw = File.AppendText(m_Path))
                     {

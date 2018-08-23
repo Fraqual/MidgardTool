@@ -11,6 +11,8 @@ namespace CharacterSheet.ViewModels
 
         private ICharacterLogic m_CharacterLogic;
 
+        private Random m_Random;
+
         #region Window Properties
 
         #region Basic Information
@@ -48,9 +50,38 @@ namespace CharacterSheet.ViewModels
 
         #region Attributes
 
-        public int intStrength { get; set; }
+        private int m_IntStrength;
+        public int intStrength { get => m_IntStrength; set => m_IntStrength = validateAttributeValue(value); }
 
-        public int intAppereance { get; set; }
+        private int m_IntAppereance;
+        public int intAppereance { get => m_IntAppereance; set => m_IntAppereance = validateAttributeValue(value); }
+
+        private int m_IntGW;
+        public int intGW { get => m_IntGW; set => m_IntGW = validateAttributeValue(value); }
+
+        private int m_IntPA;
+        public int intPA { get => m_IntPA; set => m_IntPA = validateAttributeValue(value); }
+
+        private int m_IntDexterity;
+        public int intDexterity { get => m_IntDexterity; set => m_IntDexterity = validateAttributeValue(value); }
+
+        private int m_IntWillpower;
+        public int intWillpower { get => m_IntWillpower; set => m_IntWillpower = validateAttributeValue(value); }
+
+        private int m_IntConstitution;
+        public int intConstitution { get => m_IntConstitution; set => m_IntConstitution = validateAttributeValue(value); }
+
+        private int m_IntKAW;
+        public int intKAW { get => m_IntKAW; set => m_IntKAW = validateAttributeValue(value); }
+
+        private int m_IntIntelligence;
+        public int intIntelligence { get => m_IntIntelligence; set => m_IntIntelligence = validateAttributeValue(value); }
+
+        private int m_IntMovement;
+        public int intMovement { get => m_IntMovement; set => m_IntMovement = validateAttributeValue(value); }
+
+        private int m_IntZT;
+        public int intZT { get => m_IntZT; set => m_IntZT = validateAttributeValue(value); }
 
         #endregion
 
@@ -93,11 +124,12 @@ namespace CharacterSheet.ViewModels
         public MainWindowViewModel()
         {
             m_CharacterLogic = new Character();
+            m_Random = new Random();
         }
 
         #endregion
 
-        private int validateAttrInput(int value)
+        private int validateAttributeValue(int value)
         {
             if(value <= 0)
             {
@@ -115,12 +147,12 @@ namespace CharacterSheet.ViewModels
         private void setRandomSelection(string attribute)
         {
             int maxIndex = ((List<string>)this.GetType().GetProperty(attribute).GetValue(this)).Count;
-            this.GetType().GetProperty(attribute + "Selection").SetValue(this, (new Random()).Next(0, maxIndex));
+            this.GetType().GetProperty(attribute + "Selection").SetValue(this, m_Random.Next(0, maxIndex));
         }
 
         private void setRandomAttribValue(string attribute)
         {
-            this.GetType().GetProperty(attribute).SetValue(this, (new Random()).Next(1, 101));
+            this.GetType().GetProperty(attribute).SetValue(this, m_Random.Next(1, 101));
         }
 
         #endregion

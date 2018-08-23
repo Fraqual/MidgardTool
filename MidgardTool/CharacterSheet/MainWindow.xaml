@@ -118,6 +118,102 @@
 
         </Grid>
 
+        <!-- Attributes -->
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <control:CharacterAttributeTextBox Grid.Row="0"
+                                               Grid.Column="0"
+                                               AttributeName="Stärke"
+                                               AttributeValue="{Binding intStrength}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intStrength"/>
+
+            <control:CharacterAttributeTextBox Grid.Row="0"
+                                               Grid.Column="1"
+                                               AttributeName="Aussehen"
+                                               AttributeValue="{Binding intAppereance}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intAppereance" />
+
+            <control:CharacterAttributeTextBox Grid.Row="1"
+                                               Grid.Column="0"
+                                               AttributeName="Gewandheit"
+                                               AttributeValue="{Binding intGW}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intGW" />
+
+            <control:CharacterAttributeTextBox Grid.Row="1"
+                                               Grid.Column="1"
+                                               AttributeName="Pers. Ausstrahlung"
+                                               AttributeValue="{Binding intPA}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intPA" />
+
+            <control:CharacterAttributeTextBox Grid.Row="2"
+                                               Grid.Column="0"
+                                               AttributeName="Geschick"
+                                               AttributeValue="{Binding intDexterity}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intDexterity" />
+
+            <control:CharacterAttributeTextBox Grid.Row="2"
+                                               Grid.Column="1"
+                                               AttributeName="Willenskraft"
+                                               AttributeValue="{Binding intWillpower}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intWillpower" />
+
+            <control:CharacterAttributeTextBox Grid.Row="3"
+                                               Grid.Column="0"
+                                               AttributeName="Konstitution"
+                                               AttributeValue="{Binding intConstitution}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intConstitution" />
+
+            <control:CharacterAttributeTextBox Grid.Row="3"
+                                               Grid.Column="1"
+                                               AttributeName="KAW"
+                                               AttributeValue="{Binding intKAW}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intKAW" />
+
+            <control:CharacterAttributeTextBox Grid.Row="4"
+                                               Grid.Column="0"
+                                               AttributeName="Intelligenz"
+                                               AttributeValue="{Binding intIntelligence}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intIntelligence" />
+
+            <control:CharacterAttributeTextBox Grid.Row="4"
+                                               Grid.Column="1"
+                                               AttributeName="Bewegung"
+                                               AttributeValue="{Binding intMovement}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intMovement" />
+
+            <control:CharacterAttributeTextBox Grid.Row="5"
+                                               Grid.Column="0"
+                                               AttributeName="Zaubertalent"
+                                               AttributeValue="{Binding intZT}"
+                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
+                                               ButtonCommandParameter="intZT" />
+
+        </Grid>
+        
     </Grid>
 
 </Window>

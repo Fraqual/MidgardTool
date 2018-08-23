@@ -55,17 +55,17 @@ namespace CharacterSheet.ViewModels
             }
         }
 
-        private RelayCommand m_cmdRandomStrength;
+        private RelayCommand<string> m_cmdRandomAttribValue;
 
         public ICommand cmdRandomStrength
         {
             get
             {
-                if(m_cmdRandomStrength == null)
+                if(m_cmdRandomAttribValue == null)
                 {
-                    m_cmdRandomStrength = new RelayCommand(setRandomStrength);
+                    m_cmdRandomAttribValue = new RelayCommand<string>(setRandomAttribValue);
                 }
-                return m_cmdRandomStrength;
+                return m_cmdRandomAttribValue;
             }
         }
 
@@ -103,10 +103,19 @@ namespace CharacterSheet.ViewModels
             NotifyPropertyChanged(this, "tbName");
         }
 
-        private void setRandomStrength()
+        private void setRandomAttribValue(string attribute)
         {
-            m_TxtStaerke = randomAttributeValue();
-            NotifyPropertyChanged(this, "txtStaerke");
+
+            switch(attribute)
+            {
+                case "txtStaerke":
+                    m_TxtStaerke = randomAttributeValue();
+                    break;
+                default:
+                    return;
+            }
+
+            NotifyPropertyChanged(this, attribute);
         }
 
         #endregion

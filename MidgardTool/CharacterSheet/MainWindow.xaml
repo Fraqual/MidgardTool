@@ -4,15 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CharacterSheet"
+        xmlns:control="clr-namespace:CharacterSheet.UserControls"
         mc:Ignorable="d"
         Title="Character Sheet"
         Height="800"
         Width="600">
 
     <Window.Resources>
-        <Style x:Key="stTbInput" 
+        <Style x:Key="stTbInput"
                TargetType="TextBox">
-            <Setter Property="Margin" Value="5 8 5 8" />
+            <Setter Property="Margin"
+                    Value="5 8 5 8" />
         </Style>
         <Style x:Key="stBtnRandom"
                TargetType="Button">
@@ -29,7 +31,7 @@
                     Value="5 10 5 10" />
         </Style>
     </Window.Resources>
-    
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -51,35 +53,17 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Figur
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource stTbInput}"
-                         Text="{Binding tbFigur}"/>
-                <Button Grid.Column="2"
-                        Style="{StaticResource stBtnRandom}">
-                    
-                </Button>
-
-            </Grid>
+            <control:CharacterAttributeInput Grid.Row="0"
+                                             AttributeName="Stärke"
+                                             AttributeValue="{Binding intFigur}"/>
 
             <Grid Grid.Row="1"
                   Grid.Column="0">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="289*" />
+                    <ColumnDefinition Width="222*" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
@@ -88,9 +72,10 @@
                     Name
                 </TextBlock>
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource stTbInput}" 
-                         Text="{Binding tbName}"/>
-                <Button Grid.Column="2"
+                         Style="{StaticResource stTbInput}"
+                         Text="{Binding tbName}"
+                         Grid.ColumnSpan="2" />
+                <Button Grid.Column="3"
                         Style="{StaticResource stBtnRandom}"
                         Command="{Binding stBtnRandomName}">
 
@@ -201,7 +186,7 @@
                           Grid.Column="1"
                           Style="{StaticResource stCbInput}"
                           ItemsSource="{Binding cbRasse}"
-                          SelectedItem="{Binding cbSelectedRasse}"/>
+                          SelectedItem="{Binding cbSelectedRasse}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}">
 
@@ -362,8 +347,8 @@
                     Gestalt
                 </TextBlock>
                 <TextBox Grid.Row="1"
-                          Grid.Column="1"
-                          Style="{StaticResource stTbInput}" />
+                         Grid.Column="1"
+                         Style="{StaticResource stTbInput}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}">
 
@@ -455,7 +440,8 @@
                          PreviewTextInput="validateAttrInput" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
-                        Command="{Binding cmdRandomStrength}" />
+                        Command="{Binding cmdRandomStrength}"
+                        CommandParameter="txtStaerke" />
 
             </Grid>
 
@@ -474,7 +460,7 @@
                 </TextBlock>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource stTbInput}"
-                         Text="{Binding txtAussehen}"/>
+                         Text="{Binding txtAussehen}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
                         Command="{Binding cmdRandomAppearance}" />
@@ -495,8 +481,8 @@
                     Gewandheit
                 </TextBlock>
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource stTbInput}" 
-                         Text="{Binding txtGewandheit}"/>
+                         Style="{StaticResource stTbInput}"
+                         Text="{Binding txtGewandheit}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
                         Command="{Binding cmdRandomGW}" />
@@ -518,7 +504,7 @@
                 </TextBlock>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource stTbInput}"
-                         Text="{Binding txtPA}"/>
+                         Text="{Binding txtPA}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
                         Command="{Binding cmdRandomPA}" />
@@ -540,7 +526,7 @@
                 </TextBlock>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource stTbInput}"
-                         Text="{Binding txtGeschicklichkeit}"/>
+                         Text="{Binding txtGeschicklichkeit}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
                         Command="{Binding cmdRandomDexterity}" />
@@ -562,7 +548,7 @@
                 </TextBlock>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource stTbInput}"
-                         Text="{Binding txtWillenskraft}"/>
+                         Text="{Binding txtWillenskraft}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
                         Command="{Binding cmdRandomWillpower}" />
@@ -583,11 +569,11 @@
                     Konstitution
                 </TextBlock>
                 <TextBox Grid.Column="1"
-                         Style="{StaticResource stTbInput}" 
-                         Text="{Binding txtKonstitution}"/>
+                         Style="{StaticResource stTbInput}"
+                         Text="{Binding txtKonstitution}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
-                        Command="{Binding cmdRandomConstitution}"/>
+                        Command="{Binding cmdRandomConstitution}" />
 
             </Grid>
 
@@ -606,10 +592,10 @@
                 </TextBlock>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource stTbInput}"
-                         Text="{Binding txtKAW}"/>
+                         Text="{Binding txtKAW}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
-                        Command="{Binding cmdRandomKAW}"/>
+                        Command="{Binding cmdRandomKAW}" />
 
             </Grid>
 
@@ -628,10 +614,10 @@
                 </TextBlock>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource stTbInput}"
-                         Text="{Binding txtIntelligenz}"/>
+                         Text="{Binding txtIntelligenz}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
-                        Command="{Binding cmdRandomIntelligence}"/>
+                        Command="{Binding cmdRandomIntelligence}" />
 
             </Grid>
 
@@ -653,7 +639,7 @@
                          Text="{Binding txtBewegung}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
-                        Command="{Binding cmdRandomMovement}"/>
+                        Command="{Binding cmdRandomMovement}" />
 
             </Grid>
 
@@ -672,13 +658,13 @@
                 </TextBlock>
                 <TextBox Grid.Column="1"
                          Style="{StaticResource stTbInput}"
-                         Text="{Binding txtZaubertalent}"/>
+                         Text="{Binding txtZaubertalent}" />
                 <Button Grid.Column="2"
                         Style="{StaticResource stBtnRandom}"
-                        Command="{Binding cmdRandomZT}"/>
+                        Command="{Binding cmdRandomZT}" />
 
             </Grid>
-            
+
         </Grid>
 
     </Grid>

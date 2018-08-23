@@ -21,7 +21,9 @@ namespace CharacterSheet.UserControls
     public partial class CharacterAttributeInput : UserControl
     {
         public static readonly DependencyProperty AttributeNameProperty = DependencyProperty.Register("AttributeName", typeof(string), typeof(CharacterAttributeInput));
-        public static readonly DependencyProperty AttributeValueProperty = DependencyProperty.Register("AttributeValue", typeof(int), typeof(CharacterAttributeInput));
+        public static readonly DependencyProperty AttributeValueProperty = DependencyProperty.Register("AttributeValue", typeof(string), typeof(CharacterAttributeInput));
+        public static readonly DependencyProperty ButtonCommandProperty = DependencyProperty.Register("ButtonCommand", typeof(ICommand), typeof(CharacterAttributeInput));
+        public static readonly DependencyProperty ButtonCommandParameterProperty = DependencyProperty.Register("ButtonCommandParameter", typeof(object), typeof(CharacterAttributeInput));
 
         public CharacterAttributeInput()
         {
@@ -34,10 +36,22 @@ namespace CharacterSheet.UserControls
             set => SetValue(AttributeNameProperty, value);
         }
 
-        public int AttributeValue
+        public string AttributeValue
         {
-            get => (int)GetValue(AttributeValueProperty);
+            get => (string)GetValue(AttributeValueProperty);
             set => SetValue(AttributeValueProperty, value);
+        }
+
+        public ICommand ButtonCommand
+        {
+            get => (ICommand)GetValue(ButtonCommandProperty);
+            set => SetValue(ButtonCommandProperty, value);
+        }
+
+        public object ButtonCommandParameter
+        {
+            get => GetValue(ButtonCommandParameterProperty);
+            set => SetValue(ButtonCommandParameterProperty, value);
         }
     }
 }

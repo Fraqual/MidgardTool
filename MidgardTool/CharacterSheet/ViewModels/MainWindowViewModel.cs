@@ -15,7 +15,7 @@ namespace CharacterSheet.ViewModels
 
         public string txtFigur { get; set; }
 
-        public string txtName { get => m_CharacterLogic.Name; set => m_CharacterLogic.Name = value; }
+        public string strName { get => m_CharacterLogic.Name; set => m_CharacterLogic.Name = value; }
 
         public List<string> cbKlasse { get => m_CharacterLogic.GetCharacterClasses(); }
 
@@ -27,12 +27,12 @@ namespace CharacterSheet.ViewModels
 
         #region Attributes
 
-        private int m_TxtStaerke;
+        private int m_IntStrength;
 
-        public int txtStaerke
+        public int intStrength
         {
-            get => m_TxtStaerke;           
-            set => m_TxtStaerke = validateAttrInput(value);            
+            get => m_IntStrength;           
+            set => m_IntStrength = validateAttrInput(value);            
         }
 
         #endregion
@@ -41,31 +41,31 @@ namespace CharacterSheet.ViewModels
 
         #region Commands
 
-        private RelayCommand m_BtnRandomName;
+        private RelayCommand m_CmdRandomName;
 
-        public ICommand BtnRandomName
+        public ICommand cmdRandomName
         {
             get
             {
-                if(m_BtnRandomName == null)
+                if(m_CmdRandomName == null)
                 {
-                    m_BtnRandomName = new RelayCommand(setRandomName);
+                    m_CmdRandomName = new RelayCommand(setRandomName);
                 }
-                return m_BtnRandomName;
+                return m_CmdRandomName;
             }
         }
 
-        private RelayCommand<string> m_cmdRandomAttribValue;
+        private RelayCommand<string> m_cmdRandomAttributeValue;
 
-        public ICommand cmdRandomStrength
+        public ICommand cmdRandomAttributeValue
         {
             get
             {
-                if(m_cmdRandomAttribValue == null)
+                if(m_cmdRandomAttributeValue == null)
                 {
-                    m_cmdRandomAttribValue = new RelayCommand<string>(setRandomAttribValue);
+                    m_cmdRandomAttributeValue = new RelayCommand<string>(setRandomAttribValue);
                 }
-                return m_cmdRandomAttribValue;
+                return m_cmdRandomAttributeValue;
             }
         }
 
@@ -100,7 +100,7 @@ namespace CharacterSheet.ViewModels
         private void setRandomName()
         {
             m_CharacterLogic.SetRandomName();
-            NotifyPropertyChanged(this, "tbName");
+            NotifyPropertyChanged(this, "strName");
         }
 
         private void setRandomAttribValue(string attribute)
@@ -108,14 +108,12 @@ namespace CharacterSheet.ViewModels
 
             switch(attribute)
             {
-                case "txtStaerke":
-                    m_TxtStaerke = randomAttributeValue();
+                case "intStrength":
+                    intStrength = randomAttributeValue();
                     break;
                 default:
-                    return;
+                    break;
             }
-
-            NotifyPropertyChanged(this, attribute);
         }
 
         #endregion

@@ -10,6 +10,7 @@ namespace CharacterSheet.ViewModels
     {
 
         private ICharacterLogic m_CharacterLogic;
+        private ICreationLogic m_CreationLogic;
 
         private Random m_Random;
 
@@ -19,8 +20,9 @@ namespace CharacterSheet.ViewModels
 
         public string strName { get; set; }
 
-        public List<string> strlClass { get; set; }
-        public int strlClassSelection { get; set; }
+        public string strPlayerName { get; set; }
+
+        public string strClass { get; set; }
 
         #endregion
 
@@ -40,48 +42,46 @@ namespace CharacterSheet.ViewModels
         public List<string> strlSex { get; set; }
         public int strlSexSelection { get; set; }
 
-        public List<string> strlFaith { get; set; }
-        public int strlFaithSelection { get; set; }
+        public string strFaith { get; set; }
 
         public List<string> strlDegree { get; set; }
         public int strlDegreeSelection { get; set; }
+
+        public string strOrigin { get; set; }
 
         #endregion
 
         #region Attributes
 
         private int m_IntStrength;
-        public int intStrength { get => m_IntStrength; set => m_IntStrength = validateAttributeValue(value); }
+        public int intStrength { get; set; }
 
         private int m_IntAppereance;
-        public int intAppereance { get => m_IntAppereance; set => m_IntAppereance = validateAttributeValue(value); }
+        public int intAppereance { get; set; }
 
         private int m_IntGW;
-        public int intGW { get => m_IntGW; set => m_IntGW = validateAttributeValue(value); }
+        public int intGW { get; set; }
 
         private int m_IntPA;
-        public int intPA { get => m_IntPA; set => m_IntPA = validateAttributeValue(value); }
+        public int intPA { get; set; }
 
         private int m_IntDexterity;
-        public int intDexterity { get => m_IntDexterity; set => m_IntDexterity = validateAttributeValue(value); }
+        public int intDexterity { get; set; }
 
         private int m_IntWillpower;
-        public int intWillpower { get => m_IntWillpower; set => m_IntWillpower = validateAttributeValue(value); }
+        public int intWillpower { get; set; }
 
         private int m_IntConstitution;
-        public int intConstitution { get => m_IntConstitution; set => m_IntConstitution = validateAttributeValue(value); }
-
-        private int m_IntKAW;
-        public int intKAW { get => m_IntKAW; set => m_IntKAW = validateAttributeValue(value); }
+        public int intConstitution { get; set; }
 
         private int m_IntIntelligence;
-        public int intIntelligence { get => m_IntIntelligence; set => m_IntIntelligence = validateAttributeValue(value); }
+        public int intIntelligence { get; set; }
 
         private int m_IntMovement;
-        public int intMovement { get => m_IntMovement; set => m_IntMovement = validateAttributeValue(value); }
+        public int intMovement { get; set; }
 
         private int m_IntZT;
-        public int intZT { get => m_IntZT; set => m_IntZT = validateAttributeValue(value); }
+        public int intZT { get; set; }
 
         #endregion
 
@@ -129,19 +129,6 @@ namespace CharacterSheet.ViewModels
 
         #endregion
 
-        private int validateAttributeValue(int value)
-        {
-            if(value <= 0)
-            {
-                return 1;
-            }
-            if(value > 100)
-            {
-                return 100;
-            }
-            return value;
-        }
-
         #region Command Methods
 
         private void setRandomSelection(string attribute)
@@ -152,7 +139,7 @@ namespace CharacterSheet.ViewModels
 
         private void setRandomAttribValue(string attribute)
         {
-            this.GetType().GetProperty(attribute).SetValue(this, m_Random.Next(1, 101));
+            this.GetType().GetProperty(attribute).SetValue(this, m_CreationLogic.GetRandomAttributeValue());
         }
 
         #endregion

@@ -14,7 +14,9 @@ namespace Logger
 
         private static SimpleLogger m_Logger;
 
-        public static LogLevel LoggingLevel { get; set; }// = LogLevel.Debug;
+        private static LogLevel m_LoggingLevel = LogLevel.Debug;
+
+        public static LogLevel LoggingLevel { get => m_LoggingLevel; set => m_LoggingLevel = value; }
 
         public static SimpleLogger Instance
         {
@@ -24,9 +26,9 @@ namespace Logger
                 {
                     m_Logger = new SimpleLogger();
 
-                    m_Path = ConfigurationManager.AppSettings["logPath"];
+                    m_Path = ConfigurationManager.AppSettings["logPath"] ?? m_Path;
                     string logLvl = ConfigurationManager.AppSettings["logLevel"];
-                    LoggingLevel = (LogLevel)Enum.Parse(typeof(LogLevel), logLvl);
+                    Enum.TryParse(logLvl, out m_LoggingLevel);
 
                     if(Path.GetDirectoryName(m_Path) != string.Empty && !Directory.Exists(Path.GetDirectoryName(m_Path)))
                     {

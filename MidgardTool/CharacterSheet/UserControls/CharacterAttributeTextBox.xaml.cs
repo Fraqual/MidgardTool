@@ -13,6 +13,7 @@ namespace CharacterSheet.UserControls
         public static readonly DependencyProperty AttributeValueProperty = DependencyProperty.Register("AttributeValue", typeof(string), typeof(CharacterAttributeTextBox));
         public static readonly DependencyProperty ButtonCommandProperty = DependencyProperty.Register("ButtonCommand", typeof(ICommand), typeof(CharacterAttributeTextBox));
         public static readonly DependencyProperty ButtonCommandParameterProperty = DependencyProperty.Register("ButtonCommandParameter", typeof(object), typeof(CharacterAttributeTextBox));
+        public static readonly DependencyProperty ButtonVisibilityProperty = DependencyProperty.Register("ButtonVisibility", typeof(Visibility), typeof(CharacterAttributeTextBox));
 
         public CharacterAttributeTextBox()
         {
@@ -41,6 +42,12 @@ namespace CharacterSheet.UserControls
         {
             get => GetValue(ButtonCommandParameterProperty);
             set => SetValue(ButtonCommandParameterProperty, value);
+        }
+
+        public Visibility ButtonVisibility
+        {
+            get => (Visibility)GetValue(ButtonVisibilityProperty);
+            set => SetValue(ButtonVisibilityProperty, value);
         }
     }
 }

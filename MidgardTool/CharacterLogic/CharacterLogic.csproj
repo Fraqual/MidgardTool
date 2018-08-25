@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
+    <Compile Include="CharacterAttribute.cs" />
     <Compile Include="CreationLogic.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="ICharacterAttribute.cs" />
     <Compile Include="ICharacterLogic.cs" />
     <Compile Include="ICreationLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

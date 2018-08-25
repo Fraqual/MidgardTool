@@ -8,6 +8,10 @@ namespace CharacterLogic
 {
     public class Character : ICharacterLogic
     {
+        public CharacterAttribute<int> Intelligence { get; set; }
+        public CharacterAttribute<int> PA { get; set; }
+
+
         private CreationLogic m_CreationLogic;
 
         private string m_Name;
@@ -40,5 +44,7 @@ namespace CharacterLogic
                 Name = "Sebastian";
             }
         }
+
+
     }
 }

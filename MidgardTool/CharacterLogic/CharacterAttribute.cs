@@ -15,6 +15,30 @@ namespace CharacterLogic
 
         public bool IsSet { get; set; } = false;
 
+        private bool m_CanBeSet;
+        public bool CanBeSet
+        {
+            get
+            {
+                bool value = true;
+
+                foreach(var dependency in m_Dependencies)
+                {
+                    if(dependency.IsSet == false)
+                    {
+                        value = false;
+                        break;
+                    }
+                }
+
+                return value;
+            }
+            set
+            {
+                m_CanBeSet = value;
+            }
+        }
+
         public ECharacterAttribute Name { get; }
 
         private int m_Value;
@@ -27,20 +51,17 @@ namespace CharacterLogic
             }
             set
             {
-                bool canBeSet = true;
-
-                foreach(var dependency in m_Dependencies)
+                if(CanBeSet)
                 {
-                    if(!dependency.IsSet)
+                    if(m_DependencyFormula != null)
                     {
-                        canBeSet = false;
-                        break;
+                        m_DependencyFormula(value, m_Dependencies);
                     }
-                }
-
-                if(canBeSet)
-                {
-                    m_Value = value;
+                    else
+                    {
+                        m_Value = value;
+                    }
+                    
                     IsSet = true;
                 }
             }
@@ -54,6 +75,7 @@ namespace CharacterLogic
         {
             Name = name;
             m_Dependencies = new List<CharacterAttribute>();
+            CanBeSet = true;
         }
 
         public CharacterAttribute(ECharacterAttribute name, DependencyFormula dependencyFormula)
@@ -61,6 +83,7 @@ namespace CharacterLogic
             Name = name;
             m_Dependencies = new List<CharacterAttribute>();
             m_DependencyFormula = dependencyFormula;
+            CanBeSet = false;
         }
 
         public void AddDependency(CharacterAttribute attribute)
@@ -71,11 +94,6 @@ namespace CharacterLogic
         public void RemoveDependency(CharacterAttribute attribute)
         {
             m_Dependencies.Remove(attribute);
-        }
-
-        public void SetDependencyValue(int baseValue)
-        {
-            m_DependencyFormula?.Invoke(baseValue, m_Dependencies);
         }
 
         public static int RollDice(int sides)

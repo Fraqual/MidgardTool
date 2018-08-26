@@ -110,10 +110,5 @@ namespace CharacterLogic
                 Console.WriteLine("Race name nor recognized!");
             }
         }
-
-        public int GetRandomAttributeValue()
-        {
-            return 0;
-        }
     }
 }

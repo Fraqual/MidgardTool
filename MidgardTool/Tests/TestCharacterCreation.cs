@@ -62,7 +62,7 @@ namespace Tests
 
             Intelligence.Value = 100;
 
-            PA.SetDependencyValue(CharacterAttribute.RollDice(100));
+            PA.Value = CharacterAttribute.RollDice(100);
         }
 
     }

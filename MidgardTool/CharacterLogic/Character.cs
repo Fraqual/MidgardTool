@@ -41,7 +41,7 @@ namespace CharacterLogic
 
         public Character()
         {
-
+            initialize();
         }
 
         private void initialize()

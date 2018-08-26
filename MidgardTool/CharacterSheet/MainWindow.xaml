@@ -139,6 +139,7 @@
                                                Grid.Column="0"
                                                AttributeName="Stärke"
                                                AttributeValue="{Binding intStrength}"
+                                               AttributeIsEnabled="{Binding bStrengthIsEnabled}"
                                                ButtonCommand="{Binding cmdRandomAttributeValue}"
                                                ButtonCommandParameter="intStrength"/>
 
@@ -146,6 +147,7 @@
                                                Grid.Column="1"
                                                AttributeName="Aussehen"
                                                AttributeValue="{Binding intAppereance}"
+                                               AttributeIsEnabled="{Binding bAppereanceIsEnabled}"
                                                ButtonCommand="{Binding cmdRandomAttributeValue}"
                                                ButtonCommandParameter="intAppereance" />
 
@@ -153,6 +155,7 @@
                                                Grid.Column="0"
                                                AttributeName="Gewandheit"
                                                AttributeValue="{Binding intGW}"
+                                               AttributeIsEnabled="{Binding bGWIsEnabled}"
                                                ButtonCommand="{Binding cmdRandomAttributeValue}"
                                                ButtonCommandParameter="intGW" />
 
@@ -160,6 +163,7 @@
                                                Grid.Column="1"
                                                AttributeName="Pers. Ausstrahlung"
                                                AttributeValue="{Binding intPA}"
+                                               AttributeIsEnabled="{Binding bPAIsEnabled}"
                                                ButtonCommand="{Binding cmdRandomAttributeValue}"
                                                ButtonCommandParameter="intPA" />
 
@@ -167,6 +171,7 @@
                                                Grid.Column="0"
                                                AttributeName="Geschick"
                                                AttributeValue="{Binding intDexterity}"
+                                               AttributeIsEnabled="{Binding bDexterityIsEnabled}"
                                                ButtonCommand="{Binding cmdRandomAttributeValue}"
                                                ButtonCommandParameter="intDexterity" />
 
@@ -174,6 +179,7 @@
                                                Grid.Column="1"
                                                AttributeName="Willenskraft"
                                                AttributeValue="{Binding intWillpower}"
+                                               AttributeIsEnabled="{Binding bWillpowerIsEnabled}"
                                                ButtonCommand="{Binding cmdRandomAttributeValue}"
                                                ButtonCommandParameter="intWillpower" />
 
@@ -181,20 +187,15 @@
                                                Grid.Column="0"
                                                AttributeName="Konstitution"
                                                AttributeValue="{Binding intConstitution}"
+                                               AttributeIsEnabled="{Binding bConstitutionIsEnabled}"
                                                ButtonCommand="{Binding cmdRandomAttributeValue}"
                                                ButtonCommandParameter="intConstitution" />
-
-            <control:CharacterAttributeTextBox Grid.Row="3"
-                                               Grid.Column="1"
-                                               AttributeName="KAW"
-                                               AttributeValue="{Binding intKAW}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intKAW" />
 
             <control:CharacterAttributeTextBox Grid.Row="4"
                                                Grid.Column="0"
                                                AttributeName="Intelligenz"
                                                AttributeValue="{Binding intIntelligence}"
+                                               AttributeIsEnabled="{Binding bIntelligenceIsEnabled}"
                                                ButtonCommand="{Binding cmdRandomAttributeValue}"
                                                ButtonCommandParameter="intIntelligence" />
 
@@ -202,15 +203,17 @@
                                                Grid.Column="1"
                                                AttributeName="Bewegung"
                                                AttributeValue="{Binding intMovement}"
+                                               AttributeIsEnabled="{Binding bMovementIsEnabled}"
                                                ButtonCommand="{Binding cmdRandomAttributeValue}"
                                                ButtonCommandParameter="intMovement" />
 
             <control:CharacterAttributeTextBox Grid.Row="5"
                                                Grid.Column="0"
                                                AttributeName="Zaubertalent"
-                                               AttributeValue="{Binding intZT}"
+                                               AttributeValue="{Binding intMagicTalent}"
+                                               AttributeIsEnabled="{Binding bMagicTalentIsEnabled}"
                                                ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intZT" />
+                                               ButtonCommandParameter="intMagicTalent" />
 
         </Grid>
         

@@ -15,7 +15,5 @@ namespace CharacterLogic.Interfaces
         List<string> GetRaces();
 
         void SetRace(string raceName);
-
-        int GetRandomAttributeValue();
     }
 }

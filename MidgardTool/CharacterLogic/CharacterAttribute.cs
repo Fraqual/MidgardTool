@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterLogic.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace CharacterLogic
 {
-    public class CharacterAttribute<T> : ICharacterAttribute
+    public class CharacterAttribute
     {
-        private static Random m_Random;
+        public static Random m_Random = new Random();
 
-        public delegate object DependencyFormula(ICharacterAttribute characterAttribute, List<ICharacterAttribute> dependencies);
+        public delegate int DependencyFormula(int value, List<CharacterAttribute> dependencies);
 
         public bool IsSet { get; set; } = false;
 
-        public string Name { get; }
+        public ECharacterAttribute Name { get; }
 
-        private T m_Value;
+        private int m_Value;
 
-        public T Value
+        public int Value
         {
             get
             {
@@ -45,46 +46,41 @@ namespace CharacterLogic
             }
         }
 
-        private List<ICharacterAttribute> m_Dependencies;
+        private List<CharacterAttribute> m_Dependencies;
 
         private DependencyFormula m_DependencyFormula;
 
-        public CharacterAttribute(string name)
+        public CharacterAttribute(ECharacterAttribute name)
         {
             Name = name;
-            m_Random = new Random();
-            m_Dependencies = new List<ICharacterAttribute>();
+            m_Dependencies = new List<CharacterAttribute>();
         }
 
-        public CharacterAttribute(string name, DependencyFormula dependencyFormula)
+        public CharacterAttribute(ECharacterAttribute name, DependencyFormula dependencyFormula)
         {
             Name = name;
-            m_Random = new Random();
-            m_Dependencies = new List<ICharacterAttribute>();
+            m_Dependencies = new List<CharacterAttribute>();
             m_DependencyFormula = dependencyFormula;
         }
 
-        public void AddDependency(ICharacterAttribute attribute)
+        public void AddDependency(CharacterAttribute attribute)
         {
             m_Dependencies.Add(attribute);
         }
 
-        public void RemoveDependency(ICharacterAttribute attribute)
+        public void RemoveDependency(CharacterAttribute attribute)
         {
             m_Dependencies.Remove(attribute);
         }
 
-        public void SetRandomValue()
+        public void SetDependencyValue(int baseValue)
         {
-            if(typeof(T) == typeof(int))
-            {
-                SetDependencyValue();
-            }
+            m_DependencyFormula?.Invoke(baseValue, m_Dependencies);
         }
 
-        public void SetDependencyValue()
+        public static int RollDice(int sides)
         {
-            m_DependencyFormula?.Invoke(this, m_Dependencies);
+            return m_Random.Next(1, sides + 1);
         }
 
     }

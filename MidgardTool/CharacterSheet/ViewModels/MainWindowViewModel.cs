@@ -1,4 +1,5 @@
 ﻿using CharacterLogic;
+using CharacterLogic.Interfaces;
 using CharacterSheet.ViewModels.Base;
 using System;
 using System.Collections.Generic;

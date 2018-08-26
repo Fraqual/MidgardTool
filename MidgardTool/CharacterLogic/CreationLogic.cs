@@ -8,6 +8,8 @@ using System.Xml;
 using Logger;
 using XmlHelper;
 using System.Configuration;
+using CharacterLogic.Interfaces;
+using CharacterLogic.Enums;
 
 namespace CharacterLogic
 {
@@ -15,11 +17,11 @@ namespace CharacterLogic
     {
         private SimpleLogger _logger;
         
-        private CharacterClass _class = 0;
-        private Race _race = 0;
+        private ECharacterClass _class = 0;
+        private ERace _race = 0;
 
-        public CharacterClass Class { get => _class; }
-        public Race Race { get => _race; }
+        public ECharacterClass Class { get => _class; }
+        public ERace Race { get => _race; }
 
         public CreationLogic()
         {
@@ -64,7 +66,7 @@ namespace CharacterLogic
             _logger.Log("->SetCharacterClass(" + className+")", LogLevel.Debug);
             try
             {
-                _class = (CharacterClass)Enum.Parse(typeof(CharacterClass), className);
+                _class = (ECharacterClass)Enum.Parse(typeof(ECharacterClass), className);
             }
             catch (ArgumentException e)
             {
@@ -100,7 +102,7 @@ namespace CharacterLogic
             _logger.Log("->SetRace(" + raceName + ")", LogLevel.Debug);
             try
             {
-                _race = (Race)Enum.Parse(typeof(Race), raceName);
+                _race = (ERace)Enum.Parse(typeof(ERace), raceName);
             }
             catch (ArgumentException e)
             {

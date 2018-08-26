@@ -1,5 +1,6 @@
 ﻿using System;
 using CharacterLogic;
+using CharacterLogic.Enums;
 using Logger;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,8 +19,8 @@ namespace Tests
         [TestMethod]
         public void TestAttributeDependency()
         {
-            CharacterAttribute<int> Intelligence = new CharacterAttribute<int>("Intelligence");
-            CharacterAttribute<int> PA = new CharacterAttribute<int>("PA");
+            CharacterAttribute Intelligence = new CharacterAttribute(ECharacterAttribute.Intelligence);
+            CharacterAttribute PA = new CharacterAttribute(ECharacterAttribute.PA);
 
             PA.AddDependency(Intelligence);
 
@@ -36,15 +37,14 @@ namespace Tests
         [TestMethod]
         public void TestAttributeDependencyFormula()
         {
-            CharacterAttribute<int> Intelligence = new CharacterAttribute<int>("Intelligence");
-            CharacterAttribute<int> PA = new CharacterAttribute<int>("PA", (attribute, dependencies) => 
+            CharacterAttribute Intelligence = new CharacterAttribute(ECharacterAttribute.Intelligence);
+            CharacterAttribute PA = new CharacterAttribute(ECharacterAttribute.PA, (value, dependencies) => 
             {
-                ICharacterAttribute intelligence = null;
-                string intelligenceName = "Intelligence";
+                CharacterAttribute intelligence = null;
 
                 foreach(var dependency in dependencies)
                 {
-                    if(dependency.Name == intelligenceName)
+                    if(dependency.Name == ECharacterAttribute.Intelligence)
                     {
                         intelligence = dependency;
                     }
@@ -52,13 +52,17 @@ namespace Tests
 
                 if(intelligence == null)
                 {
-                    throw new ArgumentException($"Dependency {intelligenceName} could not be found!");
+                    throw new ArgumentException($"Dependency {ECharacterAttribute.Intelligence} could not be found!");
                 }
 
-                return null;
+                return value + 4 * intelligence.Value / 10 -20;
             });
 
             PA.AddDependency(Intelligence);
+
+            Intelligence.Value = 100;
+
+            PA.SetDependencyValue(CharacterAttribute.RollDice(100));
         }
 
     }

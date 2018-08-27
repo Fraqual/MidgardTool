@@ -7,22 +7,25 @@ using System.Threading.Tasks;
 using System.Xml;
 using Logger;
 using XmlHelper;
+using System.Configuration;
+using CharacterLogic.Interfaces;
+using CharacterLogic.Enums;
 
 namespace CharacterLogic
 {
-    public class CreationLogic : ICharacterLogic
+    public class CreationLogic : ICreationLogic
     {
         private SimpleLogger _logger;
         
-        private CharacterClass _class = 0;
-        private Race _race = 0;
+        private ECharacterClass _class = 0;
+        private ERace _race = 0;
 
-        public CharacterClass Class { get => _class; }
-        public Race Race { get => _race; }
+        public ECharacterClass Class { get => _class; }
+        public ERace Race { get => _race; }
 
         public CreationLogic()
         {
-            _logger = SimpleLogger.Instance;                       
+            _logger = SimpleLogger.Instance;
         }
 
         /// <summary>
@@ -34,17 +37,9 @@ namespace CharacterLogic
             _logger.Log("->GetCharacterClasses()", LogLevel.Debug);
             List<string> classList = new List<string>();
 
-            string configPath = Path.Combine(Environment.CurrentDirectory, "Config.xml");
+            var appSettings = ConfigurationManager.AppSettings;
 
-            _logger.Log("ConfigPath: "+configPath, LogLevel.Debug);
-
-            if(!File.Exists(configPath))
-            {
-                _logger.Log("getCharacterClasses(): ConfigFile not found", LogLevel.Error);
-                Console.WriteLine("Config File not found");
-            }
-
-            string xmlFolderPath = Environment.CurrentDirectory + Read.ReadFirstContentOfTag(configPath, "xmlPath");
+            string xmlFolderPath = Environment.CurrentDirectory + appSettings["xmlPath"];
 
             _logger.Log("XmlFolderPath: " + xmlFolderPath, LogLevel.Debug);
 
@@ -71,12 +66,12 @@ namespace CharacterLogic
             _logger.Log("->SetCharacterClass(" + className+")", LogLevel.Debug);
             try
             {
-                _class = (CharacterClass)Enum.Parse(typeof(CharacterClass), className);
+                _class = (ECharacterClass)Enum.Parse(typeof(ECharacterClass), className);
             }
             catch (ArgumentException e)
             {
-                _logger.Log("setCharacterClass(): Class name nor recognized", LogLevel.Error);
-                Console.WriteLine("Class name nor recognized!");
+                _logger.Log("setCharacterClass(): Class name not recognized", LogLevel.Error);
+                Console.WriteLine("Class name not recognized!");
             }
         }
 
@@ -89,21 +84,11 @@ namespace CharacterLogic
             _logger.Log("->GetRaces()", LogLevel.Debug);
             List<string> raceList = new List<string>();
 
-            string configPath = Path.Combine(Environment.CurrentDirectory, "Config.xml");
-
-            _logger.Log("ConfigPath: " + configPath, LogLevel.Debug);
-
-            if (!File.Exists(configPath))
-            {
-                _logger.Log("GetRaces(): ConfigFile not found", LogLevel.Error);
-                Console.WriteLine("Config File not found");
-            }
-
-            string xmlFolderPath = Read.ReadFirstContentOfTag(configPath, "xmlPath");
+            string xmlFolderPath = Environment.CurrentDirectory + ConfigurationManager.AppSettings["xmlPath"];
 
             _logger.Log("XmlFolderPath: " + xmlFolderPath, LogLevel.Debug);
 
-            raceList = Read.ReadAllContentsOfTag(Path.Combine(xmlFolderPath, "races.xml"), "raceName");
+            raceList = Read.ReadAllContentsOfTag(Path.Combine(xmlFolderPath, "races.xml"), "RaceName");
 
             return raceList;
         }
@@ -117,12 +102,41 @@ namespace CharacterLogic
             _logger.Log("->SetRace(" + raceName + ")", LogLevel.Debug);
             try
             {
-                _race = (Race)Enum.Parse(typeof(Race), raceName);
+                _race = (ERace)Enum.Parse(typeof(ERace), raceName);
             }
             catch (ArgumentException e)
             {
                 _logger.Log("SetRace(): Race name nor recognized", LogLevel.Error);
                 Console.WriteLine("Race name nor recognized!");
+            }
+        }
+
+        public static int RollForAttribute(ECharacterAttribute attribute)
+        {
+            switch(attribute)
+            {
+                case ECharacterAttribute.Strength:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.GW:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Dexterity:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Constitution:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Intelligence:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.MagicTalent:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Appereance:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.PA:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Willpower:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Movement:
+                    return CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3);
+                default:
+                    throw new ArgumentException("Cannot roll for unknown attribute!");
             }
         }
     }

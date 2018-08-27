@@ -4,31 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CharacterSheet"
+        xmlns:vm="clr-namespace:CharacterSheet.ViewModels"
+        xmlns:control="clr-namespace:CharacterSheet.UserControls"
         mc:Ignorable="d"
         Title="Character Sheet"
         Height="800"
         Width="600">
 
-    <Window.Resources>
-        <Style x:Key="tbStyle" 
-               TargetType="TextBox">
-            <Setter Property="Margin" Value="5 8 5 8" />
-        </Style>
-        <Style x:Key="btnRandom"
-               TargetType="Button">
-            <Setter Property="Width"
-                    Value="30" />
-            <Setter Property="Height"
-                    Value="30" />
-            <Setter Property="Margin"
-                    Value="5 5 5 5" />
-        </Style>
-        <Style x:Key="comboBox" TargetType="ComboBox">
-            <Setter Property="Margin"
-                    Value="5 10 5 10" />
-        </Style>
-    </Window.Resources>
-    
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -38,6 +24,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <!-- Basic Information -->
         <Grid Grid.Row="0">
 
             <Grid.ColumnDefinitions>
@@ -46,80 +33,18 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
                 <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0"
-                  Grid.Column="0">
+            <control:CharacterAttributeTextBox Grid.Row="0"
+                                               AttributeName="Name"
+                                               AttributeValue="{Binding strName}" />
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Figur
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}"
-                         Text="{Binding tbFigur}"/>
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-                    
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="1"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Name
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" 
-                         Text="{Binding tbName}"/>
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="2"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Klasse
-                </TextBlock>
-                <ComboBox Grid.Column="1"
-                          Style="{StaticResource comboBox}"
-                          ItemsSource="{Binding cbKlasse}"
-                          SelectedItem="{Binding cbSelectedKlasse}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
+            <control:CharacterAttributeComboBox Grid.Row="1"
+                                                AttributeName="Klasse"
+                                                AttributeItems="{Binding strlClass}"
+                                                SelectedIndex="{Binding strlClassSelection}"
+                                                ButtonCommand="{Binding cmdRandomSelection}"
+                                                ButtonCommandParameter="strlClass" />
         </Grid>
 
         <!-- Appearance -->
@@ -139,281 +64,57 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0"
-                  Grid.Column="0">
+            <control:CharacterAttributeTextBox Grid.Row="0"
+                                               Grid.Column="1"
+                                               AttributeName="Alter"
+                                               AttributeValue="{Binding intAge}" />
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
+            <control:CharacterAttributeTextBox Grid.Row="0" 
+                                               Grid.Column="0"
+                                               AttributeName="Geburtstag"
+                                               AttributeValue="{Binding strDateOfBirth}"/>
 
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Spezial
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
+            <control:CharacterAttributeTextBox Grid.Row="1"
+                                               Grid.Column="0"
+                                               AttributeName="Größe"
+                                               AttributeValue="{Binding fltSize}" />
 
-                </Button>
-            </Grid>
+            <control:CharacterAttributeTextBox Grid.Row="1"
+                                               Grid.Column="1"
+                                               AttributeName="Gewicht"
+                                               AttributeValue="{Binding fltWeight}" />
 
-            <Grid Grid.Row="0"
-                  Grid.Column="1">
+            <control:CharacterAttributeComboBox Grid.Row="2"
+                                                Grid.Column="0"
+                                                AttributeName="Rasse"
+                                                AttributeItems="{Binding strlRace}"
+                                                SelectedIndex="{Binding strlRaceSelection}"
+                                                ButtonCommand="{Binding cmdRandomSelection}"
+                                                ButtonCommandParameter="strlRaces" />
+            
+            <control:CharacterAttributeComboBox Grid.Row="2"
+                                                Grid.Column="1"
+                                                AttributeName="Geschlecht"
+                                                AttributeItems="{Binding strlSex}"
+                                                SelectedIndex="{Binding strlSexSelection}"
+                                                ButtonCommand="{Binding cmdRandomSelection}"
+                                                ButtonCommandParameter="strlSex" />
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
+            <control:CharacterAttributeComboBox Grid.Row="3"
+                                                Grid.Column="0"
+                                                AttributeName="Glaube"
+                                                AttributeItems="{Binding strlFaith}"
+                                                SelectedIndex="{Binding strlFaithSelection}"
+                                                ButtonCommand="{Binding cmdRandomSelection}"
+                                                ButtonCommandParameter="strlFaith" />
 
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Alter
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="1"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Rasse
-                </TextBlock>
-                <ComboBox Grid.Row="1"
-                          Grid.Column="1"
-                          Style="{StaticResource comboBox}"
-                          ItemsSource="{Binding cbRasse}"
-                          SelectedItem="{Binding cbSelectedRasse}"/>
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="1"
-                  Grid.Column="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Geburtstag
-                </TextBlock>
-                <!-- TODO Create Date input field -->
-                <TextBox Grid.Row="1"
-                         Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="2"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Herkunft
-                </TextBlock>
-                <ComboBox Grid.Row="1"
-                          Grid.Column="1"
-                          Style="{StaticResource comboBox}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="2"
-                  Grid.Column="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Geschlecht
-                </TextBlock>
-                <ComboBox Grid.Row="1"
-                          Grid.Column="1"
-                          Style="{StaticResource comboBox}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="3"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Glaube
-                </TextBlock>
-                <ComboBox Grid.Row="1"
-                          Grid.Column="1"
-                          Style="{StaticResource comboBox}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="3"
-                  Grid.Column="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Händigkeit
-                </TextBlock>
-                <ComboBox Grid.Row="1"
-                          Grid.Column="1"
-                          Style="{StaticResource comboBox}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="4"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Stand
-                </TextBlock>
-                <ComboBox Grid.Row="1"
-                          Grid.Column="1"
-                          Style="{StaticResource comboBox}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="4"
-                  Grid.Column="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Gestalt
-                </TextBlock>
-                <TextBox Grid.Row="1"
-                          Grid.Column="1"
-                          Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="5"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Größe
-                </TextBlock>
-                <TextBox Grid.Row="1"
-                         Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
-
-            <Grid Grid.Row="5"
-                  Grid.Column="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Gewicht
-                </TextBlock>
-                <TextBox Grid.Row="1"
-                         Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-
-            </Grid>
+            <control:CharacterAttributeComboBox Grid.Row="3"
+                                                Grid.Column="1"
+                                                AttributeName="Stand"
+                                                AttributeItems="{Binding strlDegree}"
+                                                SelectedIndex="{Binding strlDegreeSelection}"
+                                                ButtonCommand="{Binding cmdRandomSelection}"
+                                                ButtonCommandParameter="strlDegree" />
 
         </Grid>
 
@@ -434,238 +135,77 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0"
-                  Grid.Column="0">
+            <control:CharacterAttributeTextBox Grid.Row="0"
+                                               Grid.Column="0"
+                                               AttributeName="Stärke"
+                                               AttributeValue="{Binding Strength.Value}"
+                                               AttributeIsEnabled="{Binding Strength.IsEnabled}"
+                                               ButtonCommand="{Binding Strength.CmdRandomValue}" />
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
+            <control:CharacterAttributeTextBox Grid.Row="0"
+                                               Grid.Column="1"
+                                               AttributeName="Aussehen"
+                                               AttributeValue="{Binding Appereance.Value}"
+                                               AttributeIsEnabled="{Binding Appereance.IsEnabled}"
+                                               ButtonCommand="{Binding Appereance.CmdRandomValue}" />
 
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Strength
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-                </Button>
-            </Grid>
+            <control:CharacterAttributeTextBox Grid.Row="1"
+                                               Grid.Column="0"
+                                               AttributeName="Gewandheit"
+                                               AttributeValue="{Binding GW.Value}"
+                                               AttributeIsEnabled="{Binding GW.IsEnabled}"
+                                               ButtonCommand="{Binding GW.CmdRandomValue}" />
 
-            <Grid Grid.Row="0"
-                  Grid.Column="1">
+            <control:CharacterAttributeTextBox Grid.Row="1"
+                                               Grid.Column="1"
+                                               AttributeName="Pers. Ausstrahlung"
+                                               AttributeValue="{Binding PA.Value}"
+                                               AttributeIsEnabled="{Binding PA.IsEnabled}"
+                                               ButtonCommand="{Binding PA.CmdRandomValue}" />
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
+            <control:CharacterAttributeTextBox Grid.Row="2"
+                                               Grid.Column="0"
+                                               AttributeName="Geschick"
+                                               AttributeValue="{Binding Dexterity.Value}"
+                                               AttributeIsEnabled="{Binding Dexterity.IsEnabled}"
+                                               ButtonCommand="{Binding Dexterity.CmdRandomValue}" />
 
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Aussehen
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
+            <control:CharacterAttributeTextBox Grid.Row="2"
+                                               Grid.Column="1"
+                                               AttributeName="Willenskraft"
+                                               AttributeValue="{Binding Willpower.Value}"
+                                               AttributeIsEnabled="{Binding Willpower.IsEnabled}"
+                                               ButtonCommand="{Binding Willpower.CmdRandomValue}" />
 
-                </Button>
-            </Grid>
+            <control:CharacterAttributeTextBox Grid.Row="3"
+                                               Grid.Column="0"
+                                               AttributeName="Konstitution"
+                                               AttributeValue="{Binding Constitution.Value}"
+                                               AttributeIsEnabled="{Binding Constitution.IsEnabled}"
+                                               ButtonCommand="{Binding Constitution.CmdRandomValue}" />
 
-            <Grid Grid.Row="1"
-                  Grid.Column="0">
+            <control:CharacterAttributeTextBox Grid.Row="4"
+                                               Grid.Column="0"
+                                               AttributeName="Intelligenz"
+                                               AttributeValue="{Binding Intelligence.Value}"
+                                               AttributeIsEnabled="{Binding Intelligence.IsEnabled}"
+                                               ButtonCommand="{Binding Intelligence.CmdRandomValue}" />
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
+            <control:CharacterAttributeTextBox Grid.Row="4"
+                                               Grid.Column="1"
+                                               AttributeName="Bewegung"
+                                               AttributeValue="{Binding Movement.Value}"
+                                               AttributeIsEnabled="{Binding Movement.IsEnabled}"
+                                               ButtonCommand="{Binding Movement.CmdRandomValue}" />
 
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Aussehen
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Row="1"
-                  Grid.Column="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Pers. Ausstrahlung
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Row="2"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Geschicklichkeit
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Row="2"
-                  Grid.Column="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Willenskraft
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Row="3"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Konstitution
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Row="3"
-                  Grid.Column="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    KAW
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Row="4"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Intelligenz
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Row="4"
-                  Grid.Column="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Bewegung
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Row="5"
-                  Grid.Column="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Padding="5 10 5 10">
-                    Zaubertalent
-                </TextBlock>
-                <TextBox Grid.Column="1"
-                         Style="{StaticResource tbStyle}" />
-                <Button Grid.Column="2"
-                        Style="{StaticResource btnRandom}">
-
-                </Button>
-            </Grid>
-            
+            <control:CharacterAttributeTextBox Grid.Row="5"
+                                               Grid.Column="0"
+                                               AttributeName="Zaubertalent"
+                                               AttributeValue="{Binding MagicTalent.Value}"
+                                               AttributeIsEnabled="{Binding MagicTalent.IsEnabled}"
+                                               ButtonCommand="{Binding MagicTalent.CmdRandomValue}" />
         </Grid>
-
+        
     </Grid>
 
 </Window>

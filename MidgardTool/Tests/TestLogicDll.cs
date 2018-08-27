@@ -10,6 +10,7 @@ namespace Tests
     /// Test CharacterLogic Dll on it's own
     /// </summary>
     [TestClass]
+    [Ignore]
     public class TestLogicDll
     {
         SimpleLogger _logger;
@@ -22,6 +23,7 @@ namespace Tests
         /// Test GetCharacterClasses
         /// </summary>
         [TestMethod]
+        [Ignore]
         public void TestGetCharacterClasses()
         {
 

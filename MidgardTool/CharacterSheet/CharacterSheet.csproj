@@ -66,6 +66,7 @@
     <Compile Include="UserControls\CharacterAttributeTextBox.xaml.cs">
       <DependentUpon>CharacterAttributeTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\CharacterAttributeTextBoxViewModel.cs" />
     <Compile Include="ViewModels\Base\BaseViewModell.cs" />
     <Compile Include="ViewModels\Base\RelayCommand.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

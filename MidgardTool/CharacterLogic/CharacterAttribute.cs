@@ -55,7 +55,7 @@ namespace CharacterLogic
                 {
                     if(m_DependencyFormula != null)
                     {
-                        m_DependencyFormula(value, m_Dependencies);
+                        m_Value = m_DependencyFormula(value, m_Dependencies);
                     }
                     else
                     {

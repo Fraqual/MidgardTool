@@ -110,5 +110,34 @@ namespace CharacterLogic
                 Console.WriteLine("Race name nor recognized!");
             }
         }
+
+        public static int RollForAttribute(ECharacterAttribute attribute)
+        {
+            switch(attribute)
+            {
+                case ECharacterAttribute.Strength:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.GW:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Dexterity:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Constitution:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Intelligence:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.MagicTalent:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Appereance:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.PA:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Willpower:
+                    return CharacterAttribute.RollDice(100);
+                case ECharacterAttribute.Movement:
+                    return CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3);
+                default:
+                    throw new ArgumentException("Cannot roll for unknown attribute!");
+            }
+        }
     }
 }

@@ -138,83 +138,72 @@
             <control:CharacterAttributeTextBox Grid.Row="0"
                                                Grid.Column="0"
                                                AttributeName="Stärke"
-                                               AttributeValue="{Binding intStrength}"
-                                               AttributeIsEnabled="{Binding bStrengthIsEnabled}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intStrength"/>
+                                               AttributeValue="{Binding Strength.Value}"
+                                               AttributeIsEnabled="{Binding Strength.IsEnabled}"
+                                               ButtonCommand="{Binding Strength.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="0"
                                                Grid.Column="1"
                                                AttributeName="Aussehen"
-                                               AttributeValue="{Binding intAppereance}"
-                                               AttributeIsEnabled="{Binding bAppereanceIsEnabled}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intAppereance" />
+                                               AttributeValue="{Binding Appereance.Value}"
+                                               AttributeIsEnabled="{Binding Appereance.IsEnabled}"
+                                               ButtonCommand="{Binding Appereance.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="1"
                                                Grid.Column="0"
                                                AttributeName="Gewandheit"
-                                               AttributeValue="{Binding intGW}"
-                                               AttributeIsEnabled="{Binding bGWIsEnabled}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intGW" />
+                                               AttributeValue="{Binding GW.Value}"
+                                               AttributeIsEnabled="{Binding GW.IsEnabled}"
+                                               ButtonCommand="{Binding GW.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="1"
                                                Grid.Column="1"
                                                AttributeName="Pers. Ausstrahlung"
-                                               AttributeValue="{Binding intPA}"
-                                               AttributeIsEnabled="{Binding bPAIsEnabled}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intPA" />
+                                               AttributeValue="{Binding PA.Value}"
+                                               AttributeIsEnabled="{Binding PA.IsEnabled}"
+                                               ButtonCommand="{Binding PA.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="2"
                                                Grid.Column="0"
                                                AttributeName="Geschick"
-                                               AttributeValue="{Binding intDexterity}"
-                                               AttributeIsEnabled="{Binding bDexterityIsEnabled}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intDexterity" />
+                                               AttributeValue="{Binding Dexterity.Value}"
+                                               AttributeIsEnabled="{Binding Dexterity.IsEnabled}"
+                                               ButtonCommand="{Binding Dexterity.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="2"
                                                Grid.Column="1"
                                                AttributeName="Willenskraft"
-                                               AttributeValue="{Binding intWillpower}"
-                                               AttributeIsEnabled="{Binding bWillpowerIsEnabled}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intWillpower" />
+                                               AttributeValue="{Binding Willpower.Value}"
+                                               AttributeIsEnabled="{Binding Willpower.IsEnabled}"
+                                               ButtonCommand="{Binding Willpower.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="3"
                                                Grid.Column="0"
                                                AttributeName="Konstitution"
-                                               AttributeValue="{Binding intConstitution}"
-                                               AttributeIsEnabled="{Binding bConstitutionIsEnabled}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intConstitution" />
+                                               AttributeValue="{Binding Constitution.Value}"
+                                               AttributeIsEnabled="{Binding Constitution.IsEnabled}"
+                                               ButtonCommand="{Binding Constitution.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="4"
                                                Grid.Column="0"
                                                AttributeName="Intelligenz"
-                                               AttributeValue="{Binding intIntelligence}"
-                                               AttributeIsEnabled="{Binding bIntelligenceIsEnabled}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intIntelligence" />
+                                               AttributeValue="{Binding Intelligence.Value}"
+                                               AttributeIsEnabled="{Binding Intelligence.IsEnabled}"
+                                               ButtonCommand="{Binding Intelligence.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="4"
                                                Grid.Column="1"
                                                AttributeName="Bewegung"
-                                               AttributeValue="{Binding intMovement}"
-                                               AttributeIsEnabled="{Binding bMovementIsEnabled}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intMovement" />
+                                               AttributeValue="{Binding Movement.Value}"
+                                               AttributeIsEnabled="{Binding Movement.IsEnabled}"
+                                               ButtonCommand="{Binding Movement.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="5"
                                                Grid.Column="0"
                                                AttributeName="Zaubertalent"
-                                               AttributeValue="{Binding intMagicTalent}"
-                                               AttributeIsEnabled="{Binding bMagicTalentIsEnabled}"
-                                               ButtonCommand="{Binding cmdRandomAttributeValue}"
-                                               ButtonCommandParameter="intMagicTalent" />
-
+                                               AttributeValue="{Binding MagicTalent.Value}"
+                                               AttributeIsEnabled="{Binding MagicTalent.IsEnabled}"
+                                               ButtonCommand="{Binding MagicTalent.CmdRandomValue}" />
         </Grid>
         
     </Grid>

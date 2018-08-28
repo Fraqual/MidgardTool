@@ -37,6 +37,10 @@ namespace CharacterSheet.UserControls
                     {
                         CreationLogic.RollAttribute(m_Attribute);
                         NotifyPropertyChanged(this, nameof(Value));
+                        foreach(var item in m_Notify)
+                        {
+                            NotifyPropertyChanged(item, nameof(IsEnabled));
+                        }
                     });
                 }
                 return m_CmdRandomValue;

@@ -56,5 +56,10 @@ namespace CharacterSheet.UserControls
             get => (bool)GetValue(AttributeIsEnabledProperty);
             set => SetValue(AttributeIsEnabledProperty, value);
         }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.Text[0]);
+        }
     }
 }

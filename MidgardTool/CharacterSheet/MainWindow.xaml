@@ -138,70 +138,70 @@
             <control:CharacterAttributeTextBox Grid.Row="0"
                                                Grid.Column="0"
                                                AttributeName="Stärke"
-                                               AttributeValue="{Binding Strength.Value}"
+                                               AttributeValue="{Binding Strength.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding Strength.IsEnabled}"
                                                ButtonCommand="{Binding Strength.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="0"
                                                Grid.Column="1"
                                                AttributeName="Aussehen"
-                                               AttributeValue="{Binding Appereance.Value}"
+                                               AttributeValue="{Binding Appereance.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding Appereance.IsEnabled}"
                                                ButtonCommand="{Binding Appereance.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="1"
                                                Grid.Column="0"
                                                AttributeName="Gewandheit"
-                                               AttributeValue="{Binding GW.Value}"
+                                               AttributeValue="{Binding GW.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding GW.IsEnabled}"
                                                ButtonCommand="{Binding GW.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="1"
                                                Grid.Column="1"
                                                AttributeName="Pers. Ausstrahlung"
-                                               AttributeValue="{Binding PA.Value}"
+                                               AttributeValue="{Binding PA.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding PA.IsEnabled}"
                                                ButtonCommand="{Binding PA.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="2"
                                                Grid.Column="0"
                                                AttributeName="Geschick"
-                                               AttributeValue="{Binding Dexterity.Value}"
+                                               AttributeValue="{Binding Dexterity.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding Dexterity.IsEnabled}"
                                                ButtonCommand="{Binding Dexterity.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="2"
                                                Grid.Column="1"
                                                AttributeName="Willenskraft"
-                                               AttributeValue="{Binding Willpower.Value}"
+                                               AttributeValue="{Binding Willpower.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding Willpower.IsEnabled}"
                                                ButtonCommand="{Binding Willpower.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="3"
                                                Grid.Column="0"
                                                AttributeName="Konstitution"
-                                               AttributeValue="{Binding Constitution.Value}"
+                                               AttributeValue="{Binding Constitution.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding Constitution.IsEnabled}"
                                                ButtonCommand="{Binding Constitution.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="4"
                                                Grid.Column="0"
                                                AttributeName="Intelligenz"
-                                               AttributeValue="{Binding Intelligence.Value}"
+                                               AttributeValue="{Binding Intelligence.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding Intelligence.IsEnabled}"
                                                ButtonCommand="{Binding Intelligence.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="4"
                                                Grid.Column="1"
                                                AttributeName="Bewegung"
-                                               AttributeValue="{Binding Movement.Value}"
+                                               AttributeValue="{Binding Movement.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding Movement.IsEnabled}"
                                                ButtonCommand="{Binding Movement.CmdRandomValue}" />
 
             <control:CharacterAttributeTextBox Grid.Row="5"
                                                Grid.Column="0"
                                                AttributeName="Zaubertalent"
-                                               AttributeValue="{Binding MagicTalent.Value}"
+                                               AttributeValue="{Binding MagicTalent.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding MagicTalent.IsEnabled}"
                                                ButtonCommand="{Binding MagicTalent.CmdRandomValue}" />
         </Grid>

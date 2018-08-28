@@ -24,13 +24,13 @@ namespace Tests
 
             PA.AddDependency(Intelligence);
 
-            PA.Value = 0;
+            PA.SetValue(0, 1, 100);
             Assert.IsTrue(PA.IsSet == false);
 
-            Intelligence.Value = 0;
+            Intelligence.SetValue(0, 1, 100);
             Assert.IsTrue(Intelligence.IsSet == true);
 
-            PA.Value = 0;
+            PA.SetValue(0, 1, 100);
             Assert.IsTrue(PA.IsSet == true);
         }
 
@@ -60,9 +60,9 @@ namespace Tests
 
             PA.AddDependency(Intelligence);
 
-            Intelligence.Value = 100;
+            Intelligence.SetValue(100, 1, 100);
 
-            PA.Value = CharacterAttribute.RollDice(100);
+            PA.SetValue(CharacterAttribute.RollDice(100), 1, 100);
         }
 
     }

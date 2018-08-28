@@ -15,11 +15,11 @@ namespace CharacterSheet.UserControls
             get => m_Attribute.Value;
             set
             {
-                m_Attribute.Value = value;
+                m_Attribute.SetValue(value);
 
                 foreach(var item in m_Notify)
                 {
-                    NotifyPropertyChanged(item, "IsEnabled");
+                    NotifyPropertyChanged(item, nameof(IsEnabled));
                 }                
             }
 
@@ -35,7 +35,8 @@ namespace CharacterSheet.UserControls
                 {
                     m_CmdRandomValue = new RelayCommand(() => 
                     {
-                        Value = CreationLogic.RollForAttribute(m_Attribute.Name);
+                        CreationLogic.RollAttribute(m_Attribute);
+                        NotifyPropertyChanged(this, nameof(Value));
                     });
                 }
                 return m_CmdRandomValue;

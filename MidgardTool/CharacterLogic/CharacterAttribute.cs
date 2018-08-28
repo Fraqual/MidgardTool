@@ -41,6 +41,8 @@ namespace CharacterLogic
 
         public ECharacterAttribute Name { get; }
 
+        private static readonly int m_MaxValue = 100;
+
         private int m_Value;
 
         public int Value
@@ -48,22 +50,6 @@ namespace CharacterLogic
             get
             {
                 return m_Value;
-            }
-            set
-            {
-                if(CanBeSet)
-                {
-                    if(m_DependencyFormula != null)
-                    {
-                        m_Value = m_DependencyFormula(value, m_Dependencies);
-                    }
-                    else
-                    {
-                        m_Value = value;
-                    }
-                    
-                    IsSet = true;
-                }
             }
         }
 
@@ -94,6 +80,30 @@ namespace CharacterLogic
         public void RemoveDependency(CharacterAttribute attribute)
         {
             m_Dependencies.Remove(attribute);
+        }
+
+        public bool SetValue(int value, int minValue = 1, int maxValue = 100)
+        {
+            if(CanBeSet)
+            {
+                int nextValue = m_DependencyFormula != null ? m_DependencyFormula(value, m_Dependencies) : value;
+
+                if(nextValue > maxValue || nextValue < minValue)
+                {
+                    return false;
+                }
+
+                if(nextValue > m_MaxValue)
+                {
+                    nextValue = m_MaxValue;
+                }
+
+                m_Value = nextValue;
+
+                IsSet = true;
+            }
+
+            return true;
         }
 
         public static int RollDice(int sides)

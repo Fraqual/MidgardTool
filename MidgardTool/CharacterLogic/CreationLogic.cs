@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using Logger;
 using XmlHelper;
 using System.Configuration;
@@ -111,33 +107,60 @@ namespace CharacterLogic
             }
         }
 
-        public static int RollForAttribute(ECharacterAttribute attribute)
+        public static void RollAttribute(CharacterAttribute attribute)
         {
-            switch(attribute)
+            int roll = 0;
+
+            do
             {
-                case ECharacterAttribute.Strength:
-                    return CharacterAttribute.RollDice(100);
-                case ECharacterAttribute.GW:
-                    return CharacterAttribute.RollDice(100);
-                case ECharacterAttribute.Dexterity:
-                    return CharacterAttribute.RollDice(100);
-                case ECharacterAttribute.Constitution:
-                    return CharacterAttribute.RollDice(100);
-                case ECharacterAttribute.Intelligence:
-                    return CharacterAttribute.RollDice(100);
-                case ECharacterAttribute.MagicTalent:
-                    return CharacterAttribute.RollDice(100);
-                case ECharacterAttribute.Appereance:
-                    return CharacterAttribute.RollDice(100);
-                case ECharacterAttribute.PA:
-                    return CharacterAttribute.RollDice(100);
-                case ECharacterAttribute.Willpower:
-                    return CharacterAttribute.RollDice(100);
-                case ECharacterAttribute.Movement:
-                    return CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3);
-                default:
-                    throw new ArgumentException("Cannot roll for unknown attribute!");
-            }
+                switch(attribute.Name)
+                {
+                    case ECharacterAttribute.Strength:
+                        roll = CharacterAttribute.RollDice(100);
+                        break;
+                    case ECharacterAttribute.GW:
+                        roll = CharacterAttribute.RollDice(100);
+                        break;
+                    case ECharacterAttribute.Dexterity:
+                        roll = CharacterAttribute.RollDice(100);
+                        break;
+                    case ECharacterAttribute.Constitution:
+                        roll = CharacterAttribute.RollDice(100);
+                        break;
+                    case ECharacterAttribute.Intelligence:
+                        roll = CharacterAttribute.RollDice(100);
+                        break;
+                    case ECharacterAttribute.MagicTalent:
+                        roll = CharacterAttribute.RollDice(100);
+                        break;
+                    case ECharacterAttribute.Appereance:
+                        roll = CharacterAttribute.RollDice(100);
+                        break;
+                    case ECharacterAttribute.PA:
+                        roll = CharacterAttribute.RollDice(100);
+                        break;
+                    case ECharacterAttribute.Willpower:
+                        roll = CharacterAttribute.RollDice(100);
+                        break;
+                    case ECharacterAttribute.Movement:
+                        roll = CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3);
+                        break;
+                    default:
+                        throw new ArgumentException("Cannot roll for unknown attribute!");
+                }
+            } while(!attribute.SetValue(roll, GetMinValue(attribute.Name), GetMaxValue(attribute.Name)));
+        }
+
+        public static int GetMinValue(ECharacterAttribute attribute)
+        {
+            // TODO: Implement
+            return 1;
+        }
+
+        public static int GetMaxValue(ECharacterAttribute attribute)
+        {
+            // TODO: Implement
+            return 100;
         }
     }
 }

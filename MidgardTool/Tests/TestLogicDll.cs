@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logger;
+using CharacterLogic;
 
 namespace Tests
 {

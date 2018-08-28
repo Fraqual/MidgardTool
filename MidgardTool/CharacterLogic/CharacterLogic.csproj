@@ -48,6 +48,7 @@
     <Compile Include="Interfaces\ICharacterLogic.cs" />
     <Compile Include="Interfaces\ICreationLogic.cs" />
     <Compile Include="Interfaces\ISpecialAbility.cs" />
+    <Compile Include="LearnLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

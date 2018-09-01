@@ -33,22 +33,31 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
                 <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
             </Grid.RowDefinitions>
 
             <control:CharacterAttributeTextBox Grid.Row="0"
                                                AttributeName="Name"
-                                               AttributeValue="{Binding strName}" />
+                                               AttributeValue="{Binding CharacterName}"
+                                               ButtonVisibility="Collapsed"
+                                               AttributeIsEnabled="True" />
 
-            <control:CharacterAttributeComboBox Grid.Row="1"
+            <control:CharacterAttributeTextBox Grid.Row="1"
+                                               AttributeName="Spieler"
+                                               AttributeValue="{Binding PlayerName}"
+                                               ButtonVisibility="Collapsed"
+                                               AttributeIsEnabled="True" />
+
+            <control:CharacterAttributeComboBox Grid.Row="2"
                                                 AttributeName="Klasse"
-                                                AttributeItems="{Binding strlClass}"
-                                                SelectedIndex="{Binding strlClassSelection}"
-                                                ButtonCommand="{Binding cmdRandomSelection}"
-                                                ButtonCommandParameter="strlClass" />
+                                                AttributeItems="{Binding Classes}"
+                                                SelectedIndex="{Binding ClassSelection}"
+                                                ButtonVisibility="Collapsed" />
         </Grid>
 
         <!-- Appearance -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1"
+              Margin="0 20 0 20">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -59,30 +68,34 @@
                 <RowDefinition Height="40" />
                 <RowDefinition Height="40" />
                 <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <control:CharacterAttributeTextBox Grid.Row="0"
                                                Grid.Column="1"
                                                AttributeName="Alter"
-                                               AttributeValue="{Binding intAge}" />
+                                               AttributeValue="{Binding intAge}"
+                                               AttributeIsEnabled="True"
+                                               ButtonVisibility="Collapsed" />
 
             <control:CharacterAttributeTextBox Grid.Row="0" 
                                                Grid.Column="0"
                                                AttributeName="Geburtstag"
-                                               AttributeValue="{Binding strDateOfBirth}"/>
+                                               AttributeValue="{Binding strDateOfBirth}"
+                                               AttributeIsEnabled="True"
+                                               ButtonVisibility="Collapsed" />
 
             <control:CharacterAttributeTextBox Grid.Row="1"
                                                Grid.Column="0"
                                                AttributeName="Größe"
-                                               AttributeValue="{Binding fltSize}" />
+                                               AttributeValue="{Binding fltSize}"
+                                               AttributeIsEnabled="True" />
 
             <control:CharacterAttributeTextBox Grid.Row="1"
                                                Grid.Column="1"
                                                AttributeName="Gewicht"
-                                               AttributeValue="{Binding fltWeight}" />
+                                               AttributeValue="{Binding fltWeight}"
+                                               AttributeIsEnabled="True" />
 
             <control:CharacterAttributeComboBox Grid.Row="2"
                                                 Grid.Column="0"
@@ -100,13 +113,11 @@
                                                 ButtonCommand="{Binding cmdRandomSelection}"
                                                 ButtonCommandParameter="strlSex" />
 
-            <control:CharacterAttributeComboBox Grid.Row="3"
-                                                Grid.Column="0"
-                                                AttributeName="Glaube"
-                                                AttributeItems="{Binding strlFaith}"
-                                                SelectedIndex="{Binding strlFaithSelection}"
-                                                ButtonCommand="{Binding cmdRandomSelection}"
-                                                ButtonCommandParameter="strlFaith" />
+            <control:CharacterAttributeTextBox Grid.Row="3"
+                                               Grid.Column="0"
+                                               AttributeName="Glaube"
+                                               AttributeIsEnabled="True"
+                                               ButtonVisibility="Collapsed"/>
 
             <control:CharacterAttributeComboBox Grid.Row="3"
                                                 Grid.Column="1"
@@ -204,6 +215,34 @@
                                                AttributeValue="{Binding MagicTalent.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                AttributeIsEnabled="{Binding MagicTalent.IsEnabled}"
                                                ButtonCommand="{Binding MagicTalent.CmdRandomValue}" />
+        </Grid>
+
+        <Grid Grid.Row="3">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Content="Random"
+                    Command="{Binding CmdAllRandom}"/>
+
+            <Button Grid.Row="1"
+                    Grid.Column="0"
+                    Content="Speichern"
+                    Command="{Binding CmdSave}"/>
+            <Button Grid.Row="1"
+                    Grid.Column="1"
+                    Content="Abbrechen"
+                    Command="{Binding CmdCancel}"/>
+
         </Grid>
         
     </Grid>

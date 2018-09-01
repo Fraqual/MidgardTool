@@ -5,7 +5,7 @@ namespace CharacterLogic.Interfaces
 {
     public interface ICharacterLogic
     {
-        string Figure { get; set; }
+        string Name { get; set; }
         string PlayerName { get; set; }
         ECharacterClass Class { get; set; }
         int Rank { get; set; }

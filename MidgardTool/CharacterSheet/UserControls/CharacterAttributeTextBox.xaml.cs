@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -15,6 +16,7 @@ namespace CharacterSheet.UserControls
         public static readonly DependencyProperty ButtonCommandParameterProperty = DependencyProperty.Register("ButtonCommandParameter", typeof(object), typeof(CharacterAttributeTextBox));
         public static readonly DependencyProperty ButtonVisibilityProperty = DependencyProperty.Register("ButtonVisibility", typeof(Visibility), typeof(CharacterAttributeTextBox));
         public static readonly DependencyProperty AttributeIsEnabledProperty = DependencyProperty.Register("AttributeIsEnabled", typeof(bool), typeof(CharacterAttributeTextBox));
+        public static readonly DependencyProperty TextBoxWidthProperty = DependencyProperty.Register("TextBoxWidth", typeof(double), typeof(CharacterAttributeTextBox));
 
         public CharacterAttributeTextBox()
         {
@@ -60,6 +62,13 @@ namespace CharacterSheet.UserControls
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !char.IsDigit(e.Text[0]);
+        }
+
+        [TypeConverter(typeof(LengthConverter))]
+        public double TextBoxWidth
+        {
+            get => (double)GetValue(TextBoxWidthProperty);
+            set => SetValue(TextBoxWidthProperty, value);
         }
     }
 }

@@ -5,7 +5,6 @@ using CharacterSheet.UserControls;
 using CharacterSheet.ViewModels.Base;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Windows.Input;
 
 namespace CharacterSheet.ViewModels
@@ -14,6 +13,7 @@ namespace CharacterSheet.ViewModels
     {
 
         private ICharacterLogic m_CharacterLogic;
+        private ICreationLogic m_CreationLogic;
 
         private Random m_Random;
 
@@ -21,37 +21,16 @@ namespace CharacterSheet.ViewModels
 
         #region Basic Information
 
-        public string strName { get; set; }
+        public string CharacterName { get => m_CharacterLogic.Name; set => m_CharacterLogic.Name = value; }
+        public string PlayerName { get => m_CharacterLogic.PlayerName; set => m_CharacterLogic.PlayerName = value; }
 
-        public string strPlayerName { get; set; }
-
-        public string strClass { get; set; }
+        public List<string> Classes { get => m_CreationLogic.GetCharacterClasses(); }
+        public string ClassSelection { get => m_CharacterLogic.Class.ToString(); set => m_CharacterLogic.Class = (ECharacterClass)Enum.Parse(typeof(ECharacterClass), value); }
 
         #endregion
 
         #region Appereance
-
-        public string strDateOfBirth { get; set; }
-
-        public int intAge { get; set; }
-
-        public float fltSize { get; set; }
-
-        public float fltWeight { get; set; }
-
-        public List<string> strlRace { get; set; }
-        public int strlRaceSelection { get; set; }
-
-        public List<string> strlSex { get; set; }
-        public int strlSexSelection { get; set; }
-
-        public string strFaith { get; set; }
-
-        public List<string> strlDegree { get; set; }
-        public int strlDegreeSelection { get; set; }
-
-        public string strOrigin { get; set; }
-
+        
         #endregion
 
         #region Attributes
@@ -73,24 +52,19 @@ namespace CharacterSheet.ViewModels
 
         #region Commands
 
-        private RelayCommand<string> m_CmdRandomSelection;
-
-        public ICommand cmdRandomSelection
+        private RelayCommand m_CmdSave;
+        public ICommand CmdSave
         {
             get
             {
-                if(m_CmdRandomSelection == null)
+                if(m_CmdSave == null)
                 {
-                    m_CmdRandomSelection = new RelayCommand<string>(setRandomSelection);
+                    m_CmdSave = new RelayCommand(() => {
+                        
+                    });
                 }
-                return m_CmdRandomSelection;
+                return m_CmdSave;
             }
-        }
-
-        private void setRandomSelection(string attribute)
-        {
-            int maxIndex = ((List<string>)this.GetType().GetProperty(attribute).GetValue(this)).Count;
-            this.GetType().GetProperty(attribute + "Selection").SetValue(this, m_Random.Next(0, maxIndex));
         }
 
         #endregion
@@ -100,6 +74,7 @@ namespace CharacterSheet.ViewModels
         public MainWindowViewModel()
         {
             m_CharacterLogic = new Character();
+            m_CreationLogic = new CreationLogic();
             m_Random = new Random();
             initialize();
         }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="CharacterAttribute.cs" />
+    <Compile Include="CharacterManager.cs" />
     <Compile Include="CreationLogic.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Interfaces\ICharacterLogic.cs" />

@@ -7,9 +7,9 @@ namespace CharacterLogic
 {
     public class Character : ICharacterLogic
     {
-        public string Figure { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public string PlayerName { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public ECharacterClass Class { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public string Name { get; set; }
+        public string PlayerName { get; set; }
+        public ECharacterClass Class { get; set; }
         public int Rank { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public int LPMaximum { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public int APMaximum { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }

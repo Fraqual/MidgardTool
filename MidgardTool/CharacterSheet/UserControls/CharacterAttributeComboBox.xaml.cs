@@ -25,6 +25,7 @@ namespace CharacterSheet.UserControls
         public static readonly DependencyProperty ButtonCommandProperty = DependencyProperty.Register("ButtonCommand", typeof(ICommand), typeof(CharacterAttributeComboBox));
         public static readonly DependencyProperty ButtonCommandParameterProperty = DependencyProperty.Register("ButtonCommandParameter", typeof(object), typeof(CharacterAttributeComboBox));
         public static readonly DependencyProperty SelectedIndexProperty = DependencyProperty.Register("SelectedIndex", typeof(int), typeof(CharacterAttributeComboBox));
+        public static readonly DependencyProperty ButtonVisibilityProperty = DependencyProperty.Register("ButtonVisibility", typeof(Visibility), typeof(CharacterAttributeComboBox));
 
         public CharacterAttributeComboBox()
         {
@@ -59,6 +60,12 @@ namespace CharacterSheet.UserControls
         {
             get => (int)GetValue(SelectedIndexProperty);
             set => SetValue(SelectedIndexProperty, value);
+        }
+
+        public Visibility ButtonVisibility
+        {
+            get => (Visibility)GetValue(ButtonVisibilityProperty);
+            set => SetValue(ButtonVisibilityProperty, value);
         }
     }
 }

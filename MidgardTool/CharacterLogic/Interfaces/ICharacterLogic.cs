@@ -1,4 +1,5 @@
 ﻿using CharacterLogic.Enums;
+using CharacterLogic.Character;
 using System.Collections.Generic;
 
 namespace CharacterLogic.Interfaces

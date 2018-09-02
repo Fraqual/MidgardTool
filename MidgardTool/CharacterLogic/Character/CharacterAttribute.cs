@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CharacterLogic
+namespace CharacterLogic.Character
 {
     public class CharacterAttribute
     {

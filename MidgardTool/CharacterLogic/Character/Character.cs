@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CharacterLogic.Enums;
 using CharacterLogic.Interfaces;
 
-namespace CharacterLogic
+namespace CharacterLogic.Character
 {
     public class Character : ICharacterLogic
     {

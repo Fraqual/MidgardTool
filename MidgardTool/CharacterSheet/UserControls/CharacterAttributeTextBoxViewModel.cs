@@ -1,5 +1,5 @@
 ﻿using CharacterLogic;
-using CharacterLogic.Enums;
+using CharacterLogic.Character;
 using CharacterSheet.ViewModels.Base;
 using System.Windows.Input;
 

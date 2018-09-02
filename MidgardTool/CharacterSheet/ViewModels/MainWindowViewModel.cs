@@ -1,4 +1,5 @@
 ﻿using CharacterLogic;
+using CharacterLogic.Character;
 using CharacterLogic.Enums;
 using CharacterLogic.Interfaces;
 using CharacterSheet.UserControls;

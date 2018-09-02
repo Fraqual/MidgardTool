@@ -6,6 +6,7 @@ using XmlHelper;
 using System.Configuration;
 using CharacterLogic.Interfaces;
 using CharacterLogic.Enums;
+using CharacterLogic.Character;
 
 namespace CharacterLogic
 {

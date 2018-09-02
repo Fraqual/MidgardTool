@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Character.cs" />
-    <Compile Include="CharacterAttribute.cs" />
-    <Compile Include="CharacterManager.cs" />
+    <Compile Include="Character\Character.cs" />
+    <Compile Include="Character\CharacterAttribute.cs" />
+    <Compile Include="Character\CharacterManager.cs" />
     <Compile Include="CreationLogic.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Interfaces\ICharacterLogic.cs" />
@@ -62,5 +62,6 @@
       <Name>XmlHelper</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

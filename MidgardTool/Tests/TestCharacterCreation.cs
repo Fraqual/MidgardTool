@@ -1,5 +1,5 @@
 ﻿using System;
-using CharacterLogic;
+using CharacterLogic.Character;
 using CharacterLogic.Enums;
 using Logger;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

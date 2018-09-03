@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logger;
-using CharacterLogic;
+using CharacterCreationLogic;
 
 namespace Tests
 {
@@ -32,7 +32,7 @@ namespace Tests
             //Current available classes
             List<string> comparisonList = new List<string>() { "Waldläufer" };
 
-            CharacterLogic.CreationLogic logic = new CharacterLogic.CreationLogic();
+            CreationLogic logic = new CreationLogic();
             List<string> classList = logic.GetCharacterClasses();
 
             CollectionAssert.AreEquivalent(comparisonList, classList);
@@ -46,7 +46,7 @@ namespace Tests
             //Current available classes
             List<string> comparisonList = new List<string>();
 
-            CharacterLogic.CreationLogic logic = new CharacterLogic.CreationLogic();
+            CreationLogic logic = new CreationLogic();
             logic.SetRace("Zwerg");
             List<string> classList = logic.GetCharacterClasses();
 

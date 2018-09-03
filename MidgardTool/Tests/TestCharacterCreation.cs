@@ -1,6 +1,6 @@
 ﻿using System;
-using CharacterLogic.Character;
-using CharacterLogic.Enums;
+using CharacterCreationLogic.Character;
+using CharacterCreationLogic.Enums;
 using Logger;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

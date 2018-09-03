@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CharacterLogic\CharacterLogic.csproj">
+    <ProjectReference Include="..\CharacterCreationLogic\CharacterCreationLogic.csproj">
       <Project>{829f8900-28b7-4b61-8267-f897713b73df}</Project>
-      <Name>CharacterLogic</Name>
+      <Name>CharacterCreationLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{b55b0fbb-1a1c-40bd-9686-0408bce23c78}</Project>

@@ -264,3 +264,4 @@ __pycache__/
 
 #Visual Studio
 Build/
+logs/

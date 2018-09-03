@@ -36,7 +36,7 @@ namespace Logger
                     }
                     if(!File.Exists(m_Path))
                     {
-                        File.Create(m_Path);
+                        File.Create(m_Path).Close();
                     }
 
                     using (StreamWriter sw = File.AppendText(m_Path))

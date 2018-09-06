@@ -100,10 +100,9 @@
             <control:CharacterAttributeComboBox Grid.Row="2"
                                                 Grid.Column="0"
                                                 AttributeName="Rasse"
-                                                AttributeItems="{Binding strlRace}"
+                                                AttributeItems="{Binding Races}"
                                                 SelectedIndex="{Binding strlRaceSelection}"
-                                                ButtonCommand="{Binding cmdRandomSelection}"
-                                                ButtonCommandParameter="strlRaces" />
+                                                ButtonCommand="{Binding cmdRandomSelection}" />
             
             <control:CharacterAttributeComboBox Grid.Row="2"
                                                 Grid.Column="1"

@@ -82,16 +82,11 @@ namespace CharacterCreationLogic.Character
             m_Dependencies.Remove(attribute);
         }
 
-        public bool SetValue(int value, int minValue = 1, int maxValue = 100)
+        public void SetValue(int value)
         {
             if(CanBeSet)
             {
                 int nextValue = m_DependencyFormula != null ? m_DependencyFormula(value, m_Dependencies) : value;
-
-                if(nextValue > maxValue || nextValue < minValue)
-                {
-                    return false;
-                }
 
                 if(nextValue > m_MaxValue)
                 {
@@ -102,13 +97,6 @@ namespace CharacterCreationLogic.Character
 
                 IsSet = true;
             }
-
-            return true;
-        }
-
-        public static int RollDice(int sides)
-        {
-            return m_Random.Next(1, sides + 1);
         }
 
     }

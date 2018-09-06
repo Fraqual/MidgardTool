@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidgardToolPresentation", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidgardToolHelper", "MidgardToolHelper\MidgardToolHelper.csproj", "{594C56C3-A03D-4C5A-AF79-57524070FC7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigManager", "ConfigManager\ConfigManager.csproj", "{3F7DF2C4-537F-4E6C-B051-80988F8930CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{594C56C3-A03D-4C5A-AF79-57524070FC7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{594C56C3-A03D-4C5A-AF79-57524070FC7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{594C56C3-A03D-4C5A-AF79-57524070FC7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F7DF2C4-537F-4E6C-B051-80988F8930CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F7DF2C4-537F-4E6C-B051-80988F8930CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F7DF2C4-537F-4E6C-B051-80988F8930CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F7DF2C4-537F-4E6C-B051-80988F8930CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

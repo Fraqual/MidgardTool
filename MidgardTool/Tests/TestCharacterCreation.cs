@@ -3,6 +3,7 @@ using CharacterCreationLogic.Character;
 using CharacterCreationLogic.Enums;
 using Logger;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MidgardToolHelper;
 
 namespace Tests
 {
@@ -24,13 +25,13 @@ namespace Tests
 
             PA.AddDependency(Intelligence);
 
-            PA.SetValue(0, 1, 100);
+            PA.SetValue(1);
             Assert.IsTrue(PA.IsSet == false);
 
-            Intelligence.SetValue(0, 1, 100);
+            Intelligence.SetValue(1);
             Assert.IsTrue(Intelligence.IsSet == true);
 
-            PA.SetValue(0, 1, 100);
+            PA.SetValue(1);
             Assert.IsTrue(PA.IsSet == true);
         }
 
@@ -60,9 +61,9 @@ namespace Tests
 
             PA.AddDependency(Intelligence);
 
-            Intelligence.SetValue(100, 1, 100);
+            Intelligence.SetValue(100);
 
-            PA.SetValue(CharacterAttribute.RollDice(100), 1, 100);
+            PA.SetValue(Dice.Roll(100));
         }
 
     }

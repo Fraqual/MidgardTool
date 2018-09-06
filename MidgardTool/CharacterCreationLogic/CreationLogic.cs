@@ -7,6 +7,7 @@ using System.Configuration;
 using CharacterCreationLogic.Interfaces;
 using CharacterCreationLogic.Enums;
 using CharacterCreationLogic.Character;
+using MidgardToolHelper;
 
 namespace CharacterCreationLogic
 {
@@ -65,7 +66,7 @@ namespace CharacterCreationLogic
             {
                 _class = (ECharacterClass)Enum.Parse(typeof(ECharacterClass), className);
             }
-            catch (ArgumentException e)
+            catch (ArgumentException)
             {
                 _logger.Log("setCharacterClass(): Class name not recognized", LogLevel.Error);
                 Console.WriteLine("Class name not recognized!");
@@ -101,7 +102,7 @@ namespace CharacterCreationLogic
             {
                 _race = (ERace)Enum.Parse(typeof(ERace), raceName);
             }
-            catch (ArgumentException e)
+            catch (ArgumentException)
             {
                 _logger.Log("SetRace(): Race name nor recognized", LogLevel.Error);
                 Console.WriteLine("Race name nor recognized!");
@@ -112,44 +113,41 @@ namespace CharacterCreationLogic
         {
             int roll = 0;
 
-            do
+            switch(attribute.Name)
             {
-                switch(attribute.Name)
-                {
-                    case ECharacterAttribute.Strength:
-                        roll = CharacterAttribute.RollDice(100);
-                        break;
-                    case ECharacterAttribute.GW:
-                        roll = CharacterAttribute.RollDice(100);
-                        break;
-                    case ECharacterAttribute.Dexterity:
-                        roll = CharacterAttribute.RollDice(100);
-                        break;
-                    case ECharacterAttribute.Constitution:
-                        roll = CharacterAttribute.RollDice(100);
-                        break;
-                    case ECharacterAttribute.Intelligence:
-                        roll = CharacterAttribute.RollDice(100);
-                        break;
-                    case ECharacterAttribute.MagicTalent:
-                        roll = CharacterAttribute.RollDice(100);
-                        break;
-                    case ECharacterAttribute.Appereance:
-                        roll = CharacterAttribute.RollDice(100);
-                        break;
-                    case ECharacterAttribute.PA:
-                        roll = CharacterAttribute.RollDice(100);
-                        break;
-                    case ECharacterAttribute.Willpower:
-                        roll = CharacterAttribute.RollDice(100);
-                        break;
-                    case ECharacterAttribute.Movement:
-                        roll = CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3) + CharacterAttribute.RollDice(3);
-                        break;
-                    default:
-                        throw new ArgumentException("Cannot roll for unknown attribute!");
-                }
-            } while(!attribute.SetValue(roll, GetMinValue(attribute.Name), GetMaxValue(attribute.Name)));
+                case ECharacterAttribute.Strength:
+                    roll = Dice.Roll(100);
+                    break;
+                case ECharacterAttribute.GW:
+                    roll = Dice.Roll(100);
+                    break;
+                case ECharacterAttribute.Dexterity:
+                    roll = Dice.Roll(100);
+                    break;
+                case ECharacterAttribute.Constitution:
+                    roll = Dice.Roll(100);
+                    break;
+                case ECharacterAttribute.Intelligence:
+                    roll = Dice.Roll(100);
+                    break;
+                case ECharacterAttribute.MagicTalent:
+                    roll = Dice.Roll(100);
+                    break;
+                case ECharacterAttribute.Appereance:
+                    roll = Dice.Roll(100);
+                    break;
+                case ECharacterAttribute.PA:
+                    roll = Dice.Roll(100);
+                    break;
+                case ECharacterAttribute.Willpower:
+                    roll = Dice.Roll(100);
+                    break;
+                case ECharacterAttribute.Movement:
+                    roll = Dice.Roll(3) + Dice.Roll(3) + Dice.Roll(3) + Dice.Roll(3);
+                    break;
+                default:
+                    throw new ArgumentException("Cannot roll for unknown attribute!");
+            }
         }
 
         public static int GetMinValue(ECharacterAttribute attribute)

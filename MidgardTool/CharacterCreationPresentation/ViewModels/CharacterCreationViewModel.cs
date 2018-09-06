@@ -31,7 +31,9 @@ namespace CharacterCreationPresentation.ViewModels
         #endregion
 
         #region Appereance
-        
+
+        public List<string> Races { get => m_CreationLogic.GetRaces(); }
+
         #endregion
 
         #region Attributes

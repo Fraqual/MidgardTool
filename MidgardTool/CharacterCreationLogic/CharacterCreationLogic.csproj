@@ -57,6 +57,10 @@
       <Project>{b55b0fbb-1a1c-40bd-9686-0408bce23c78}</Project>
       <Name>Logger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MidgardToolHelper\MidgardToolHelper.csproj">
+      <Project>{594C56C3-A03D-4C5A-AF79-57524070FC7D}</Project>
+      <Name>MidgardToolHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XmlHelper\XmlHelper.csproj">
       <Project>{b498bded-304e-4e92-968b-6504e87734d4}</Project>
       <Name>XmlHelper</Name>

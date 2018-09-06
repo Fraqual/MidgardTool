@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Configuration;
+using ConfigManager;
 
 namespace Logger
 {
@@ -26,8 +27,8 @@ namespace Logger
                 {
                     m_Logger = new SimpleLogger();
 
-                    m_Path = ConfigurationManager.AppSettings["logPath"] ?? m_Path;
-                    string logLvl = ConfigurationManager.AppSettings["logLevel"];
+                    m_Path = MTConfiguration.Instance.LogPath;
+                    string logLvl = MTConfiguration.Instance.LogLevel;
                     Enum.TryParse(logLvl, out m_LoggingLevel);
 
                     if(Path.GetDirectoryName(m_Path) != string.Empty && !Directory.Exists(Path.GetDirectoryName(m_Path)))

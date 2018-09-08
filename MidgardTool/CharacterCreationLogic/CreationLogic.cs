@@ -18,12 +18,17 @@ namespace CharacterCreationLogic
         private ECharacterClass _class = 0;
         private ERace _race = 0;
 
+        private ICharacterLogic m_Character;
+
         public ECharacterClass Class { get => _class; }
         public ERace Race { get => _race; }
 
-        public CreationLogic()
+        public CreationLogic() : this(null) { }
+
+        public CreationLogic(ICharacterLogic character)
         {
             _logger = SimpleLogger.Instance;
+            m_Character = character;
         }
 
         /// <summary>
@@ -150,16 +155,22 @@ namespace CharacterCreationLogic
             }
         }
 
-        public static int GetMinValue(ECharacterAttribute attribute)
+        public List<string> GetAvailableRaces()
         {
-            // TODO: Implement
-            return 1;
+            List<string> races = GetRaces();
+
+            //TODO: Filter races
+
+            return races;
         }
 
-        public static int GetMaxValue(ECharacterAttribute attribute)
+        public List<string> GetAvailableCharacterClasses()
         {
-            // TODO: Implement
-            return 100;
+            List<string> classes = GetCharacterClasses();
+
+            //TODO: Filter classes
+
+            return classes;
         }
     }
 }

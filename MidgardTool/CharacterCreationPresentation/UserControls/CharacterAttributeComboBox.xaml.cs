@@ -26,10 +26,12 @@ namespace CharacterCreationPresentation.UserControls
         public static readonly DependencyProperty ButtonCommandParameterProperty = DependencyProperty.Register("ButtonCommandParameter", typeof(object), typeof(CharacterAttributeComboBox));
         public static readonly DependencyProperty SelectedIndexProperty = DependencyProperty.Register("SelectedIndex", typeof(int), typeof(CharacterAttributeComboBox));
         public static readonly DependencyProperty ButtonVisibilityProperty = DependencyProperty.Register("ButtonVisibility", typeof(Visibility), typeof(CharacterAttributeComboBox));
+        public static readonly DependencyProperty AttributeIsEnabledProperty = DependencyProperty.Register("AttributeIsEnabled", typeof(bool), typeof(CharacterAttributeComboBox));
 
         public CharacterAttributeComboBox()
         {
             InitializeComponent();
+            AttributeIsEnabled = true;
         }
 
         public string AttributeName
@@ -66,6 +68,12 @@ namespace CharacterCreationPresentation.UserControls
         {
             get => (Visibility)GetValue(ButtonVisibilityProperty);
             set => SetValue(ButtonVisibilityProperty, value);
+        }
+
+        public bool AttributeIsEnabled
+        {
+            get => (bool)GetValue(AttributeIsEnabledProperty);
+            set => SetValue(AttributeIsEnabledProperty, value);
         }
     }
 }

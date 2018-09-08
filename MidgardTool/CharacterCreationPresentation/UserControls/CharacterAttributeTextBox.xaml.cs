@@ -21,6 +21,7 @@ namespace CharacterCreationPresentation.UserControls
         public CharacterAttributeTextBox()
         {
             InitializeComponent();
+            AttributeIsEnabled = true;
         }
 
         public string AttributeName

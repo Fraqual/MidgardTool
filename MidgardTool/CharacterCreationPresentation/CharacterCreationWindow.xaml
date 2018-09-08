@@ -3,12 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CharacterCreationPresentation"
         xmlns:vm="clr-namespace:CharacterCreationPresentation.ViewModels"
         xmlns:control="clr-namespace:CharacterCreationPresentation.UserControls"
         mc:Ignorable="d"
-        Title="Character Creation"
-        Height="800"
+        Title="Charakter erstellung"
+        Height="400"
         Width="600">
 
     <Window.DataContext>
@@ -18,232 +17,39 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
         <!-- Basic Information -->
-        <Grid Grid.Row="0">
+        <control:CharacterAttributeTextBox Grid.Row="0"
+                                           AttributeName="Name"
+                                           ButtonVisibility="Collapsed"/>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-            </Grid.RowDefinitions>
+        <control:CharacterAttributeTextBox Grid.Row="1" 
+                                           AttributeName="Spieler"
+                                           ButtonVisibility="Collapsed"/>
 
-            <control:CharacterAttributeTextBox Grid.Row="0"
-                                               AttributeName="Name"
-                                               AttributeValue="{Binding CharacterName}"
-                                               ButtonVisibility="Collapsed"
-                                               AttributeIsEnabled="True" />
-
-            <control:CharacterAttributeTextBox Grid.Row="1"
-                                               AttributeName="Spieler"
-                                               AttributeValue="{Binding PlayerName}"
-                                               ButtonVisibility="Collapsed"
-                                               AttributeIsEnabled="True" />
-
-            <control:CharacterAttributeComboBox Grid.Row="2"
-                                                AttributeName="Klasse"
-                                                AttributeItems="{Binding Classes}"
-                                                SelectedIndex="{Binding ClassSelection}"
-                                                ButtonVisibility="Collapsed" />
-        </Grid>
-
-        <!-- Appearance -->
-        <Grid Grid.Row="1"
-              Margin="0 20 0 20">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <control:CharacterAttributeTextBox Grid.Row="0"
-                                               Grid.Column="1"
-                                               AttributeName="Alter"
-                                               AttributeValue="{Binding intAge}"
-                                               AttributeIsEnabled="True"
-                                               ButtonVisibility="Collapsed" />
-
-            <control:CharacterAttributeTextBox Grid.Row="0" 
-                                               Grid.Column="0"
-                                               AttributeName="Geburtstag"
-                                               AttributeValue="{Binding strDateOfBirth}"
-                                               AttributeIsEnabled="True"
-                                               ButtonVisibility="Collapsed" />
-
-            <control:CharacterAttributeTextBox Grid.Row="1"
-                                               Grid.Column="0"
-                                               AttributeName="Größe"
-                                               AttributeValue="{Binding fltSize}"
-                                               AttributeIsEnabled="True" />
-
-            <control:CharacterAttributeTextBox Grid.Row="1"
-                                               Grid.Column="1"
-                                               AttributeName="Gewicht"
-                                               AttributeValue="{Binding fltWeight}"
-                                               AttributeIsEnabled="True" />
-
-            <control:CharacterAttributeComboBox Grid.Row="2"
-                                                Grid.Column="0"
-                                                AttributeName="Rasse"
-                                                AttributeItems="{Binding Races}"
-                                                SelectedIndex="{Binding strlRaceSelection}"
-                                                ButtonCommand="{Binding cmdRandomSelection}" />
-            
-            <control:CharacterAttributeComboBox Grid.Row="2"
-                                                Grid.Column="1"
-                                                AttributeName="Geschlecht"
-                                                AttributeItems="{Binding strlSex}"
-                                                SelectedIndex="{Binding strlSexSelection}"
-                                                ButtonCommand="{Binding cmdRandomSelection}"
-                                                ButtonCommandParameter="strlSex" />
-
-            <control:CharacterAttributeTextBox Grid.Row="3"
-                                               Grid.Column="0"
-                                               AttributeName="Glaube"
-                                               AttributeIsEnabled="True"
-                                               ButtonVisibility="Collapsed"/>
-
-            <control:CharacterAttributeComboBox Grid.Row="3"
-                                                Grid.Column="1"
-                                                AttributeName="Stand"
-                                                AttributeItems="{Binding strlDegree}"
-                                                SelectedIndex="{Binding strlDegreeSelection}"
-                                                ButtonCommand="{Binding cmdRandomSelection}"
-                                                ButtonCommandParameter="strlDegree" />
-
-        </Grid>
-
-        <!-- Attributes -->
-        <Grid Grid.Row="2">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <control:CharacterAttributeTextBox Grid.Row="0"
-                                               Grid.Column="0"
-                                               AttributeName="Stärke"
-                                               AttributeValue="{Binding Strength.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                               AttributeIsEnabled="{Binding Strength.IsEnabled}"
-                                               ButtonCommand="{Binding Strength.CmdRandomValue}" />
-
-            <control:CharacterAttributeTextBox Grid.Row="0"
-                                               Grid.Column="1"
-                                               AttributeName="Aussehen"
-                                               AttributeValue="{Binding Appereance.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                               AttributeIsEnabled="{Binding Appereance.IsEnabled}"
-                                               ButtonCommand="{Binding Appereance.CmdRandomValue}" />
-
-            <control:CharacterAttributeTextBox Grid.Row="1"
-                                               Grid.Column="0"
-                                               AttributeName="Gewandheit"
-                                               AttributeValue="{Binding GW.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                               AttributeIsEnabled="{Binding GW.IsEnabled}"
-                                               ButtonCommand="{Binding GW.CmdRandomValue}" />
-
-            <control:CharacterAttributeTextBox Grid.Row="1"
-                                               Grid.Column="1"
-                                               AttributeName="Pers. Ausstrahlung"
-                                               AttributeValue="{Binding PA.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                               AttributeIsEnabled="{Binding PA.IsEnabled}"
-                                               ButtonCommand="{Binding PA.CmdRandomValue}" />
-
-            <control:CharacterAttributeTextBox Grid.Row="2"
-                                               Grid.Column="0"
-                                               AttributeName="Geschick"
-                                               AttributeValue="{Binding Dexterity.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                               AttributeIsEnabled="{Binding Dexterity.IsEnabled}"
-                                               ButtonCommand="{Binding Dexterity.CmdRandomValue}" />
-
-            <control:CharacterAttributeTextBox Grid.Row="2"
-                                               Grid.Column="1"
-                                               AttributeName="Willenskraft"
-                                               AttributeValue="{Binding Willpower.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                               AttributeIsEnabled="{Binding Willpower.IsEnabled}"
-                                               ButtonCommand="{Binding Willpower.CmdRandomValue}" />
-
-            <control:CharacterAttributeTextBox Grid.Row="3"
-                                               Grid.Column="0"
-                                               AttributeName="Konstitution"
-                                               AttributeValue="{Binding Constitution.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                               AttributeIsEnabled="{Binding Constitution.IsEnabled}"
-                                               ButtonCommand="{Binding Constitution.CmdRandomValue}" />
-
-            <control:CharacterAttributeTextBox Grid.Row="4"
-                                               Grid.Column="0"
-                                               AttributeName="Intelligenz"
-                                               AttributeValue="{Binding Intelligence.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                               AttributeIsEnabled="{Binding Intelligence.IsEnabled}"
-                                               ButtonCommand="{Binding Intelligence.CmdRandomValue}" />
-
-            <control:CharacterAttributeTextBox Grid.Row="4"
-                                               Grid.Column="1"
-                                               AttributeName="Bewegung"
-                                               AttributeValue="{Binding Movement.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                               AttributeIsEnabled="{Binding Movement.IsEnabled}"
-                                               ButtonCommand="{Binding Movement.CmdRandomValue}" />
-
-            <control:CharacterAttributeTextBox Grid.Row="5"
-                                               Grid.Column="0"
-                                               AttributeName="Zaubertalent"
-                                               AttributeValue="{Binding MagicTalent.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                               AttributeIsEnabled="{Binding MagicTalent.IsEnabled}"
-                                               ButtonCommand="{Binding MagicTalent.CmdRandomValue}" />
-        </Grid>
-
-        <Grid Grid.Row="3">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-                <RowDefinition Height="40" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Content="Random"
-                    Command="{Binding CmdAllRandom}"/>
-
-            <Button Grid.Row="1"
-                    Grid.Column="0"
-                    Content="Speichern"
-                    Command="{Binding CmdSave}"/>
-            <Button Grid.Row="1"
-                    Grid.Column="1"
-                    Content="Abbrechen"
-                    Command="{Binding CmdCancel}"/>
-
-        </Grid>
+        <control:CharacterAttributeComboBox Grid.Row="2"
+                                            AttributeName="Klasse"
+                                            AttributeItems="{Binding Classes}"
+                                            ButtonCommand="{Binding CmdSetClass}"
+                                            AttributeIsEnabled="{Binding ClassesEnabled}"/>
         
+        <control:CharacterAttributeComboBox Grid.Row="3" 
+                                            AttributeName="Rasse"
+                                            AttributeItems="{Binding Races}"
+                                            ButtonCommand="{Binding CmdSetRace}"
+                                            AttributeIsEnabled="{Binding RacesEnabled}"/>
+
+        <Button Grid.Row="4"
+                Margin="50 5 50 5"
+                Content="Attribute"
+                Command="{Binding CmdSetAttributes}"/>
+
     </Grid>
 
 </Window>

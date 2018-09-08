@@ -12,8 +12,8 @@ namespace ConfigManager
     {
         private string m_ConfigPath = Environment.CurrentDirectory + @"\..\settings.cfg";
 
-        public string XmlPath { get; set; } = "";
-        public string LogPath { get; set; } = "log.txt";
+        public string XmlPath { get; set; } = @"\..\xmls";
+        public string LogPath { get; set; } = @"\..\logs\log.txt";
         public string LogLevel { get; set; } = "Debug";
 
         public static MTConfiguration Instance

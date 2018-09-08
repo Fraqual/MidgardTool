@@ -12,5 +12,8 @@ namespace CharacterCreationLogic.Interfaces
         List<string> GetRaces();
 
         void SetRace(string raceName);
+
+        List<string> GetAvailableRaces();
+        List<string> GetAvailableCharacterClasses();
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using CharacterCreationLogic.Enums;
-using CharacterCreationLogic.Interfaces;
+using MidgardEntities.Enums;
+using MidgardEntities.Interfaces;
 
-namespace CharacterCreationLogic.Character
+namespace MidgardEntities.Character
 {
-    public class Character : ICharacterLogic
+    public class Character : ICharacter
     {
         public string Name { get; set; }
         public string PlayerName { get; set; }
@@ -16,7 +16,7 @@ namespace CharacterCreationLogic.Character
         public int Experience { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public int ExperienceTotal { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public List<ISpecialAbility> Special { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public ERace Race { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public ERace Race { get; set; }
         public string Origin { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public string Faith { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public ESocialStatus SocialStatus { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }

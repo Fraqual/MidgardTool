@@ -1,4 +1,4 @@
-﻿namespace CharacterCreationLogic.Enums
+﻿namespace MidgardEntities.Enums
 {
     public enum ECharacterClass { NotDefined, Assasine, Barbar, Barde, Glücksritter, Händler, Krieger, Ordenskrieger, Spitzbube, Waldläufer, Druide, Hexer, Magier, Priester, Schamane, Heiler, Runenmeister, Thaumaturge, Weise, Ermittler, Magister, Schattengänger, Tiermeister}
 

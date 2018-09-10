@@ -1,9 +1,12 @@
 ﻿using System;
-using CharacterCreationLogic.Character;
-using CharacterCreationLogic.Enums;
+using MidgardEntities.Character;
+using MidgardEntities.Enums;
 using Logger;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MidgardToolHelper;
+using XmlHelper;
+using ConfigManager;
+using System.Collections.Generic;
 
 namespace Tests
 {
@@ -64,6 +67,15 @@ namespace Tests
             Intelligence.SetValue(100);
 
             PA.SetValue(Dice.Roll(100));
+        }
+
+        [TestMethod]
+        public void LoadCharacterClasses()
+        {
+            string path = MTConfiguration.Instance.XmlPath + @"\classes.xml";
+            XmlCharacterClassReader xccr = new XmlCharacterClassReader(path);
+
+            List<CharacterClass> classes = xccr.GetAllClasses();
         }
 
     }

@@ -41,14 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Character\Character.cs" />
-    <Compile Include="Character\CharacterAttribute.cs" />
-    <Compile Include="Character\CharacterManager.cs" />
     <Compile Include="CreationLogic.cs" />
-    <Compile Include="Enums\Enums.cs" />
-    <Compile Include="Interfaces\ICharacterLogic.cs" />
     <Compile Include="Interfaces\ICreationLogic.cs" />
-    <Compile Include="Interfaces\ISpecialAbility.cs" />
     <Compile Include="LearnLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,6 +50,10 @@
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{b55b0fbb-1a1c-40bd-9686-0408bce23c78}</Project>
       <Name>Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MidgardEntities\MidgardEntities.csproj">
+      <Project>{9ebe47f4-1cf9-4eaa-a67f-0e6217925dd2}</Project>
+      <Name>MidgardEntities</Name>
     </ProjectReference>
     <ProjectReference Include="..\MidgardToolHelper\MidgardToolHelper.csproj">
       <Project>{594C56C3-A03D-4C5A-AF79-57524070FC7D}</Project>

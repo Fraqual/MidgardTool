@@ -1,8 +1,8 @@
 ﻿using CharacterCreationLogic;
-using CharacterCreationLogic.Character;
-using CharacterCreationLogic.Enums;
+using MidgardEntities.Character;
+using MidgardEntities.Enums;
+using MidgardEntities.Interfaces;
 using CharacterCreationLogic.Interfaces;
-using CharacterCreationPresentation.UserControls;
 using MidgardToolHelper.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace CharacterCreationPresentation.ViewModels
 {
     public class CharacterCreationViewModel : BaseViewModell
     {
-        private ICharacterLogic m_CharacterLogic;
+        private ICharacter m_CharacterLogic;
         private ICreationLogic m_CreationLogic;
 
         private Random m_Random;

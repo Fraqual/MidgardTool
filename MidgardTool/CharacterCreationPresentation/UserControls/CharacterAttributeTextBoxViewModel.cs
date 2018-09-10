@@ -1,5 +1,5 @@
 ﻿using CharacterCreationLogic;
-using CharacterCreationLogic.Character;
+using MidgardEntities.Character;
 using MidgardToolHelper.ViewModels;
 using System.Windows.Input;
 

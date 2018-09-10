@@ -69,9 +69,17 @@
       <Project>{b55b0fbb-1a1c-40bd-9686-0408bce23c78}</Project>
       <Name>Logger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MidgardEntities\MidgardEntities.csproj">
+      <Project>{9ebe47f4-1cf9-4eaa-a67f-0e6217925dd2}</Project>
+      <Name>MidgardEntities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MidgardToolHelper\MidgardToolHelper.csproj">
       <Project>{594C56C3-A03D-4C5A-AF79-57524070FC7D}</Project>
       <Name>MidgardToolHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XmlHelper\XmlHelper.csproj">
+      <Project>{B498BDED-304E-4E92-968B-6504E87734D4}</Project>
+      <Name>XmlHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

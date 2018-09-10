@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B498BDED-304E-4E92-968B-6504E87734D4}</ProjectGuid>
+    <ProjectGuid>{9EBE47F4-1CF9-4EAA-A67F-0E6217925DD2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XmlHelper</RootNamespace>
-    <AssemblyName>XmlHelper</AssemblyName>
+    <RootNamespace>MidgardEntities</RootNamespace>
+    <AssemblyName>MidgardEntities</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,16 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Read.cs" />
+    <Compile Include="Character\Character.cs" />
+    <Compile Include="Character\CharacterAttribute.cs" />
+    <Compile Include="Character\CharacterClass.cs" />
+    <Compile Include="Character\CharacterManager.cs" />
+    <Compile Include="Character\CharacterRace.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Interfaces\ICharacter.cs" />
+    <Compile Include="Interfaces\ISpecialAbility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XmlCharacterClassReader.cs" />
-    <Compile Include="XmlCharacterRaceReader.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MidgardEntities\MidgardEntities.csproj">
-      <Project>{9ebe47f4-1cf9-4eaa-a67f-0e6217925dd2}</Project>
-      <Name>MidgardEntities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

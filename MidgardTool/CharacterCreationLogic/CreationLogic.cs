@@ -5,8 +5,9 @@ using Logger;
 using XmlHelper;
 using System.Configuration;
 using CharacterCreationLogic.Interfaces;
-using CharacterCreationLogic.Enums;
-using CharacterCreationLogic.Character;
+using MidgardEntities.Interfaces;
+using MidgardEntities.Enums;
+using MidgardEntities.Character;
 using MidgardToolHelper;
 
 namespace CharacterCreationLogic
@@ -18,14 +19,14 @@ namespace CharacterCreationLogic
         private ECharacterClass _class = 0;
         private ERace _race = 0;
 
-        private ICharacterLogic m_Character;
+        private ICharacter m_Character;
 
         public ECharacterClass Class { get => _class; }
         public ERace Race { get => _race; }
 
         public CreationLogic() : this(null) { }
 
-        public CreationLogic(ICharacterLogic character)
+        public CreationLogic(ICharacter character)
         {
             _logger = SimpleLogger.Instance;
             m_Character = character;
@@ -159,7 +160,10 @@ namespace CharacterCreationLogic
         {
             List<string> races = GetRaces();
 
-            //TODO: Filter races
+            if(m_Character.Race != ERace.NotDefined)
+            {
+
+            }
 
             return races;
         }

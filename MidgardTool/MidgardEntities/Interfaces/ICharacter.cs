@@ -1,10 +1,10 @@
-﻿using CharacterCreationLogic.Enums;
-using CharacterCreationLogic.Character;
+﻿using MidgardEntities.Enums;
+using MidgardEntities.Character;
 using System.Collections.Generic;
 
-namespace CharacterCreationLogic.Interfaces
+namespace MidgardEntities.Interfaces
 {
-    public interface ICharacterLogic
+    public interface ICharacter
     {
         string Name { get; set; }
         string PlayerName { get; set; }

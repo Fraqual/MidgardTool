@@ -22,11 +22,11 @@ namespace CharacterCreationPresentation.ViewModels
         public string CharacterName { get => m_CharacterLogic.Name; set => m_CharacterLogic.Name = value; }
         public string PlayerName { get => m_CharacterLogic.PlayerName; set => m_CharacterLogic.PlayerName = value; }
 
-        public List<string> Classes { get => m_CreationLogic.GetAvailableCharacterClasses(); }
+        public List<string> Classes { get => m_CreationLogic.AvailableClasses(); }
         public string ClassSelection { get; set; }
         public bool ClassesEnabled { get; set; } = true;
 
-        public List<string> Races { get => m_CreationLogic.GetAvailableRaces(); }
+        public List<string> Races { get => m_CreationLogic.AvailableRaces(); }
         public string RaceSelection { get; set; }
         public bool RacesEnabled { get; set; } = true;
 

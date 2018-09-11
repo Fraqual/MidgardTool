@@ -23,7 +23,10 @@ namespace MidgardEntities.Character
 
         public void AddRace(CharacterRace race)
         {
-            m_AvailableRaces.Add(race);
+            if(race != null && !m_AvailableRaces.Contains(race))
+            {
+                m_AvailableRaces.Add(race);
+            }           
         }
 
         public bool IsAvailableRace(CharacterRace race)

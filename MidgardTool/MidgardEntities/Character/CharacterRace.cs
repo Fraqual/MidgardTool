@@ -22,7 +22,10 @@ namespace MidgardEntities.Character
         #endregion
 
         public void AddClass(CharacterClass characterClass){
-            m_AvailableClasses.Add(characterClass);
+            if(characterClass != null && !m_AvailableClasses.Contains(characterClass))
+            {
+                m_AvailableClasses.Add(characterClass);
+            }        
         }
 
         public bool IsAvailableClass(CharacterClass characterClass)

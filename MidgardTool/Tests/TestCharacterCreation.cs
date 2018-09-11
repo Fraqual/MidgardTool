@@ -72,10 +72,12 @@ namespace Tests
         [TestMethod]
         public void LoadCharacterClasses()
         {
-            string path = MTConfiguration.Instance.XmlPath + @"\classes.xml";
-            XmlCharacterClassReader xccr = new XmlCharacterClassReader(path);
+            XmlCharacterCreationReader reader = new XmlCharacterCreationReader(MTConfiguration.Instance.XmlPath);
 
-            List<CharacterClass> classes = xccr.GetAllClasses();
+            List<CharacterClass> classes;
+            List<CharacterRace> races;
+
+            reader.Read(out classes, out races);
         }
 
     }

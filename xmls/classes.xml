@@ -24,9 +24,39 @@
 	<ClassName>Magier</ClassName>
   </Class>
   <Class>
-	<ClassName>Rentner</ClassName>
+	<ClassName>Assassine</ClassName>
   </Class>
   <Class>
-	<ClassName>Politiker</ClassName>
+	<ClassName>Barbar</ClassName>
+  </Class>
+  <Class>
+	<ClassName>Glücksritter</ClassName>
+  </Class>
+    <Class>
+	<ClassName>Händler</ClassName>
+  </Class>
+    <Class>
+	<ClassName>Krieger</ClassName>
+  </Class>
+    <Class>
+	<ClassName>Spitzbube</ClassName>
+  </Class>
+    <Class>
+	<ClassName>Barde</ClassName>
+  </Class>
+    <Class>
+	<ClassName>Ordenskrieger</ClassName>
+  </Class>
+    <Class>
+	<ClassName>Druide</ClassName>
+  </Class>
+    <Class>
+	<ClassName>Hexer</ClassName>
+  </Class>
+    <Class>
+	<ClassName>Priester</ClassName>
+  </Class>
+    <Class>
+	<ClassName>Schamane</ClassName>
   </Class>
 </Classes>

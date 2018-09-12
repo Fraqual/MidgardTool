@@ -2,7 +2,7 @@
 <Races>
   <Race>
     <RaceName>Mensch</RaceName>
-    <AttributBorders>
+    <AttributeBorders>
       <Stärke min="0" max="100" />
       <Geschicklichkeit min="0" max="100"/>
       <Gewandheit min="0" max="100"/>
@@ -10,7 +10,7 @@
       <Intelligenz min="0" max="100"/>
       <Zaubertalent min="0" max="100"/>
       <Aussehen min="0" max="100"/>
-    </AttributBorders>
+    </AttributeBorders>
     <AvailableClasses>
       <Class>Waldläufer</Class>
       <Class>Assasine</Class>
@@ -45,7 +45,7 @@
   </Race>
   <Race>
     <RaceName>Zwerg</RaceName>
-    <AttributBorders>
+    <AttributeBorders>
       <Stärke min="61" max="100" />
       <Geschicklichkeit min="0" max="100"/>
       <Gewandheit min="0" max="80"/>
@@ -53,7 +53,7 @@
       <Intelligenz min="0" max="100"/>
       <Zaubertalent min="0" max="100"/>
       <Aussehen min="0" max="80"/>
-    </AttributBorders>
+    </AttributeBorders>
     <AvailableClasses>
       <Class>Händler</Class>
       <Class>Krieger</Class>
@@ -65,5 +65,14 @@
       <Class>Feldscher</Class>
       <Class>Zauberkrämer</Class>
 	</AvailableClasses>
+  </Race>
+  <Race>
+	<RaceName>Gnom</RaceName>
+  </Race>
+    <Race>
+	<RaceName>Elf</RaceName>
+  </Race>
+  <Race>
+	<RaceName>Halbling</RaceName>
   </Race>
 </Races>

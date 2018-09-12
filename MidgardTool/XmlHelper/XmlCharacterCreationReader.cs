@@ -25,16 +25,26 @@ namespace XmlHelper
         private static readonly string RACE = "Race";
         private static readonly string RACE_NAME = "RaceName";
         private static readonly string RACE_AVB_CLASSES = "AvailableClasses";
+        private static readonly string RACE_ATR_BORDERS = "AttributeBorders";
+
+        private static readonly string ATR_MIN = "min";
+        private static readonly string ATR_MAX = "max";
 
         #endregion
 
         private string m_Path;
+
+        private XElement xClasses;
+        private XElement xRaces;
 
         #region Construction
 
         public XmlCharacterCreationReader(string path)
         {
             m_Path = path;
+
+            xClasses = XDocument.Load(m_Path + "\\" + XML_CLASS_FILE_NAME).Element(CLASSES);
+            xRaces = XDocument.Load(m_Path + "\\" + XML_RACE_FILE_NAME).Element(RACES);
         }
 
         #endregion
@@ -43,12 +53,6 @@ namespace XmlHelper
         {
             classes = new List<CharacterClass>();
             races = new List<CharacterRace>();
-
-            XDocument xClassDoc = XDocument.Load(m_Path + "\\" + XML_CLASS_FILE_NAME);
-            XDocument xRaceDoc = XDocument.Load(m_Path + "\\" + XML_RACE_FILE_NAME);
-
-            XElement xClasses = xClassDoc.Element(CLASSES);
-            XElement xRaces = xRaceDoc.Element(RACES);
 
             foreach(var cclass in xClasses.Elements(CLASS))
             {
@@ -86,9 +90,45 @@ namespace XmlHelper
 
         }
 
-        public void ReadAttributeBorders(string raceName, string attributeName)
+        /// <summary>
+        /// Read min max borders of an character attribute
+        /// </summary>
+        /// <param name="raceName">Characters race</param>
+        /// <param name="attributeName">Attribute name</param>
+        /// <returns>Array containing min max values of the specified attribute or default values if the attribute can not be found</returns>
+        public int[] ReadAttributeBorders(string raceName, string attributeName)
         {
+            XElement xRace = getXRace(raceName);
+            if(xRace != null)
+            {
+                XElement atrBorders = xRace.Element(RACE_ATR_BORDERS);
+                if(atrBorders != null)
+                {
+                    XElement xAttribute = atrBorders.Element(attributeName);
+                    if(xAttribute != null)
+                    {
+                        int[] minmax = new int[2];
 
+                        minmax[0] = int.Parse(xAttribute.Attribute(ATR_MIN).Value);
+                        minmax[1] = int.Parse(xAttribute.Attribute(ATR_MAX).Value);
+
+                        return minmax;
+                    }
+                }
+            }
+            return new int[] { 1, 100};
+        }
+
+        private XElement getXRace(string raceName)
+        {
+            foreach(var race in xRaces.Elements(RACE))
+            {
+                if(race.Element(RACE_NAME).Value == raceName)
+                {
+                    return race;
+                }
+            }
+            return null;
         }
 
     }

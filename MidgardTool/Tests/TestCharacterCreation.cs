@@ -80,5 +80,13 @@ namespace Tests
             reader.Read(out classes, out races);
         }
 
+        [TestMethod]
+        public void GetAttributeBoarders()
+        {
+            XmlCharacterCreationReader reader = new XmlCharacterCreationReader(MTConfiguration.Instance.XmlPath);
+
+            reader.ReadAttributeBorders("Zwerg", "Stärke");
+        }
+
     }
 }

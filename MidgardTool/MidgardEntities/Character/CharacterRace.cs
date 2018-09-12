@@ -10,7 +10,19 @@ namespace MidgardEntities.Character
     {
         public string Name { get; set; }
 
-        private List<CharacterClass> m_AvailableClasses = new List<CharacterClass>();
+        private List<CharacterClass> m_AvailableClasses;
+        public List<CharacterClass> AvailableClasses
+        {
+            get
+            {
+                if(m_AvailableClasses == null)
+                {
+                    m_AvailableClasses = new List<CharacterClass>();
+                }
+                return m_AvailableClasses;
+            }
+        }
+
 
         #region Construction
 
@@ -22,15 +34,15 @@ namespace MidgardEntities.Character
         #endregion
 
         public void AddClass(CharacterClass characterClass){
-            if(characterClass != null && !m_AvailableClasses.Contains(characterClass))
+            if(characterClass != null && !AvailableClasses.Contains(characterClass))
             {
-                m_AvailableClasses.Add(characterClass);
+                AvailableClasses.Add(characterClass);
             }        
         }
 
         public bool IsAvailableClass(CharacterClass characterClass)
         {
-            return m_AvailableClasses.Contains(characterClass);
+            return AvailableClasses.Contains(characterClass);
         }
     }
 }

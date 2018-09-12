@@ -10,7 +10,18 @@ namespace MidgardEntities.Character
     {
         public string Name { get; set; }
 
-        private List<CharacterRace> m_AvailableRaces = new List<CharacterRace>();
+        private List<CharacterRace> m_AvailableRaces;
+        public List<CharacterRace> AvailableRaces
+        {
+            get
+            {
+                if(m_AvailableRaces == null)
+                {
+                    m_AvailableRaces = new List<CharacterRace>();
+                }
+                return m_AvailableRaces;
+            }
+        }
 
         #region Construction
 
@@ -23,15 +34,15 @@ namespace MidgardEntities.Character
 
         public void AddRace(CharacterRace race)
         {
-            if(race != null && !m_AvailableRaces.Contains(race))
+            if(race != null && !AvailableRaces.Contains(race))
             {
-                m_AvailableRaces.Add(race);
+                AvailableRaces.Add(race);
             }           
         }
 
         public bool IsAvailableRace(CharacterRace race)
         {
-            return m_AvailableRaces.Contains(race);
+            return AvailableRaces.Contains(race);
         }
     }
 }

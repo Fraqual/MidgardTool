@@ -58,14 +58,24 @@ namespace CharacterCreationLogic
 
         #endregion
 
-        public List<string> AvailableClasses()
+        public List<CharacterClass> AvailableClasses()
         {
-            return Classes.ConvertAll(c => c.Name);
+            if(m_Character.Race != null)
+            {
+                return m_Character.Race.AvailableClasses;
+            }
+
+            return Classes;
         }
 
-        public List<string> AvailableRaces()
+        public List<CharacterRace> AvailableRaces()
         {
-            return Races.ConvertAll(r => r.Name);
+            if(m_Character.Class != null)
+            {
+                return m_Character.Class.AvailableRaces;
+            }
+
+            return Races;
         }
 
         public static void RollAttribute(CharacterAttribute attribute)

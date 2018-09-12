@@ -6,7 +6,7 @@ namespace CharacterCreationLogic.Interfaces
 {
     public interface ICreationLogic
     {
-        List<string> AvailableClasses();
-        List<string> AvailableRaces();
+        List<CharacterClass> AvailableClasses();
+        List<CharacterRace> AvailableRaces();
     }
 }

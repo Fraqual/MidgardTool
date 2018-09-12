@@ -9,14 +9,14 @@ namespace MidgardEntities.Character
     {
         public string Name { get; set; }
         public string PlayerName { get; set; }
-        public ECharacterClass Class { get; set; }
+        public CharacterClass Class { get; set; }
         public int Rank { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public int LPMaximum { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public int APMaximum { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public int Experience { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public int ExperienceTotal { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public List<ISpecialAbility> Special { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public ERace Race { get; set; }
+        public CharacterRace Race { get; set; }
         public string Origin { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public string Faith { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public ESocialStatus SocialStatus { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }

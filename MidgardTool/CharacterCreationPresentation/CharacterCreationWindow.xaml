@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:CharacterCreationPresentation.ViewModels"
         xmlns:control="clr-namespace:CharacterCreationPresentation.UserControls"
+        xmlns:convert="clr-namespace:MidgardEntities.Converters;assembly=MidgardEntities"  
         mc:Ignorable="d"
         Title="Charakter erstellung"
         Height="400"
@@ -13,6 +14,9 @@
     <Window.DataContext>
         <vm:CharacterCreationViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <convert:CharacterClassStringConverter x:Key="ccsConverter" />
+    </Window.Resources>
 
     <Grid>
 
@@ -35,13 +39,15 @@
 
         <control:CharacterAttributeComboBox Grid.Row="2"
                                             AttributeName="Klasse"
-                                            AttributeItems="{Binding Classes}"
+                                            AttributeItems="{Binding Classes, Converter={StaticResource ccsConverter}}"
+                                            SelectedIndex="{Binding ClassSelection}"
                                             ButtonCommand="{Binding CmdSetClass}"
                                             AttributeIsEnabled="{Binding ClassesEnabled}"/>
         
         <control:CharacterAttributeComboBox Grid.Row="3" 
                                             AttributeName="Rasse"
-                                            AttributeItems="{Binding Races}"
+                                            AttributeItems="{Binding Races, Converter={StaticResource ccsConverter}}"
+                                            SelectedIndex="{Binding RaceSelection}"
                                             ButtonCommand="{Binding CmdSetRace}"
                                             AttributeIsEnabled="{Binding RacesEnabled}"/>
 

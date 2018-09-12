@@ -86,5 +86,10 @@ namespace XmlHelper
 
         }
 
+        public void ReadAttributeBorders(string raceName, string attributeName)
+        {
+
+        }
+
     }
 }

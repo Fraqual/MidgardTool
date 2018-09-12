@@ -8,7 +8,7 @@ namespace MidgardEntities.Interfaces
     {
         string Name { get; set; }
         string PlayerName { get; set; }
-        ECharacterClass Class { get; set; }
+        CharacterClass Class { get; set; }
         int Rank { get; set; }
 
 
@@ -19,7 +19,7 @@ namespace MidgardEntities.Interfaces
 
 
         List<ISpecialAbility> Special { get; set; }
-        ERace Race { get; set; }
+        CharacterRace Race { get; set; }
         string Origin { get; set; }
         string Faith { get; set; }
         ESocialStatus SocialStatus { get; set; }

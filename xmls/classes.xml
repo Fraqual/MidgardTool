@@ -18,9 +18,6 @@
     </InitalLearning>
     <AvailableRaces>
       <Race>Mensch</Race>
-      <Race>Elf</Race>
-      <Race>Gnom</Race>
-      <Race>Halbling</Race>
     </AvailableRaces>
   </Class>
   <Class>

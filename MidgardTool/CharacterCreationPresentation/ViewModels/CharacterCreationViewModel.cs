@@ -22,12 +22,12 @@ namespace CharacterCreationPresentation.ViewModels
         public string CharacterName { get => m_CharacterLogic.Name; set => m_CharacterLogic.Name = value; }
         public string PlayerName { get => m_CharacterLogic.PlayerName; set => m_CharacterLogic.PlayerName = value; }
 
-        public List<string> Classes { get => m_CreationLogic.AvailableClasses(); }
-        public string ClassSelection { get; set; }
+        public List<CharacterClass> Classes { get => m_CreationLogic.AvailableClasses(); }
+        public int ClassSelection { get; set; }
         public bool ClassesEnabled { get; set; } = true;
 
-        public List<string> Races { get => m_CreationLogic.AvailableRaces(); }
-        public string RaceSelection { get; set; }
+        public List<CharacterRace> Races { get => m_CreationLogic.AvailableRaces(); }
+        public int RaceSelection { get; set; }
         public bool RacesEnabled { get; set; } = true;
 
         #endregion
@@ -45,7 +45,8 @@ namespace CharacterCreationPresentation.ViewModels
                     m_CmdSetRace = new RelayCommand(() =>
                     {
                         RacesEnabled = false;
-                        m_CharacterLogic.Race = (ERace)Enum.Parse(typeof(ERace), RaceSelection);
+                        m_CharacterLogic.Race = m_CreationLogic.AvailableRaces()[RaceSelection];
+                        NotifyPropertyChanged(this, nameof(Classes));
                     });
                 }
                 return m_CmdSetRace;
@@ -62,7 +63,8 @@ namespace CharacterCreationPresentation.ViewModels
                     m_CmdSetClass = new RelayCommand(() => 
                     {
                         ClassesEnabled = false;
-                        m_CharacterLogic.Class = (ECharacterClass)Enum.Parse(typeof(ECharacterClass), ClassSelection);
+                        m_CharacterLogic.Class = m_CreationLogic.AvailableClasses()[ClassSelection];
+                        NotifyPropertyChanged(this, nameof(Races));
                     });
                 }
                 return m_CmdSetClass;

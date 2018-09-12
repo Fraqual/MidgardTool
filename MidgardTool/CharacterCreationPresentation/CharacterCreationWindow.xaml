@@ -40,14 +40,14 @@
         <control:CharacterAttributeComboBox Grid.Row="2"
                                             AttributeName="Klasse"
                                             AttributeItems="{Binding Classes, Converter={StaticResource ccsConverter}}"
-                                            SelectedIndex="{Binding ClassSelection}"
+                                            SelectedIndex="{Binding ClassSelection, Mode=TwoWay}"
                                             ButtonCommand="{Binding CmdSetClass}"
                                             AttributeIsEnabled="{Binding ClassesEnabled}"/>
         
         <control:CharacterAttributeComboBox Grid.Row="3" 
                                             AttributeName="Rasse"
                                             AttributeItems="{Binding Races, Converter={StaticResource ccsConverter}}"
-                                            SelectedIndex="{Binding RaceSelection}"
+                                            SelectedIndex="{Binding RaceSelection, Mode=TwoWay}"
                                             ButtonCommand="{Binding CmdSetRace}"
                                             AttributeIsEnabled="{Binding RacesEnabled}"/>
 

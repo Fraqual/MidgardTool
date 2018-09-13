@@ -1,0 +1,106 @@
+﻿<Window x:Class="CharacterCreationPresentation.Windows.CharacterAttributeRollWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CharacterCreationPresentation.Windows"
+        xmlns:vm="clr-namespace:CharacterCreationPresentation.ViewModels"
+        xmlns:uc="clr-namespace:CharacterCreationPresentation.UserControls"
+        mc:Ignorable="d"
+        Title="CharacterAttributeRollWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <vm:CharacterAttributeRollViewModel />
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            
+            <uc:CharacterAttributeTextBox Grid.Column="0"
+                                          Grid.Row="0"
+                                          AttributeName="Stärke" 
+                                          AttributeIsEnabled="{Binding STRIsEnabled}"/>
+            <uc:CharacterAttributeTextBox Grid.Column="0"
+                                          Grid.Row="1"
+                                          AttributeName="Gewandheit"
+                                          AttributeIsEnabled="{Binding GWIsEnabled}" />
+            <uc:CharacterAttributeTextBox Grid.Column="0"
+                                          Grid.Row="2"
+                                          AttributeName="Geschicklichkeit"
+                                          AttributeIsEnabled="{Binding GSIsEnabled}" />
+            <uc:CharacterAttributeTextBox Grid.Column="0"
+                                          Grid.Row="3"
+                                          AttributeName="Konstitution"
+                                          AttributeIsEnabled="{Binding KOIsEnabled}" />
+            <uc:CharacterAttributeTextBox Grid.Column="0"
+                                          Grid.Row="4"
+                                          AttributeName="Intelligenz"
+                                          AttributeIsEnabled="{Binding INIsEnabled}" />
+            <uc:CharacterAttributeTextBox Grid.Column="0"
+                                          Grid.Row="5"
+                                          AttributeName="Zaubertalent"
+                                          AttributeIsEnabled="{Binding ZTIsEnabled}" />
+
+            <uc:CharacterAttributeTextBox Grid.Column="1"
+                                          Grid.Row="0"
+                                          AttributeName="Aussehen"
+                                          AttributeIsEnabled="{Binding AUIsEnabled}" />
+            <uc:CharacterAttributeTextBox Grid.Column="1"
+                                          Grid.Row="1"
+                                          AttributeName="Pers. Ausstrahlung"
+                                          AttributeIsEnabled="{Binding PAIsEnabled}" />
+            <uc:CharacterAttributeTextBox Grid.Column="1"
+                                          Grid.Row="2"
+                                          AttributeName="Willenskraft"
+                                          AttributeIsEnabled="{Binding WKIsEnabled}" />
+            <uc:CharacterAttributeTextBox Grid.Column="1"
+                                          Grid.Row="3"
+                                          AttributeName="Bewegung"
+                                          AttributeIsEnabled="{Binding BIsEnabled}" />
+
+        </Grid>
+        
+        <Grid Grid.Column="1"
+              Visibility="{Binding MethodSelectionVisibility}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" 
+                    Content="2W%"
+                    Command="{Binding CmdRollMethod1}"/>
+
+            <Button Grid.Row="1" 
+                    Content="9W%"
+                    Command="{Binding CmdRollMethod2}"/>
+
+        </Grid>
+
+        <Grid Grid.Column="1"
+              Visibility="{Binding DiceSelectionVisibility}">
+            
+        </Grid>
+        
+    </Grid>
+</Window>

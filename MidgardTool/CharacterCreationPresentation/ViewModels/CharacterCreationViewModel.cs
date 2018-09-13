@@ -7,6 +7,8 @@ using MidgardToolHelper.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using System.Windows;
+using CharacterCreationPresentation.Windows;
 
 namespace CharacterCreationPresentation.ViewModels
 {
@@ -33,7 +35,6 @@ namespace CharacterCreationPresentation.ViewModels
         #endregion
 
         #region Commands
-
 
         private RelayCommand m_CmdSetRace;
         public ICommand CmdSetRace
@@ -79,7 +80,8 @@ namespace CharacterCreationPresentation.ViewModels
                 if(m_CmdSetAttributes == null)
                 {
                     m_CmdSetAttributes = new RelayCommand(() => {
-                        
+                        Window attributeWindow = new CharacterAttributeRollWindow();
+                        attributeWindow.ShowDialog();
                     });
                 }
                 return m_CmdSetAttributes;

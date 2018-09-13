@@ -71,7 +71,11 @@
       <DependentUpon>CharacterAttributeTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\CharacterAttributeTextBoxViewModel.cs" />
+    <Compile Include="ViewModels\CharacterAttributeRollViewModel.cs" />
     <Compile Include="ViewModels\CharacterCreationViewModel.cs" />
+    <Compile Include="Windows\CharacterAttributeRollWindow.xaml.cs">
+      <DependentUpon>CharacterAttributeRollWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="CharacterCreationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\CharacterAttributeTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CharacterAttributeRollWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -122,9 +130,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CharacterCreationLogic\CharacterCreationLogic.csproj">
       <Project>{829f8900-28b7-4b61-8267-f897713b73df}</Project>

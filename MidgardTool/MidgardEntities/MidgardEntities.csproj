@@ -47,7 +47,7 @@
     <Compile Include="Character\CharacterClass.cs" />
     <Compile Include="Character\CharacterManager.cs" />
     <Compile Include="Character\CharacterRace.cs" />
-    <Compile Include="Converters\CharacterClassStringConverter.cs" />
+    <Compile Include="Converters\CharacterAttributeStringConverter.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\ISpecialAbility.cs" />

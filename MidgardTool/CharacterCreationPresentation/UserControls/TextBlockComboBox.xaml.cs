@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CharacterCreationPresentation.Windows
+namespace CharacterCreationPresentation.UserControls
 {
     /// <summary>
-    /// Interaction logic for CharacterAttributeRollWindow.xaml
+    /// Interaction logic for TextBlockComboBox.xaml
     /// </summary>
-    public partial class CharacterAttributeRollWindow : Window
+    public partial class TextBlockComboBox : UserControl
     {
-        public CharacterAttributeRollWindow()
+        public TextBlockComboBox()
         {
             InitializeComponent();
         }

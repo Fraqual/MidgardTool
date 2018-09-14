@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using System.Windows;
-using CharacterCreationPresentation.Windows;
 
 namespace CharacterCreationPresentation.ViewModels
 {
@@ -31,6 +30,23 @@ namespace CharacterCreationPresentation.ViewModels
         public List<CharacterRace> Races { get => m_CreationLogic.AvailableRaces(); }
         public int RaceSelection { get; set; }
         public bool RacesEnabled { get; set; } = true;
+
+
+        public Visibility MethodSelectionVisibility { get; set; } = Visibility.Visible;
+        public Visibility DiceSelectionVisibility { get; set; } = Visibility.Hidden;
+
+        public bool AttributesIsEnabled { get; set; } = false;
+        public bool STRIsEnabled { get; set; } = true;
+        public bool GWIsEnabled { get; set; } = true;
+        public bool GSIsEnabled { get; set; } = true;
+        public bool KOIsEnabled { get; set; } = true;
+        public bool INIsEnabled { get; set; } = true;
+        public bool ZTIsEnabled { get; set; } = true;
+        public bool AUIsEnabled { get; set; } = true;
+        public bool PAIsEnabled { get; set; } = true;
+        public bool WKIsEnabled { get; set; } = true;
+        public bool BIsEnabled { get; set; } = true;
+        public bool AttributeConfirmIsEnabled { get; set; } = false;
 
         #endregion
 
@@ -72,19 +88,60 @@ namespace CharacterCreationPresentation.ViewModels
             }
         }
 
-        private RelayCommand m_CmdSetAttributes;
-        public ICommand CmdSetAttributes
+        private RelayCommand m_CmdRollMethod1;
+        public ICommand CmdRollMethod1
         {
             get
             {
-                if(m_CmdSetAttributes == null)
+                if(m_CmdRollMethod1 == null)
                 {
-                    m_CmdSetAttributes = new RelayCommand(() => {
-                        Window attributeWindow = new CharacterAttributeRollWindow();
-                        attributeWindow.ShowDialog();
+                    m_CmdRollMethod1 = new RelayCommand(() =>
+                    {
+                        MethodSelectionVisibility = Visibility.Hidden;
+                        DiceSelectionVisibility = Visibility.Visible;
+                        AttributesIsEnabled = true;
+                        ClassesEnabled = false;
+                        RacesEnabled = false;
                     });
                 }
-                return m_CmdSetAttributes;
+                return m_CmdRollMethod1;
+            }
+        }
+
+        private RelayCommand m_CmdRollMethod2;
+        public ICommand CmdRollMethod2
+        {
+            get
+            {
+                if(m_CmdRollMethod2 == null)
+                {
+                    m_CmdRollMethod2 = new RelayCommand(() =>
+                    {
+                        MethodSelectionVisibility = Visibility.Hidden;
+                        DiceSelectionVisibility = Visibility.Visible;
+                        AttributesIsEnabled = true;
+                        ClassesEnabled = false;
+                        RacesEnabled = false;
+                    });
+                }
+                return m_CmdRollMethod2;
+            }
+        }
+
+
+        private RelayCommand m_CmdSetSTR;
+        public ICommand CmdSetSTR
+        {
+            get
+            {
+                if(m_CmdSetSTR == null)
+                {
+                    m_CmdSetSTR = new RelayCommand(() =>
+                    {
+
+                    });
+                }
+                return m_CmdSetSTR;
             }
         }
 

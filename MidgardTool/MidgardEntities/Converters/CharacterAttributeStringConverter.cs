@@ -7,7 +7,7 @@ using System.Windows.Data;
 namespace MidgardEntities.Converters
 {
     [ValueConversion(typeof(object), typeof(string))]
-    public class CharacterClassStringConverter : IValueConverter
+    public class CharacterAttributeStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

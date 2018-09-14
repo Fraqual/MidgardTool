@@ -4,18 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:CharacterCreationPresentation.ViewModels"
-        xmlns:control="clr-namespace:CharacterCreationPresentation.UserControls"
-        xmlns:convert="clr-namespace:MidgardEntities.Converters;assembly=MidgardEntities"  
+        xmlns:uc="clr-namespace:CharacterCreationPresentation.UserControls"
+        xmlns:converter="clr-namespace:MidgardEntities.Converters;assembly=MidgardEntities"
         mc:Ignorable="d"
-        Title="Charakter erstellung"
-        Height="400"
+        Title="Charaktererstellung"
+        Height="480"
         Width="600">
 
     <Window.DataContext>
         <vm:CharacterCreationViewModel />
     </Window.DataContext>
     <Window.Resources>
-        <convert:CharacterClassStringConverter x:Key="ccsConverter" />
+        <converter:CharacterAttributeStringConverter x:Key="casConverter" />
     </Window.Resources>
 
     <Grid>
@@ -25,36 +25,128 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
         <!-- Basic Information -->
-        <control:CharacterAttributeTextBox Grid.Row="0"
-                                           AttributeName="Name"
-                                           ButtonVisibility="Collapsed"/>
+        <uc:CharacterAttributeTextBox Grid.Row="0"
+                                      AttributeName="Name"
+                                      ButtonVisibility="Collapsed" />
 
-        <control:CharacterAttributeTextBox Grid.Row="1" 
-                                           AttributeName="Spieler"
-                                           ButtonVisibility="Collapsed"/>
+        <uc:CharacterAttributeTextBox Grid.Row="1"
+                                      AttributeName="Spieler"
+                                      ButtonVisibility="Collapsed" />
 
-        <control:CharacterAttributeComboBox Grid.Row="2"
-                                            AttributeName="Klasse"
-                                            AttributeItems="{Binding Classes, Converter={StaticResource ccsConverter}}"
-                                            SelectedIndex="{Binding ClassSelection, Mode=TwoWay}"
-                                            ButtonCommand="{Binding CmdSetClass}"
-                                            AttributeIsEnabled="{Binding ClassesEnabled}"/>
-        
-        <control:CharacterAttributeComboBox Grid.Row="3" 
-                                            AttributeName="Rasse"
-                                            AttributeItems="{Binding Races, Converter={StaticResource ccsConverter}}"
-                                            SelectedIndex="{Binding RaceSelection, Mode=TwoWay}"
-                                            ButtonCommand="{Binding CmdSetRace}"
-                                            AttributeIsEnabled="{Binding RacesEnabled}"/>
+        <uc:CharacterAttributeComboBox Grid.Row="2"
+                                       AttributeName="Klasse"
+                                       AttributeItems="{Binding Classes, Converter={StaticResource casConverter}}"
+                                       SelectedIndex="{Binding ClassSelection, Mode=TwoWay}"
+                                       ButtonCommand="{Binding CmdSetClass}"
+                                       AttributeIsEnabled="{Binding ClassesEnabled}" />
 
-        <Button Grid.Row="4"
-                Margin="50 5 50 5"
-                Content="Attribute"
-                Command="{Binding CmdSetAttributes}"/>
+        <uc:CharacterAttributeComboBox Grid.Row="3"
+                                       AttributeName="Rasse"
+                                       AttributeItems="{Binding Races, Converter={StaticResource casConverter}}"
+                                       SelectedIndex="{Binding RaceSelection, Mode=TwoWay}"
+                                       ButtonCommand="{Binding CmdSetRace}"
+                                       AttributeIsEnabled="{Binding RacesEnabled}" />
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0"
+                  IsEnabled="{Binding AttributesIsEnabled}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+
+                <uc:CharacterAttributeTextBox Grid.Column="0"
+                                              Grid.Row="0"
+                                              AttributeName="Stärke"
+                                              AttributeIsEnabled="{Binding STRIsEnabled}" />
+                <uc:CharacterAttributeTextBox Grid.Column="0"
+                                              Grid.Row="1"
+                                              AttributeName="Gewandheit"
+                                              AttributeIsEnabled="{Binding GWIsEnabled}" />
+                <uc:CharacterAttributeTextBox Grid.Column="0"
+                                              Grid.Row="2"
+                                              AttributeName="Geschicklichkeit"
+                                              AttributeIsEnabled="{Binding GSIsEnabled}" />
+                <uc:CharacterAttributeTextBox Grid.Column="0"
+                                              Grid.Row="3"
+                                              AttributeName="Konstitution"
+                                              AttributeIsEnabled="{Binding KOIsEnabled}" />
+                <uc:CharacterAttributeTextBox Grid.Column="0"
+                                              Grid.Row="4"
+                                              AttributeName="Intelligenz"
+                                              AttributeIsEnabled="{Binding INIsEnabled}" />
+                <uc:CharacterAttributeTextBox Grid.Column="0"
+                                              Grid.Row="5"
+                                              AttributeName="Zaubertalent"
+                                              AttributeIsEnabled="{Binding ZTIsEnabled}" />
+
+                <uc:CharacterAttributeTextBox Grid.Column="1"
+                                              Grid.Row="0"
+                                              AttributeName="Aussehen"
+                                              AttributeIsEnabled="{Binding AUIsEnabled}" />
+                <uc:CharacterAttributeTextBox Grid.Column="1"
+                                              Grid.Row="1"
+                                              AttributeName="Pers. Ausstrahlung"
+                                              AttributeIsEnabled="{Binding PAIsEnabled}" />
+                <uc:CharacterAttributeTextBox Grid.Column="1"
+                                              Grid.Row="2"
+                                              AttributeName="Willenskraft"
+                                              AttributeIsEnabled="{Binding WKIsEnabled}" />
+                <uc:CharacterAttributeTextBox Grid.Column="1"
+                                              Grid.Row="3"
+                                              AttributeName="Bewegung"
+                                              AttributeIsEnabled="{Binding BIsEnabled}" />
+
+                <Button Grid.Row="6"
+                        Grid.ColumnSpan="2"
+                        Content="Confirm"
+                        IsEnabled="{Binding AttributeConfirmIsEnabled}" />
+
+            </Grid>
+
+            <Grid Grid.Column="1"
+                  Visibility="{Binding MethodSelectionVisibility}">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0"
+                        Content="2W%"
+                        Command="{Binding CmdRollMethod1}" />
+
+                <Button Grid.Row="1"
+                        Content="9W%"
+                        Command="{Binding CmdRollMethod2}" />
+
+            </Grid>
+
+            <Grid Grid.Column="1"
+                  Visibility="{Binding DiceSelectionVisibility}">
+
+            </Grid>
+
+        </Grid>
 
     </Grid>
 

@@ -370,6 +370,41 @@ namespace CharacterCreationPresentation.ViewModels
             }
         }
 
+
+        private RelayCommand m_CmdSaveCharacter;
+        public ICommand CmdSaveCharacter
+        {
+            get
+            {
+                if(m_CmdSaveCharacter == null)
+                {
+                    m_CmdSaveCharacter = new RelayCommand(() =>
+                    {
+                        
+                    });
+                }
+                return m_CmdSaveCharacter;
+            }
+        }
+
+
+        private RelayCommand<Window> m_CmdAbort;
+        public ICommand CmdAbort
+        {
+            get
+            {
+                if(m_CmdAbort == null)
+                {
+                    m_CmdAbort = new RelayCommand<Window>((Window window) =>
+                    {
+                        window.Close();
+                    });
+                }
+                return m_CmdAbort;
+            }
+        }
+
+
         #endregion
 
         #region Construction

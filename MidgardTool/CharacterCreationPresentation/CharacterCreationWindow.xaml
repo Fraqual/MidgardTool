@@ -139,7 +139,8 @@
                 <Button Grid.Row="6"
                         Grid.ColumnSpan="2"
                         Content="Confirm"
-                        IsEnabled="{Binding AttributeConfirmIsEnabled}" />
+                        IsEnabled="{Binding AttributeConfirmIsEnabled}"
+                        Command="{Binding CmdConfirmAttributes}"/>
 
             </Grid>
 

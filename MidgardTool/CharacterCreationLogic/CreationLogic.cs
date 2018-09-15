@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using Logger;
 using XmlHelper;
-using System.Configuration;
 using CharacterCreationLogic.Interfaces;
 using MidgardEntities.Interfaces;
 using MidgardEntities.Enums;
 using MidgardEntities.Character;
-using MidgardToolHelper;
 using ConfigManager;
 
 namespace CharacterCreationLogic

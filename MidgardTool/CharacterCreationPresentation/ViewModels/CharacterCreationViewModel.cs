@@ -158,6 +158,7 @@ namespace CharacterCreationPresentation.ViewModels
                         NotifyPropertyChanged(this, nameof(STRValue));
                         STRIsEnabled = false;
                         notifyAttribute();
+                        enableConfirmIfFinished();
                     });
                 }
                 return m_CmdRollSTR;
@@ -177,6 +178,7 @@ namespace CharacterCreationPresentation.ViewModels
                         NotifyPropertyChanged(this, nameof(GWValue));
                         GWIsEnabled = false;
                         notifyAttribute();
+                        enableConfirmIfFinished();
                     });
                 }
                 return m_CmdRollGW;
@@ -196,6 +198,7 @@ namespace CharacterCreationPresentation.ViewModels
                         NotifyPropertyChanged(this, nameof(GSValue));
                         GSIsEnabled = false;
                         notifyAttribute();
+                        enableConfirmIfFinished();
                     });
                 }
                 return m_CmdRollGS;
@@ -215,6 +218,7 @@ namespace CharacterCreationPresentation.ViewModels
                         NotifyPropertyChanged(this, nameof(KOValue));
                         KOIsEnabled = false;
                         notifyAttribute();
+                        enableConfirmIfFinished();
                     });
                 }
                 return m_CmdRollKO;
@@ -234,6 +238,7 @@ namespace CharacterCreationPresentation.ViewModels
                         NotifyPropertyChanged(this, nameof(INValue));
                         INIsEnabled = false;
                         notifyAttribute();
+                        enableConfirmIfFinished();
                     });
                 }
                 return m_CmdRollIN;
@@ -253,6 +258,7 @@ namespace CharacterCreationPresentation.ViewModels
                         NotifyPropertyChanged(this, nameof(ZTValue));
                         ZTIsEnabled = false;
                         notifyAttribute();
+                        enableConfirmIfFinished();
                     });
                 }
                 return m_CmdRollZT;
@@ -272,6 +278,7 @@ namespace CharacterCreationPresentation.ViewModels
                         NotifyPropertyChanged(this, nameof(AUValue));
                         AUIsEnabled = false;
                         notifyAttribute();
+                        enableConfirmIfFinished();
                     });
                 }
                 return m_CmdRollAU;
@@ -291,6 +298,7 @@ namespace CharacterCreationPresentation.ViewModels
                         NotifyPropertyChanged(this, nameof(PAValue));
                         PAIsEnabled = false;
                         notifyAttribute();
+                        enableConfirmIfFinished();
                     });
                 }
                 return m_CmdRollPA;
@@ -310,6 +318,7 @@ namespace CharacterCreationPresentation.ViewModels
                         NotifyPropertyChanged(this, nameof(WKValue));
                         WKIsEnabled = false;
                         notifyAttribute();
+                        enableConfirmIfFinished();
                     });
                 }
                 return m_CmdRollWK;
@@ -329,6 +338,7 @@ namespace CharacterCreationPresentation.ViewModels
                         NotifyPropertyChanged(this, nameof(BValue));
                         BIsEnabled = false;
                         notifyAttribute();
+                        enableConfirmIfFinished();
                     });
                 }
                 return m_CmdRollB;
@@ -337,18 +347,26 @@ namespace CharacterCreationPresentation.ViewModels
 
         #endregion
 
-        private RelayCommand m_CmdSave;
-        public ICommand CmdSave
+        private RelayCommand m_CmdConfirmAttributes;
+        public ICommand CmdConfirmAttributes
         {
             get
             {
-                if(m_CmdSave == null)
+                if(m_CmdConfirmAttributes == null)
                 {
-                    m_CmdSave = new RelayCommand(() => {
-                        
+                    m_CmdConfirmAttributes = new RelayCommand(() => {
+                        if(m_Character.Race == null)
+                        {
+                            RacesEnabled = true;
+                        }
+                        if(m_Character.Class == null)
+                        {
+                            ClassesEnabled = true;
+                        }
+                        AttributesIsEnabled = false;
                     });
                 }
-                return m_CmdSave;
+                return m_CmdConfirmAttributes;
             }
         }
 
@@ -377,6 +395,24 @@ namespace CharacterCreationPresentation.ViewModels
             NotifyPropertyChanged(this, nameof(PAIsEnabled));
             NotifyPropertyChanged(this, nameof(WKIsEnabled));
             NotifyPropertyChanged(this, nameof(BIsEnabled));
+        }
+
+        private void enableConfirmIfFinished()
+        {
+            if(
+                !STRIsEnabled &&
+                !GWIsEnabled &&
+                !GSIsEnabled &&
+                !KOIsEnabled &&
+                !INIsEnabled &&
+                !ZTIsEnabled &&
+                !AUIsEnabled &&
+                !PAIsEnabled &&
+                !WKIsEnabled &&
+                !BIsEnabled)
+            {
+                AttributeConfirmIsEnabled = true;
+            }
         }
 
     }

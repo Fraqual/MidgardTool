@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MidgardEntities.Enums;
 using MidgardEntities.Interfaces;
+using MidgardToolHelper;
 
 namespace MidgardEntities.Character
 {
@@ -46,15 +47,15 @@ namespace MidgardEntities.Character
 
         private void initialize()
         {
-            Strength = new CharacterAttribute(ECharacterAttribute.Strength);
-            GW = new CharacterAttribute(ECharacterAttribute.GW);
-            Dexterity = new CharacterAttribute(ECharacterAttribute.Dexterity);
-            Constitution = new CharacterAttribute(ECharacterAttribute.Constitution);
-            Intelligence = new CharacterAttribute(ECharacterAttribute.Intelligence);
-            MagicTalent = new CharacterAttribute(ECharacterAttribute.MagicTalent);
-            Appereance = new CharacterAttribute(ECharacterAttribute.Appereance);
+            Strength = new CharacterAttribute(ECharacterAttribute.Strength, () => { return Dice.Roll(100); });
+            GW = new CharacterAttribute(ECharacterAttribute.GW, () => { return Dice.Roll(100); });
+            Dexterity = new CharacterAttribute(ECharacterAttribute.Dexterity, () => { return Dice.Roll(100); });
+            Constitution = new CharacterAttribute(ECharacterAttribute.Constitution, () => { return Dice.Roll(100); });
+            Intelligence = new CharacterAttribute(ECharacterAttribute.Intelligence, () => { return Dice.Roll(100); });
+            MagicTalent = new CharacterAttribute(ECharacterAttribute.MagicTalent, () => { return Dice.Roll(100); });
+            Appereance = new CharacterAttribute(ECharacterAttribute.Appereance, () => { return Dice.Roll(100); });
 
-            PA = new CharacterAttribute(ECharacterAttribute.PA, (value, dependencies) =>
+            PA = new CharacterAttribute(ECharacterAttribute.PA, () => { return Dice.Roll(100); }, (value, dependencies) =>
             {
                 CharacterAttribute intelligence = null;
 
@@ -75,7 +76,7 @@ namespace MidgardEntities.Character
             });
             PA.AddDependency(Intelligence);
 
-            Willpower = new CharacterAttribute(ECharacterAttribute.Willpower, (value, dependencies) => 
+            Willpower = new CharacterAttribute(ECharacterAttribute.Willpower, () => { return Dice.Roll(100); }, (value, dependencies) => 
             {
                 CharacterAttribute intelligence = null;
                 CharacterAttribute constitution = null;
@@ -106,7 +107,7 @@ namespace MidgardEntities.Character
             Willpower.AddDependency(Constitution);
             Willpower.AddDependency(Intelligence);
 
-            Movement = new CharacterAttribute(ECharacterAttribute.Movement, (value, dependencies) => 
+            Movement = new CharacterAttribute(ECharacterAttribute.Movement, () => { return Dice.Roll(3) + Dice.Roll(3) + Dice.Roll(3) + Dice.Roll(3); }, (value, dependencies) => 
             {
                 return value + 16;
             });

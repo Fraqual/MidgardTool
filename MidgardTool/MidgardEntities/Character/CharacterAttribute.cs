@@ -1,6 +1,7 @@
 ﻿using MidgardEntities.Enums;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace MidgardEntities.Character
     {
         public static Random m_Random = new Random();
 
+        public delegate int RollFormula();
         public delegate int DependencyFormula(int value, List<CharacterAttribute> dependencies);
 
         public bool IsSet { get; set; } = false;
@@ -41,32 +43,42 @@ namespace MidgardEntities.Character
 
         public ECharacterAttribute Name { get; }
 
-        private static readonly int m_MaxValue = 100;
-
         private int m_Value;
-
         public int Value
         {
             get
             {
                 return m_Value;
             }
+            set
+            {
+                if(CanBeSet)
+                {
+                    m_Value = m_DependencyFormula != null ? m_DependencyFormula(value, m_Dependencies) : value;
+                    IsSet = true;
+                }
+            }
+        }
+
+        public ReadOnlyCollection<CharacterAttribute> Dependencies
+        {
+            get
+            {
+                return m_Dependencies.AsReadOnly();
+            }
         }
 
         private List<CharacterAttribute> m_Dependencies;
 
+        private RollFormula m_RollFormula;
         private DependencyFormula m_DependencyFormula;
 
-        public CharacterAttribute(ECharacterAttribute name)
-        {
-            Name = name;
-            m_Dependencies = new List<CharacterAttribute>();
-            CanBeSet = true;
-        }
+        public CharacterAttribute(ECharacterAttribute name, RollFormula rollFormula) : this(name, rollFormula, null) { }
 
-        public CharacterAttribute(ECharacterAttribute name, DependencyFormula dependencyFormula)
+        public CharacterAttribute(ECharacterAttribute name, RollFormula rollFormula, DependencyFormula dependencyFormula)
         {
             Name = name;
+            m_RollFormula = rollFormula;
             m_Dependencies = new List<CharacterAttribute>();
             m_DependencyFormula = dependencyFormula;
             CanBeSet = false;
@@ -82,21 +94,9 @@ namespace MidgardEntities.Character
             m_Dependencies.Remove(attribute);
         }
 
-        public void SetValue(int value)
+        public int Roll()
         {
-            if(CanBeSet)
-            {
-                int nextValue = m_DependencyFormula != null ? m_DependencyFormula(value, m_Dependencies) : value;
-
-                if(nextValue > m_MaxValue)
-                {
-                    nextValue = m_MaxValue;
-                }
-
-                m_Value = nextValue;
-
-                IsSet = true;
-            }
+            return m_RollFormula();
         }
 
     }

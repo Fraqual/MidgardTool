@@ -15,7 +15,7 @@ namespace CharacterCreationPresentation.UserControls
             get => m_Attribute.Value;
             set
             {
-                m_Attribute.SetValue(value);
+                m_Attribute.Value = value;
 
                 foreach(var item in m_Notify)
                 {
@@ -25,27 +25,6 @@ namespace CharacterCreationPresentation.UserControls
 
         }
         public bool IsEnabled { get => m_Attribute.CanBeSet; }
-
-        private RelayCommand m_CmdRandomValue;
-        public ICommand CmdRandomValue
-        {
-            get
-            {
-                if(m_CmdRandomValue == null)
-                {
-                    m_CmdRandomValue = new RelayCommand(() => 
-                    {
-                        CreationLogic.RollAttribute(m_Attribute);
-                        NotifyPropertyChanged(this, nameof(Value));
-                        foreach(var item in m_Notify)
-                        {
-                            NotifyPropertyChanged(item, nameof(IsEnabled));
-                        }
-                    });
-                }
-                return m_CmdRandomValue;
-            }
-        }
 
         public CharacterAttributeTextBoxViewModel(CharacterAttribute attribute, params CharacterAttributeTextBoxViewModel[] notify)
         {

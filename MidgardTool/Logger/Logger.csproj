@@ -51,10 +51,6 @@
       <Project>{3F7DF2C4-537F-4E6C-B051-80988F8930CC}</Project>
       <Name>ConfigManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XmlHelper\XmlHelper.csproj">
-      <Project>{b498bded-304e-4e92-968b-6504e87734d4}</Project>
-      <Name>XmlHelper</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

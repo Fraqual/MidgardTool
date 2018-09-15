@@ -70,10 +70,10 @@
     <Compile Include="UserControls\CharacterAttributeTextBox.xaml.cs">
       <DependentUpon>CharacterAttributeTextBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CharacterAttributeTextBoxViewModel.cs" />
     <Compile Include="UserControls\TextBlockComboBox.xaml.cs">
       <DependentUpon>TextBlockComboBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CharacterAttributeTextBoxViewModel.cs" />
     <Compile Include="ViewModels\CharacterCreationViewModel.cs" />
     <Page Include="CharacterCreationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

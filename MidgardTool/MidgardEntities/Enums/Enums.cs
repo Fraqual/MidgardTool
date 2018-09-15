@@ -12,4 +12,6 @@
 
     public enum EHandedness { Right, Left, Both}
 
+    public enum ERollMethod { W2, W9 }
+
 }

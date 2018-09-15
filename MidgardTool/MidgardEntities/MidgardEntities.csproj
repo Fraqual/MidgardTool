@@ -53,5 +53,11 @@
     <Compile Include="Interfaces\ISpecialAbility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MidgardToolHelper\MidgardToolHelper.csproj">
+      <Project>{594c56c3-a03d-4c5a-af79-57524070fc7d}</Project>
+      <Name>MidgardToolHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

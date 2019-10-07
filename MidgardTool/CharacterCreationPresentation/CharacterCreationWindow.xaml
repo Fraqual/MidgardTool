@@ -40,18 +40,18 @@
                                       ButtonVisibility="Collapsed" />
 
         <uc:CharacterAttributeComboBox Grid.Row="2"
-                                       AttributeName="Klasse"
-                                       AttributeItems="{Binding Classes, Converter={StaticResource casConverter}}"
-                                       SelectedIndex="{Binding ClassSelection, Mode=TwoWay}"
-                                       ButtonCommand="{Binding CmdSetClass}"
-                                       AttributeIsEnabled="{Binding ClassesEnabled}" />
-
-        <uc:CharacterAttributeComboBox Grid.Row="3"
                                        AttributeName="Rasse"
                                        AttributeItems="{Binding Races, Converter={StaticResource casConverter}}"
                                        SelectedIndex="{Binding RaceSelection, Mode=TwoWay}"
                                        ButtonCommand="{Binding CmdSetRace}"
                                        AttributeIsEnabled="{Binding RacesEnabled}" />
+        
+        <uc:CharacterAttributeComboBox Grid.Row="3"
+                                       AttributeName="Klasse"
+                                       AttributeItems="{Binding Classes, Converter={StaticResource casConverter}}"
+                                       SelectedIndex="{Binding ClassSelection, Mode=TwoWay}"
+                                       ButtonCommand="{Binding CmdSetClass}"
+                                       AttributeIsEnabled="{Binding ClassesEnabled}" />
 
         <!-- Attribute -->
         <Grid Grid.Row="4">
